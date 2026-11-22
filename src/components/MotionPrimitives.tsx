@@ -64,7 +64,9 @@ export const CountUpStat: React.FC<CountUpStatProps> = ({
   className = '',
 }) => {
   const elRef = useRef<HTMLSpanElement | null>(null);
-  const [displayValue, setDisplayValue] = useState<number>(startValue);
+  const [displayValue, setDisplayValue] = useState<number>(
+    typeof window === 'undefined' ? value : startValue,
+  );
   const startedRef = useRef(false);
 
   useEffect(() => {
@@ -146,7 +148,17 @@ export const CountUpStat: React.FC<CountUpStatProps> = ({
   };
 
   return (
-    <span ref={elRef} className={`font-mono-tabular ${className}`}>
+    <span
+      ref={elRef}
+      data-count={String(value)}
+      data-count-start={startValue !== 0 ? String(startValue) : undefined}
+      data-count-prefix={prefix || undefined}
+      data-count-suffix={suffix || undefined}
+      data-count-decimals={decimals > 0 ? String(decimals) : undefined}
+      data-count-grouping={useGrouping ? undefined : 'false'}
+      data-count-delay={delayMs > 0 ? String(delayMs) : undefined}
+      className={`font-mono-tabular ${className}`}
+    >
       {prefix}
       {formatNum(displayValue)}
       {suffix}
