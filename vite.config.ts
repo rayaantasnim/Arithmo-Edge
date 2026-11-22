@@ -1,5 +1,6 @@
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+import {transformSync} from 'esbuild';
 import fs from 'fs';
 import path from 'path';
 import {defineConfig} from 'vite';
@@ -20,14 +21,14 @@ const htmlPages = [
   'pioneers.html',
 ];
 
-export default defineConfig(() => {
+export default defineConfig(({command}) => {
   const input: Record<string, string> = {};
   for (const page of htmlPages) {
     input[page.replace('.html', '')] = path.resolve(__dirname, page);
   }
 
   return {
-    base: './',
+    base: command === 'build' ? '/Arithmo-Edge/' : './',
     plugins: [
       react(),
       tailwindcss(),
@@ -42,17 +43,38 @@ export default defineConfig(() => {
             '.nojekyll',
             'sitemap.xml',
             'googlef88d19b67a8f9099.html',
+            'assets/css/style.css',
           ]) {
             const src = path.resolve(__dirname, file);
             const dest = path.resolve(distDir, file);
             if (fs.existsSync(distDir) && fs.existsSync(src)) {
+              fs.mkdirSync(path.dirname(dest), {recursive: true});
               fs.copyFileSync(src, dest);
             }
+          }
+
+          // Transpile and minify classic Vanilla JS runtime so ES6+ syntax works reliably across browsers
+          const mainJsSrc = path.resolve(__dirname, 'assets/js/main.js');
+          const mainJsDest = path.resolve(distDir, 'assets/js/main.js');
+          if (fs.existsSync(distDir) && fs.existsSync(mainJsSrc)) {
+            const rawJs = fs.readFileSync(mainJsSrc, 'utf8');
+            const transformed = transformSync(rawJs, {
+              loader: 'js',
+              target: 'es2020',
+              minify: true,
+              legalComments: 'none',
+            });
+            fs.mkdirSync(path.dirname(mainJsDest), {recursive: true});
+            fs.writeFileSync(mainJsDest, transformed.code, 'utf8');
           }
         },
       },
     ],
     build: {
+      outDir: 'dist',
+      assetsDir: 'assets',
+      emptyOutDir: true,
+      target: 'es2020',
       rollupOptions: {
         input,
       },

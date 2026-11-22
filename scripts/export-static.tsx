@@ -103,11 +103,10 @@ async function main() {
 
     // Render full React component tree cleanly for static HTML output
     let bodyMarkup = renderToStaticMarkup(
-      React.createElement(
-        SiteShell,
-        {pageId: fileName},
-        React.createElement(PageComponent),
-      ),
+      React.createElement(SiteShell, {
+        pageId: fileName,
+        children: React.createElement(PageComponent),
+      }),
     );
 
     // Remove SSR Framer Motion opacity:0 / translateY(...) inline locks while preserving #nav-drawer-backdrop hidden state
