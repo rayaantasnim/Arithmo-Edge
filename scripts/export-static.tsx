@@ -74,8 +74,7 @@ async function main() {
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-    <script src="assets/js/main.js" defer></script>`;
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>`;
 
   for (const [fileName, PageComponent] of PAGE_MAP) {
     const filePath = path.resolve(process.cwd(), fileName);
@@ -115,7 +114,7 @@ async function main() {
       .replace(/opacity:0;transform:none;?/g, '')
       .replace(/(<div[^>]*id="nav-drawer-backdrop"[^>]*>)|opacity:0;?/g, (m, backdrop) => backdrop || '');
 
-    const finalHtml = `${headSection}\n${CDN_HEAD_BLOCK}\n  </head>\n  <body class="selection:bg-cyan-400/30 selection:text-cyan-100">\n    <div id="root" data-page="${fileName}">${bodyMarkup}</div>\n  </body>\n</html>\n`;
+    const finalHtml = `${headSection}\n${CDN_HEAD_BLOCK}\n  </head>\n  <body class="selection:bg-cyan-400/30 selection:text-cyan-100">\n    <div id="root" data-page="${fileName}">${bodyMarkup}</div>\n    <script src="assets/js/main.js" defer></script>\n  </body>\n</html>\n`;
 
     fs.writeFileSync(filePath, finalHtml, 'utf8');
     console.log(`Generated standalone static HTML: ${fileName} (${Math.round(finalHtml.length / 1024)} KB)`);

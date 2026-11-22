@@ -1056,21 +1056,75 @@ div:has(> [data-sbg-arena]) {
    Guest Duel Sandbox (#guest-duel): Cyber-Olympiad Controls & Balanced Grid
    ========================================================================== */
 [data-guest-duel-root] [data-gd-statement] {
+  font-size: clamp(1rem, 0.94rem + 0.35vw, 1.14rem);
   line-height: 1.82;
+  letter-spacing: -0.008em;
   overflow-wrap: break-word;
   word-break: normal;
   hyphens: none;
   -webkit-hyphens: none;
 }
 
+[data-guest-duel-root][data-gd-phase="running"] [data-gd-statement] {
+  color: #f8fafc;
+}
+
 [data-guest-duel-root] [data-gd-hint-box],
 [data-guest-duel-root] [data-gd-timeout-explain],
 [data-guest-duel-root] [data-gd-solved-explain],
+[data-guest-duel-root] [data-gd-exhausted-explain],
 [data-guest-duel-root] [data-gd-wrong] {
   line-height: 1.75;
   overflow-wrap: break-word;
   hyphens: none;
   -webkit-hyphens: none;
+}
+
+[data-guest-duel-root] .gd-timer-bar-track {
+  width: 100%;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(148, 163, 184, 0.14);
+  overflow: hidden;
+}
+
+[data-guest-duel-root] .gd-timer-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.35s ease;
+}
+
+[data-guest-duel-root] .gd-attempt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.72);
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+[data-guest-duel-root] .gd-attempt-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+@keyframes gdBannerSlide {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-guest-duel-root] .gd-banner-enter {
+  animation: gdBannerSlide 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 [data-guest-duel-root] .gd-action-form {
@@ -1092,11 +1146,15 @@ div:has(> [data-sbg-arena]) {
 [data-guest-duel-root] .gd-answer-input:focus {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 0 20px rgba(0, 240, 255, 0.22);
+    0 0 22px rgba(0, 240, 255, 0.26);
 }
 
 [data-guest-duel-root] .gd-action-form.is-idle .gd-start-btn {
   flex: 1 1 100%;
+}
+
+[data-guest-duel-root] .gd-action-form.is-running .gd-start-btn {
+  display: none !important;
 }
 
 [data-guest-duel-root] .gd-action-form .gd-verify-btn {

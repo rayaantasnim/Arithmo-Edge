@@ -1496,21 +1496,1040 @@ function initImageErrorFallback() {
   );
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  initImageErrorFallback();
-  initCountdown();
-  initDrawer();
-  initConstellation();
-  initSpotlightCards();
-  initScrollAnimations();
-  initDeterministicMathDemo();
-  initEloExplorer();
-  initContestSimulators();
-  initAiExplorer();
-  initSecuritySim();
-  initAcademyCalculator();
-  initWalletSim();
-  initEcosystemExplorer();
-  initGoldenVault();
-  initHqLadder();
-});
+/* 17. 60-Second Guest Math Duel & Instant ELO Estimator (index.html #guest-duel) */
+function initGuestDuel() {
+  const root = document.querySelector("[data-guest-duel-root]");
+  if (!root) return;
+
+  const MAX_ATTEMPTS = 3;
+
+  const GUEST_PROBLEMS = [
+    {
+      id: "nt-2026",
+      arenaKey: "nt",
+      arenaLabel: "Number Theory · Subsite #1",
+      statement: "Find the remainder when 2²⁰²⁶ + 3²⁰²⁶ is divided by 5.",
+      hint: "Euler / mod-4 cyclicity: 2² ≡ −1 (mod 5) and 3² ≡ −1 (mod 5). Determine (−1)¹⁰¹³ + (−1)¹⁰¹³ modulo 5.",
+      answer: "3",
+      explanation:
+        "Since 2² ≡ −1 (mod 5), 2²⁰²⁶ = (2²)¹⁰¹³ ≡ −1 ≡ 4 (mod 5). Likewise 3² ≡ −1 (mod 5) gives 3²⁰²⁶ ≡ 4 (mod 5). Thus 4 + 4 = 8 ≡ 3 (mod 5).",
+      baseElo: 1620,
+    },
+    {
+      id: "alg-vieta",
+      arenaKey: "alg",
+      arenaLabel: "Algebra · Subsite #2",
+      statement:
+        "Let r and s be the roots of x² − 14x + 29 = 0. Compute the exact integer value of r² + s².",
+      hint: "Apply Vieta’s formulas: find (r + s) and (r·s), then rewrite r² + s² as (r + s)² − 2rs.",
+      answer: "138",
+      explanation:
+        "By Vieta’s formulas, r + s = 14 and rs = 29. Therefore r² + s² = 14² − 2(29) = 196 − 58 = 138.",
+      baseElo: 1580,
+    },
+    {
+      id: "comb-paths",
+      arenaKey: "comb",
+      arenaLabel: "Combinatorics · Subsite #4",
+      statement:
+        "How many 6-bit binary strings contain no two adjacent 1s? (Include 000000 in your count.)",
+      hint: "Let Fₙ count valid n-bit strings ending in 0 or 1: F₁ = 2, F₂ = 3, and Fₙ = Fₙ₋₁ + Fₙ₋₂.",
+      answer: "21",
+      explanation:
+        "Using the shifted Fibonacci recurrence F₁ = 2, F₂ = 3: F₃ = 5, F₄ = 8, F₅ = 13, F₆ = 21.",
+      baseElo: 1680,
+    },
+    {
+      id: "geo-cyclic",
+      arenaKey: "geo",
+      arenaLabel: "Geometry · Subsite #3",
+      statement:
+        "In convex cyclic quadrilateral ABCD, ∠ABC = 112° and ∠BAD = 84°. Find the degree measure of ∠CDA.",
+      hint: "Remember that opposite interior angles of any quadrilateral inscribed in a circle are supplementary (sum to 180°).",
+      answer: "68",
+      explanation:
+        "Since ABCD is cyclic, ∠ABC + ∠CDA = 180°. Thus ∠CDA = 180° − 112° = 68°.",
+      baseElo: 1460,
+    },
+    {
+      id: "nt-tau",
+      arenaKey: "nt",
+      arenaLabel: "Number Theory · Subsite #1",
+      statement:
+        "How many positive integer divisors does N = 2⁴ · 3² · 5¹ possess?",
+      hint: "For a prime factorization p₁^a₁ · p₂^a₂ · p₃^a₃, multiply (aᵢ + 1) across every prime factor.",
+      answer: "30",
+      explanation:
+        "By the divisor-counting function τ(N) = (4 + 1)(2 + 1)(1 + 1) = 5 × 3 × 2 = 30 positive divisors.",
+      baseElo: 1350,
+    },
+    {
+      id: "alg-rec",
+      arenaKey: "alg",
+      arenaLabel: "Algebra · Subsite #2",
+      statement:
+        "A sequence satisfies a₁ = 2, a₂ = 5, and aₙ₊₂ = 3aₙ₊₁ − 2aₙ for all n ≥ 1. Compute a₆.",
+      hint: "Compute a₃ and a₄ first, or solve the characteristic polynomial r² − 3r + 2 = 0 to find a closed form.",
+      answer: "95",
+      explanation:
+        "Successive terms: a₁ = 2, a₂ = 5, a₃ = 11, a₄ = 23, a₅ = 47, a₆ = 3(47) − 2(23) = 95 (or aₙ = 3·2ⁿ⁻¹ − 1).",
+      baseElo: 1740,
+    },
+    {
+      id: "geo-radii",
+      arenaKey: "geo",
+      arenaLabel: "Geometry · Subsite #3",
+      statement:
+        "Right triangle ABC has legs AB = 12 and AC = 16. Find the integer sum R + r of its circumradius R and inradius r.",
+      hint: "For any right triangle with legs a, b and hypotenuse c, R = c/2 and r = (a + b − c)/2 — notice how c cancels!",
+      answer: "14",
+      explanation:
+        "Hypotenuse c = √(12² + 16²) = 20, giving R = 10 and r = (12 + 16 − 20)/2 = 4. Directly, R + r = (a + b)/2 = 28/2 = 14.",
+      baseElo: 1520,
+    },
+    {
+      id: "comb-decagon",
+      arenaKey: "comb",
+      arenaLabel: "Combinatorics · Subsite #4",
+      statement:
+        "All diagonals of a convex 10-gon are drawn, with no three concurrent inside. How many interior intersection points exist?",
+      hint: "Every set of 4 vertices forms a convex quadrilateral whose two diagonals cross at a unique interior point.",
+      answer: "210",
+      explanation:
+        "Each 4-vertex subset determines uniquely 1 interior intersection point: C(10, 4) = (10·9·8·7)/24 = 210.",
+      baseElo: 1850,
+    },
+    {
+      id: "nt-trailing",
+      arenaKey: "nt",
+      arenaLabel: "Number Theory · Subsite #1",
+      statement:
+        "How many trailing zeros does 100! have when written in standard base-10 notation?",
+      hint: "Use Legendre’s formula to count factors of 5 in 100!: ⌊100/5⌋ + ⌊100/25⌋.",
+      answer: "24",
+      explanation:
+        "Factors of 2 far outnumber factors of 5. By Legendre’s formula, v₅(100!) = ⌊100/5⌋ + ⌊100/25⌋ = 20 + 4 = 24 trailing zeros.",
+      baseElo: 1490,
+    },
+    {
+      id: "alg-cubic-sum",
+      arenaKey: "alg",
+      arenaLabel: "Algebra · Subsite #2",
+      statement:
+        "Suppose a positive real number x satisfies x + 1/x = 5. Find the exact integer value of x³ + 1/x³.",
+      hint: "Cube both sides of x + 1/x = 5 using (a + b)³ = a³ + b³ + 3ab(a + b).",
+      answer: "110",
+      explanation:
+        "Since (x + 1/x)³ = x³ + 1/x³ + 3(x + 1/x), we get x³ + 1/x³ = 5³ − 3(5) = 125 − 15 = 110.",
+      baseElo: 1650,
+    },
+    {
+      id: "geo-power",
+      arenaKey: "geo",
+      arenaLabel: "Geometry · Subsite #3",
+      statement:
+        "From an external point P, tangent PT touches a circle at T and secant PAB meets the circle at A and B with PA = 4 and AB = 12. Find PT.",
+      hint: "Apply Power of a Point from P: PT² = PA · PB, where PB = PA + AB.",
+      answer: "8",
+      explanation:
+        "With PA = 4 and PB = 4 + 12 = 16, Power of a Point gives PT² = 4 × 16 = 64, so PT = 8.",
+      baseElo: 1610,
+    },
+    {
+      id: "comb-stars",
+      arenaKey: "comb",
+      arenaLabel: "Combinatorics · Subsite #4",
+      statement:
+        "How many ordered triples of positive integers (x, y, z) satisfy x + y + z = 12?",
+      hint: "Use Stars and Bars for positive integers: place 2 dividers among 11 gaps between 12 unit stars.",
+      answer: "55",
+      explanation:
+        "By Stars and Bars, positive integer solutions to x + y + z = 12 equal C(12 − 1, 3 − 1) = C(11, 2) = (11 × 10)/2 = 55.",
+      baseElo: 1560,
+    },
+    {
+      id: "nt-totient",
+      arenaKey: "nt",
+      arenaLabel: "Number Theory · Subsite #1",
+      statement:
+        "Compute Euler’s totient φ(72) — the count of integers k with 1 ≤ k ≤ 72 such that gcd(k, 72) = 1.",
+      hint: "Factor 72 = 2³ · 3² and apply φ(n) = n · (1 − 1/2) · (1 − 1/3).",
+      answer: "24",
+      explanation:
+        "Since 72 = 2³ · 3², Euler’s product formula yields φ(72) = 72 × (1/2) × (2/3) = 24.",
+      baseElo: 1720,
+    },
+    {
+      id: "alg-cubic-vieta",
+      arenaKey: "alg",
+      arenaLabel: "Algebra · Subsite #2",
+      statement:
+        "Let a, b, c be the roots of x³ − 6x² + 11x − 6 = 0. Compute a² + b² + c².",
+      hint: "Use Vieta’s formulas for a + b + c and ab + bc + ca, then expand (a + b + c)².",
+      answer: "14",
+      explanation:
+        "By Vieta’s formulas, a + b + c = 6 and ab + bc + ca = 11. Thus a² + b² + c² = 6² − 2(11) = 36 − 22 = 14.",
+      baseElo: 1790,
+    },
+    {
+      id: "geo-heron",
+      arenaKey: "geo",
+      arenaLabel: "Geometry · Subsite #3",
+      statement:
+        "A triangle has side lengths 13, 14, and 15. Compute its exact integer area.",
+      hint: "Compute semi-perimeter s = (13 + 14 + 15)/2 = 21 and apply Heron’s formula √(s(s−a)(s−b)(s−c)).",
+      answer: "84",
+      explanation:
+        "With s = 21, Heron’s formula gives Area = √(21 × 8 × 7 × 6) = √(7² × 3² × 4²) = 7 × 3 × 4 = 84.",
+      baseElo: 1640,
+    },
+    {
+      id: "comb-derange",
+      arenaKey: "comb",
+      arenaLabel: "Combinatorics · Subsite #4",
+      statement:
+        "In how many ways can 5 distinct letters be placed into 5 labeled envelopes so that NO letter goes into its matching envelope?",
+      hint: "Compute the 5th derangement number D₅ = 5! · (1 − 1 + 1/2! − 1/3! + 1/4! − 1/5!).",
+      answer: "44",
+      explanation:
+        "Using inclusion-exclusion for derangements: D₅ = 120(1/2 − 1/6 + 1/24 − 1/120) = 60 − 20 + 5 − 1 = 44.",
+      baseElo: 1810,
+    },
+    {
+      id: "mixed-dioph",
+      arenaKey: "mixed",
+      arenaLabel: "Mixed Olympiad · Subsite #5",
+      statement:
+        "How many ordered pairs of positive integers (x, y) satisfy 1/x + 1/y = 1/6?",
+      hint: "Clear denominators and apply Simon’s Favorite Factoring Trick: (x − 6)(y − 6) = 36.",
+      answer: "9",
+      explanation:
+        "Multiplying by 6xy gives 6x + 6y = xy, or (x − 6)(y − 6) = 36. Every positive divisor pair of 36 yields x, y ≥ 7 > 0, and 36 = 2²·3² has (2+1)(2+1) = 9 positive divisors.",
+      baseElo: 1880,
+    },
+    {
+      id: "mixed-poly",
+      arenaKey: "mixed",
+      arenaLabel: "Mixed Olympiad · Subsite #5",
+      statement:
+        "A monic quadratic polynomial P(x) = x² + bx + c satisfies P(1) = 4 and P(3) = 16. Compute P(5).",
+      hint: "Solve the linear system for b and c from P(1) = 4 and P(3) = 16, or inspect second differences of x².",
+      answer: "36",
+      explanation:
+        "From 1 + b + c = 4 and 9 + 3b + c = 16, subtracting gives 2b = 4 → b = 2 and c = 1, so P(x) = (x + 1)². Hence P(5) = 6² = 36.",
+      baseElo: 1920,
+    },
+  ];
+
+  const BOT_TIERS = [
+    { min: 0, max: 499, name: "Spark" },
+    { min: 500, max: 899, name: "Novice" },
+    { min: 900, max: 1199, name: "Scout" },
+    { min: 1200, max: 1399, name: "Tactician" },
+    { min: 1400, max: 1599, name: "Striker" },
+    { min: 1600, max: 1799, name: "Strategist" },
+    { min: 1800, max: 1999, name: "Cipher" },
+    { min: 2000, max: 2199, name: "Sentinel" },
+    { min: 2200, max: 2399, name: "Overlord" },
+    { min: 2400, max: 2699, name: "Archon" },
+    { min: 2700, max: 2999, name: "Vanguard" },
+    { min: 3000, max: 9999, name: "Apex BOT" },
+  ];
+
+  const RESERVED_HANDLES = new Set([
+    "admin",
+    "administrator",
+    "hq",
+    "prime_sovereign",
+    "root",
+    "staff",
+    "support",
+    "arithmo",
+    "rayaan",
+    "jalees",
+    "moderator",
+    "system",
+  ]);
+
+  const metaEl = root.querySelector("[data-gd-meta]");
+  const clockWrap = root.querySelector("[data-gd-clock-wrap]");
+  const clockEl = root.querySelector("[data-gd-clock]");
+  const switchBtn = root.querySelector("[data-gd-switch]");
+  const arenaEl = root.querySelector("[data-gd-arena]");
+  const eloEl = root.querySelector("[data-gd-elo]");
+  const statementEl = root.querySelector("[data-gd-statement]");
+  const hintBox = root.querySelector("[data-gd-hint-box]");
+  const hintTextEl = root.querySelector("[data-gd-hint-text]");
+  const formEl = root.querySelector("[data-gd-form]");
+  const startBtn = root.querySelector("[data-gd-start]");
+  const inputEl = root.querySelector("[data-gd-input]");
+  const submitBtn = root.querySelector("[data-gd-submit]");
+  const hintBtn = root.querySelector("[data-gd-hint-btn]");
+  const eloCard = root.querySelector("[data-gd-elo-card]");
+  const eloValEl = root.querySelector("[data-gd-elo-val]");
+  const eloSubEl = root.querySelector("[data-gd-elo-sub]");
+  const handleForm = root.querySelector("[data-gd-handle-form]");
+  const handleInput = document.getElementById("guest-handle-claim");
+  const handleStatusEl = root.querySelector("[data-gd-handle-status]");
+
+  if (!formEl || !inputEl || !submitBtn || !clockEl) return;
+
+  const leftPanel = formEl.parentElement;
+  const chamberBox = statementEl ? statementEl.parentElement : null;
+  const scoringRow = chamberBox ? chamberBox.querySelector(".border-t") : null;
+  const scoringLeft = scoringRow ? scoringRow.children[0] : null;
+  const scoringRight = scoringRow ? scoringRow.children[1] : null;
+
+  // Inject polished Attempt Meter pill + 60s countdown progress bar once
+  let attemptPill = root.querySelector("[data-gd-attempts-pill]");
+  let progressTrack = root.querySelector("[data-gd-progress-track]");
+  let progressFill = root.querySelector("[data-gd-progress-fill]");
+
+  if (chamberBox && !progressTrack) {
+    progressTrack = document.createElement("div");
+    progressTrack.setAttribute("data-gd-progress-track", "");
+    progressTrack.className = "gd-timer-bar-track";
+    progressFill = document.createElement("div");
+    progressFill.setAttribute("data-gd-progress-fill", "");
+    progressFill.className = "gd-timer-bar-fill bg-cyan-400";
+    progressFill.style.width = "100%";
+    progressTrack.appendChild(progressFill);
+    chamberBox.prepend(progressTrack);
+  }
+
+  const arenaRow = arenaEl ? arenaEl.parentElement : null;
+  if (arenaRow && !attemptPill) {
+    attemptPill = document.createElement("span");
+    attemptPill.setAttribute("data-gd-attempts-pill", "");
+    attemptPill.className = "gd-attempt-pill text-[11px] font-mono-tabular text-slate-300";
+    arenaRow.appendChild(attemptPill);
+  }
+
+  let problemIdx = 0;
+  let phase = "ready"; // 'ready' | 'running' | 'solved' | 'timeout' | 'exhausted'
+  let secondsLeft = 60;
+  let attemptsUsed = 0;
+  let showHint = false;
+  let timerId = null;
+  let wrongMsg = null;
+  let estimatedElo = null;
+
+  function resolveBotName(elo) {
+    const found = BOT_TIERS.find((b) => elo >= b.min && elo <= b.max);
+    return found ? found.name : "Apex BOT";
+  }
+
+  function resolveArenaTitle(arenaKey, elo) {
+    const arena = ARENA_CATALOG[arenaKey] || ARENA_CATALOG.nt;
+    const found = arena.titles.find((t) => elo >= t.min && elo <= t.max);
+    return found ? found.title : arena.titles[0].title;
+  }
+
+  function clearFeedbackBanners() {
+    leftPanel
+      ?.querySelectorAll(
+        "[data-gd-wrong], [data-gd-timeout], [data-gd-solved], [data-gd-exhausted]",
+      )
+      .forEach((node) => node.remove());
+  }
+
+  function renderAttemptsMeter() {
+    if (!attemptPill) return;
+    const remaining = Math.max(0, MAX_ATTEMPTS - attemptsUsed);
+    attemptPill.replaceChildren();
+
+    const label = document.createElement("span");
+    label.className =
+      remaining === 0
+        ? "text-rose-300 font-semibold"
+        : remaining === 1 && phase === "running"
+          ? "text-amber-300 font-semibold"
+          : "text-slate-300";
+    label.textContent = `Attempts ${remaining}/${MAX_ATTEMPTS}`;
+    attemptPill.appendChild(label);
+
+    const dotsWrap = document.createElement("span");
+    dotsWrap.className = "inline-flex items-center gap-1";
+    for (let i = 0; i < MAX_ATTEMPTS; i++) {
+      const dot = document.createElement("span");
+      const isAvailable = i < remaining;
+      dot.className = `gd-attempt-dot ${
+        isAvailable
+          ? phase === "solved"
+            ? "bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.75)]"
+            : "bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.65)]"
+          : "bg-rose-500/70 scale-90"
+      }`;
+      dotsWrap.appendChild(dot);
+    }
+    attemptPill.appendChild(dotsWrap);
+  }
+
+  function renderFeedbackBanner() {
+    clearFeedbackBanners();
+    if (!leftPanel) return;
+    const p = GUEST_PROBLEMS[problemIdx];
+
+    if (wrongMsg && phase === "running") {
+      const box = document.createElement("div");
+      box.setAttribute("data-gd-wrong", "");
+      box.className =
+        "gd-banner-enter rounded-xl border border-rose-500/45 bg-rose-500/10 p-3.5 text-xs text-rose-200 flex items-center justify-between gap-3";
+      const span = document.createElement("span");
+      span.setAttribute("data-gd-wrong-text", "");
+      span.textContent = wrongMsg;
+      box.appendChild(span);
+      leftPanel.appendChild(box);
+    } else if (phase === "exhausted") {
+      const box = document.createElement("div");
+      box.setAttribute("data-gd-exhausted", "");
+      box.className =
+        "gd-banner-enter rounded-xl border border-rose-400/45 bg-rose-500/10 p-4 text-xs sm:text-sm text-rose-100 space-y-2.5";
+
+      const top = document.createElement("div");
+      top.className = "flex flex-wrap items-center justify-between gap-2";
+
+      const strong = document.createElement("strong");
+      strong.className = "text-white";
+      strong.textContent = `3/3 Attempts Exhausted — Official Ground Truth: ${p.answer}`;
+
+      const btnWrap = document.createElement("div");
+      btnWrap.className = "flex flex-wrap gap-2";
+
+      const nextBtn = document.createElement("button");
+      nextBtn.type = "button";
+      nextBtn.setAttribute("data-gd-next", "");
+      nextBtn.className = "gd-btn gd-btn-primary px-3.5 py-1.5 text-xs shrink-0";
+      nextBtn.textContent = "Next Problem →";
+      nextBtn.addEventListener("click", switchProblem);
+
+      btnWrap.appendChild(nextBtn);
+      top.append(strong, btnWrap);
+
+      const explain = document.createElement("p");
+      explain.setAttribute("data-gd-exhausted-explain", "");
+      explain.className = "ae-prose text-justify text-slate-200 leading-relaxed";
+      explain.textContent = p.explanation;
+
+      box.append(top, explain);
+      leftPanel.appendChild(box);
+    } else if (phase === "timeout") {
+      const box = document.createElement("div");
+      box.setAttribute("data-gd-timeout", "");
+      box.className =
+        "gd-banner-enter rounded-xl border border-rose-400/35 bg-rose-500/10 p-3.5 text-xs sm:text-sm text-rose-200 space-y-2";
+
+      const top = document.createElement("div");
+      top.className = "flex flex-wrap items-center justify-between gap-2";
+
+      const strong = document.createElement("strong");
+      strong.id = "gd-timeout-title";
+      strong.className = "text-white";
+      strong.textContent = `00:00 Timeout Reached — Official Ground Truth: ${p.answer}`;
+
+      const btnWrap = document.createElement("div");
+      btnWrap.className = "flex flex-wrap gap-2";
+
+      const retryBtn = document.createElement("button");
+      retryBtn.type = "button";
+      retryBtn.setAttribute("data-gd-retry", "");
+      retryBtn.className = "gd-btn gd-btn-switch px-3 py-1.5 text-xs shrink-0";
+      retryBtn.textContent = "Retry Same Problem";
+      retryBtn.addEventListener("click", startDuel);
+
+      const nextBtn = document.createElement("button");
+      nextBtn.type = "button";
+      nextBtn.setAttribute("data-gd-next", "");
+      nextBtn.className = "gd-btn gd-btn-primary px-3 py-1.5 text-xs shrink-0";
+      nextBtn.textContent = "Next Problem →";
+      nextBtn.addEventListener("click", switchProblem);
+
+      btnWrap.append(retryBtn, nextBtn);
+      top.append(strong, btnWrap);
+
+      const explain = document.createElement("p");
+      explain.setAttribute("data-gd-timeout-explain", "");
+      explain.className = "ae-prose text-justify text-slate-200 leading-relaxed";
+      explain.textContent = p.explanation;
+
+      box.append(top, explain);
+      leftPanel.appendChild(box);
+    } else if (phase === "solved") {
+      const box = document.createElement("div");
+      box.setAttribute("data-gd-solved", "");
+      box.className =
+        "gd-banner-enter rounded-xl border border-emerald-400/40 bg-emerald-500/10 p-4 text-xs sm:text-sm text-emerald-200 space-y-2";
+
+      const top = document.createElement("div");
+      top.className = "flex flex-wrap items-center justify-between gap-2";
+
+      const head = document.createElement("div");
+      head.className = "font-semibold flex items-center gap-2 text-emerald-300";
+      const timeSpan = document.createElement("span");
+      timeSpan.setAttribute("data-gd-solved-time", "");
+      timeSpan.textContent = `Verified Accepted in ${60 - secondsLeft}s (${attemptsUsed}/${MAX_ATTEMPTS} attempts)!`;
+      head.appendChild(timeSpan);
+
+      const nextBtn = document.createElement("button");
+      nextBtn.type = "button";
+      nextBtn.setAttribute("data-gd-next", "");
+      nextBtn.className = "gd-btn gd-btn-switch px-3 py-1.5 text-xs shrink-0";
+      nextBtn.textContent = "Next Problem →";
+      nextBtn.addEventListener("click", switchProblem);
+
+      top.append(head, nextBtn);
+
+      const explain = document.createElement("p");
+      explain.setAttribute("data-gd-solved-explain", "");
+      explain.className = "ae-prose text-justify text-slate-200 leading-relaxed";
+      explain.textContent = p.explanation;
+
+      box.append(top, explain);
+      leftPanel.appendChild(box);
+    }
+  }
+
+  function renderUI() {
+    const p = GUEST_PROBLEMS[problemIdx];
+    const isRunning = phase === "running";
+    const pct = Math.max(0, Math.min(100, Math.round((secondsLeft / 60) * 100)));
+    root.setAttribute("data-gd-phase", phase);
+
+    if (metaEl) {
+      metaEl.textContent = `Guest Duel Sandbox · Problem ${problemIdx + 1} of ${GUEST_PROBLEMS.length} · Deterministic Client Grading`;
+    }
+    if (arenaEl) arenaEl.textContent = p.arenaLabel;
+    if (eloEl) eloEl.textContent = `Baseline Calibration: ${p.baseElo} ELO`;
+    if (statementEl) statementEl.textContent = p.statement;
+    if (hintTextEl) hintTextEl.textContent = p.hint;
+    if (hintBox) hintBox.classList.toggle("hidden", !showHint);
+    if (hintBtn) {
+      hintBtn.setAttribute("aria-pressed", showHint ? "true" : "false");
+      hintBtn.classList.toggle("is-active", showHint);
+      const hintSpan = hintBtn.querySelector("span");
+      if (hintSpan) hintSpan.textContent = showHint ? "Hide Hint" : "Hint";
+    }
+
+    if (chamberBox) {
+      chamberBox.className = `flex-1 flex flex-col justify-between rounded-xl bg-slate-950/85 border p-4 sm:p-5 space-y-3 transition-all duration-300 ${
+        isRunning
+          ? "border-cyan-400/40 shadow-[0_0_28px_rgba(0,240,255,0.08)]"
+          : phase === "solved"
+            ? "border-emerald-400/40"
+            : phase === "exhausted" || phase === "timeout"
+              ? "border-rose-500/35"
+              : "border-slate-800"
+      }`;
+    }
+
+    if (progressFill) {
+      progressFill.style.width = `${pct}%`;
+      progressFill.className = `gd-timer-bar-fill ${
+        phase === "solved"
+          ? "bg-emerald-400"
+          : phase === "exhausted" || phase === "timeout" || (isRunning && secondsLeft < 10)
+            ? "bg-rose-500"
+            : isRunning && secondsLeft < 20
+              ? "bg-amber-400"
+              : "bg-cyan-400"
+      }`;
+    }
+
+    if (scoringLeft) {
+      scoringLeft.textContent = `Scoring: Base ${p.baseElo} + Speed Bonus (up to +87)`;
+    }
+    if (scoringRight) {
+      scoringRight.className = isRunning
+        ? secondsLeft < 10
+          ? "text-rose-300 font-semibold"
+          : "text-cyan-300 font-semibold"
+        : phase === "solved"
+          ? "text-emerald-300 font-semibold"
+          : phase === "exhausted" || phase === "timeout"
+            ? "text-rose-300 font-semibold"
+            : "text-slate-400";
+      if (isRunning) {
+        scoringRight.textContent = `Active Clock · +${Math.max(0, Math.round(secondsLeft * 1.45))} live bonus`;
+      } else if (phase === "solved") {
+        scoringRight.textContent = "Round Accepted · Instant Estimate Locked";
+      } else if (phase === "exhausted") {
+        scoringRight.textContent = "3/3 Attempts Used · Ground Truth Revealed";
+      } else if (phase === "timeout") {
+        scoringRight.textContent = "Round Expired · Press Start or Next";
+      } else {
+        scoringRight.textContent = "Ready · 3 Attempts Max · Deterministic Check";
+      }
+    }
+
+    clockEl.textContent = `00:${pad2(secondsLeft)}`;
+    clockEl.className = `font-mono-tabular text-lg sm:text-xl font-bold leading-tight transition-colors duration-300 ${
+      secondsLeft < 10 && isRunning
+        ? "text-rose-400 animate-pulse"
+        : secondsLeft < 20 && isRunning
+          ? "text-amber-300"
+          : phase === "solved"
+            ? "text-emerald-400"
+            : phase === "exhausted" || phase === "timeout"
+              ? "text-rose-300"
+              : "text-cyan-300"
+    }`;
+
+    if (clockWrap) {
+      clockWrap.className = `rounded-xl bg-slate-950/90 border px-3.5 py-2 text-center min-w-[96px] transition-all duration-300 ${
+        secondsLeft < 10 && isRunning
+          ? "border-rose-500/75 shadow-[0_0_20px_rgba(244,63,94,0.28)]"
+          : secondsLeft < 20 && isRunning
+            ? "border-amber-400/65 shadow-[0_0_18px_rgba(245,158,11,0.22)]"
+            : isRunning
+              ? "border-cyan-400/55 shadow-[0_0_20px_rgba(0,240,255,0.18)]"
+              : phase === "solved"
+                ? "border-emerald-400/55 shadow-[0_0_18px_rgba(16,185,129,0.2)]"
+                : "border-slate-800"
+      }`;
+    }
+
+    formEl.className = `gd-action-form ${isRunning ? "is-running" : "is-idle"}`;
+    if (startBtn) {
+      startBtn.classList.toggle("hidden", isRunning);
+      startBtn.style.display = isRunning ? "none" : "";
+    }
+
+    inputEl.disabled = !isRunning;
+    inputEl.placeholder = isRunning
+      ? `Enter exact integer (${MAX_ATTEMPTS - attemptsUsed}/${MAX_ATTEMPTS} left)...`
+      : "Click Start 60s Guest Duel...";
+    submitBtn.disabled = !isRunning;
+    const submitLabel = submitBtn.querySelector("span");
+    if (submitLabel) {
+      submitLabel.textContent = isRunning
+        ? `Verify (${MAX_ATTEMPTS - attemptsUsed}/${MAX_ATTEMPTS})`
+        : "Verify Answer";
+    }
+
+    if (eloCard) {
+      eloCard.className = `rounded-xl border px-4 py-3 text-center space-y-1 transition-all duration-300 ${
+        estimatedElo
+          ? "border-emerald-400/45 bg-emerald-500/10 shadow-[0_0_24px_rgba(16,185,129,0.16)]"
+          : phase === "exhausted" || phase === "timeout"
+            ? "border-rose-500/35 bg-rose-500/5"
+            : "border-slate-800 bg-slate-900/70"
+      }`;
+    }
+    if (eloValEl) {
+      eloValEl.textContent = estimatedElo
+        ? `${estimatedElo} ELO`
+        : phase === "exhausted"
+          ? "0/3 · Ground Truth"
+          : phase === "timeout"
+            ? "00:00 · Retry"
+            : "— — —";
+    }
+    if (eloSubEl) {
+      if (estimatedElo) {
+        const bracket = resolveArenaTitle(p.arenaKey, estimatedElo);
+        const botName = resolveBotName(estimatedElo);
+        eloSubEl.textContent = `${estimatedElo} ELO · ${bracket} (${botName} Bot Tier)`;
+      } else if (phase === "exhausted") {
+        eloSubEl.textContent = "3/3 Attempts Used — Review Solution & Advance";
+      } else if (isRunning) {
+        eloSubEl.textContent = `Clock Active — ${MAX_ATTEMPTS - attemptsUsed}/${MAX_ATTEMPTS} attempts remaining`;
+      } else {
+        eloSubEl.textContent = "Press Start 60s Guest Duel & solve before 00:00";
+      }
+    }
+
+    if (handleForm) {
+      handleForm.className = `space-y-2.5 pt-3 border-t border-slate-800/80 rounded-xl transition-all ${
+        phase === "solved" ? "p-3 border border-emerald-400/35 bg-emerald-500/5" : ""
+      }`;
+    }
+
+    renderAttemptsMeter();
+    renderFeedbackBanner();
+  }
+
+  function stopTimer() {
+    if (timerId !== null) {
+      window.clearInterval(timerId);
+      timerId = null;
+    }
+  }
+
+  function startDuel() {
+    stopTimer();
+    secondsLeft = 60;
+    attemptsUsed = 0;
+    inputEl.value = "";
+    wrongMsg = null;
+    estimatedElo = null;
+    phase = "running";
+    renderUI();
+    window.requestAnimationFrame(() => inputEl.focus());
+    timerId = window.setInterval(() => {
+      if (secondsLeft <= 1) {
+        stopTimer();
+        secondsLeft = 0;
+        phase = "timeout";
+        wrongMsg = null;
+        renderUI();
+        return;
+      }
+      secondsLeft -= 1;
+      renderUI();
+    }, 1000);
+  }
+
+  function switchProblem() {
+    stopTimer();
+    problemIdx = (problemIdx + 1) % GUEST_PROBLEMS.length;
+    secondsLeft = 60;
+    attemptsUsed = 0;
+    inputEl.value = "";
+    showHint = false;
+    wrongMsg = null;
+    estimatedElo = null;
+    phase = "ready";
+    renderUI();
+  }
+
+  function triggerShake() {
+    inputEl.classList.remove("ae-shake-rose");
+    window.requestAnimationFrame(() => {
+      inputEl.classList.add("ae-shake-rose");
+      window.setTimeout(() => inputEl.classList.remove("ae-shake-rose"), 480);
+    });
+  }
+
+  if (startBtn) startBtn.addEventListener("click", startDuel);
+  if (switchBtn) switchBtn.addEventListener("click", switchProblem);
+  if (hintBtn) {
+    hintBtn.addEventListener("click", () => {
+      showHint = !showHint;
+      renderUI();
+    });
+  }
+
+  inputEl.addEventListener("input", () => {
+    if (wrongMsg) {
+      wrongMsg = null;
+      renderFeedbackBanner();
+    }
+  });
+
+  formEl.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (phase !== "running") return;
+    const cleaned = inputEl.value.trim();
+    if (!cleaned) {
+      wrongMsg = "Enter an integer answer before verifying.";
+      renderFeedbackBanner();
+      triggerShake();
+      return;
+    }
+
+    const p = GUEST_PROBLEMS[problemIdx];
+    attemptsUsed += 1;
+
+    if (cleaned === p.answer) {
+      stopTimer();
+      const speedBonus =
+        Math.max(0, Math.round(secondsLeft * 1.45)) - (showHint ? 60 : 0);
+      estimatedElo = Math.max(1200, p.baseElo + speedBonus);
+      wrongMsg = null;
+      phase = "solved";
+      renderUI();
+      return;
+    }
+
+    const remaining = MAX_ATTEMPTS - attemptsUsed;
+    if (remaining <= 0) {
+      stopTimer();
+      wrongMsg = null;
+      phase = "exhausted";
+      renderUI();
+      return;
+    }
+
+    wrongMsg = `Incorrect (${cleaned}). ${remaining} of ${MAX_ATTEMPTS} ${
+      remaining === 1 ? "attempt" : "attempts"
+    } remaining — check signs, remainders, or boundary cases.`;
+    renderUI();
+    triggerShake();
+    inputEl.focus();
+  });
+
+  if (handleForm && handleInput) {
+    const evaluateHandle = () => {
+      const cleaned = handleInput.value.trim().replace(/^@+/, "").toLowerCase();
+      if (!cleaned) {
+        return {
+          valid: false,
+          cleaned,
+          status:
+            "Enter 3–20 characters (lowercase a–z, 0–9, _) to validate syntax.",
+          tone: "text-slate-400",
+        };
+      }
+      if (cleaned.length < 3 || cleaned.length > 20) {
+        return {
+          valid: false,
+          cleaned,
+          status: "Invalid length: @handles must be between 3 and 20 characters.",
+          tone: "text-rose-300",
+        };
+      }
+      if (!/^[a-z0-9_]+$/.test(cleaned)) {
+        return {
+          valid: false,
+          cleaned,
+          status:
+            "Invalid character: use only lowercase letters (a–z), digits (0–9), or underscores (_).",
+          tone: "text-rose-300",
+        };
+      }
+      if (RESERVED_HANDLES.has(cleaned)) {
+        return {
+          valid: false,
+          cleaned,
+          status: `Reserved system handle (@${cleaned}). Choose a personal competitor handle.`,
+          tone: "text-rose-300",
+        };
+      }
+      return {
+        valid: true,
+        cleaned,
+        status: `Syntax Valid: @${cleaned} passes all 3–20 char & tombstone checks.`,
+        tone: "text-emerald-300",
+      };
+    };
+
+    const updateHandleStatus = () => {
+      const res = evaluateHandle();
+      if (handleStatusEl) {
+        handleStatusEl.className = `text-[11px] leading-snug ${res.tone}`;
+        handleStatusEl.textContent = res.status;
+      }
+      handleForm.querySelector("[data-gd-handle-notice]")?.remove();
+    };
+
+    handleInput.addEventListener("input", updateHandleStatus);
+    handleForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const res = evaluateHandle();
+      handleForm.querySelector("[data-gd-handle-notice]")?.remove();
+      const notice = document.createElement("div");
+      notice.setAttribute("role", "status");
+      notice.setAttribute("data-gd-handle-notice", "");
+      notice.className = `rounded-lg border p-2.5 text-xs leading-relaxed ${
+        res.valid
+          ? "border-cyan-400/40 bg-cyan-400/10 text-cyan-100"
+          : "border-rose-400/40 bg-rose-500/10 text-rose-200"
+      }`;
+      notice.textContent = !res.cleaned
+        ? "Type a candidate @handle (3–20 chars: a–z, 0–9, _) to run format validation."
+        : res.valid
+          ? `Format Verified (@${res.cleaned}): Live account registration & First-50 Singularity claiming officially open on December 16, 2026 (V1.0 Public Launch). No account or handle has been claimed yet during Under Construction preview.`
+          : res.status;
+      handleForm.appendChild(notice);
+    });
+  }
+
+  renderUI();
+}
+
+/* 18. Home Portal Filter & 5-Arena Showcase Tabs (index.html) */
+function initHomeInteractiveControls() {
+  const filterBtns = document.querySelectorAll("[data-home-portal-filter]");
+  const portalCards = document.querySelectorAll("[data-home-portal-card]");
+  if (filterBtns.length && portalCards.length) {
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const cat = btn.getAttribute("data-home-portal-filter") || "all";
+        filterBtns.forEach((b) => {
+          const active = b === btn;
+          b.className = `px-3.5 py-2 rounded-lg border text-xs whitespace-nowrap shrink-0 transition-colors ${
+            active
+              ? "border-cyan-400 bg-cyan-400/15 text-white font-semibold"
+              : "border-slate-800 bg-slate-950/70 text-slate-400 hover:text-white"
+          }`;
+        });
+        portalCards.forEach((card) => {
+          const cardCat = card.getAttribute("data-cat") || "";
+          card.classList.toggle("hidden", cat !== "all" && cardCat !== cat);
+        });
+      });
+    });
+  }
+
+  const arenaTabs = document.querySelectorAll("[data-home-arena-tab]");
+  const arenaPanel = document.querySelector("[data-home-arena-panel]");
+  if (arenaTabs.length && arenaPanel) {
+    const metaEl = arenaPanel.querySelector("[data-ha-meta]");
+    const titleEl = arenaPanel.querySelector("[data-ha-title]");
+    const dayEl = arenaPanel.querySelector("[data-ha-day]");
+    const entryEl = arenaPanel.querySelector("[data-ha-entry-title]");
+    const ranksEl = arenaPanel.querySelector("[data-ha-ranks]");
+    const arena3dCards = document.querySelectorAll("[data-arena-3d-card]");
+
+    const DAYS = {
+      nt: "Monday Rated Rounds",
+      alg: "Tuesday Rated Rounds",
+      geo: "Wednesday Rated Rounds",
+      comb: "Thursday Rated Rounds",
+      mixed: "Friday + Sunday Mega Anchor",
+    };
+    const CODES = {
+      nt: "Subsite #1",
+      alg: "Subsite #2",
+      geo: "Subsite #3",
+      comb: "Subsite #4",
+      mixed: "Subsite #5",
+    };
+
+    const selectArena = (key) => {
+      const item = ARENA_CATALOG[key];
+      if (!item) return;
+
+      arenaTabs.forEach((tab) => {
+        const active = tab.getAttribute("data-home-arena-tab") === key;
+        tab.className = `px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-medium whitespace-nowrap shrink-0 transition-all ${
+          active
+            ? "bg-slate-900 text-white border-cyan-400 shadow-[0_0_24px_rgba(0,240,255,0.16)]"
+            : "bg-slate-950/70 text-slate-300 border-slate-800 hover:border-slate-600"
+        }`;
+      });
+
+      if (metaEl) {
+        metaEl.textContent = `${CODES[key] || ""} · ${item.subsite}`;
+        metaEl.style.color = item.color;
+      }
+      if (titleEl) titleEl.textContent = item.name;
+      if (dayEl) dayEl.textContent = DAYS[key] || "";
+      if (entryEl) {
+        entryEl.replaceChildren();
+        const prefix = document.createTextNode(
+          `${item.titles[0].title} (0–499) → `,
+        );
+        const peak = document.createElement("span");
+        peak.style.color = item.color;
+        peak.textContent = `${item.titles[11].title} (3000+)`;
+        entryEl.append(prefix, peak);
+      }
+      if (ranksEl) {
+        ranksEl.replaceChildren();
+        item.titles.forEach((t, idx) => {
+          const isApex = t.max >= 9000;
+          const row = document.createElement("div");
+          row.className =
+            "flex items-center justify-between gap-2 rounded-lg border border-slate-800/80 bg-slate-950/60 px-3 py-2 text-slate-300";
+          if (isApex) row.style.borderColor = `${item.color}66`;
+
+          const left = document.createElement("span");
+          left.className = "flex items-center gap-2 min-w-0";
+          const num = document.createElement("span");
+          num.className = "text-[11px] text-slate-500 shrink-0";
+          num.textContent = String(idx + 1).padStart(2, "0");
+          const label = document.createElement("span");
+          label.className = "truncate font-medium";
+          if (isApex) label.style.color = item.color;
+          label.textContent = t.title;
+          left.append(num, label);
+
+          const range = document.createElement("span");
+          range.className = "shrink-0";
+          range.style.color = isApex ? item.color : "#94a3b8";
+          range.textContent = isApex ? `${t.min}+` : `${t.min}–${t.max}`;
+
+          row.append(left, range);
+          ranksEl.appendChild(row);
+        });
+      }
+    };
+
+    arenaTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const key = tab.getAttribute("data-home-arena-tab");
+        if (key) selectArena(key);
+      });
+    });
+
+    arena3dCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const key = card.getAttribute("data-arena-3d-card");
+        if (key) selectArena(key);
+      });
+    });
+  }
+}
+
+/* 19. Global FAQ Accordions */
+function initFaqAccordions() {
+  document.querySelectorAll("[data-faq-accordion]").forEach((acc) => {
+    const items = Array.from(acc.querySelectorAll("[data-faq-item]"));
+    items.forEach((item) => {
+      const trigger = item.querySelector("[data-faq-trigger]");
+      const panel = item.querySelector("[data-faq-panel]");
+      const icon = item.querySelector("[data-faq-icon]");
+      if (!trigger || !panel) return;
+
+      trigger.addEventListener("click", () => {
+        const willOpen = panel.classList.contains("hidden");
+        items.forEach((other) => {
+          const oTrig = other.querySelector("[data-faq-trigger]");
+          const oPanel = other.querySelector("[data-faq-panel]");
+          const oIcon = other.querySelector("[data-faq-icon]");
+          const isTarget = other === item && willOpen;
+          other.classList.toggle("border-cyan-400/40", isTarget);
+          other.classList.toggle("bg-slate-900/75", isTarget);
+          other.classList.toggle("border-slate-800", !isTarget);
+          other.classList.toggle("bg-slate-950/65", !isTarget);
+          if (oTrig) oTrig.setAttribute("aria-expanded", isTarget ? "true" : "false");
+          if (oPanel) oPanel.classList.toggle("hidden", !isTarget);
+          if (oIcon) oIcon.classList.toggle("rotate-180", isTarget);
+        });
+      });
+    });
+  });
+}
+
+function bootArithmoEdge() {
+  if (document.documentElement.dataset.aeBooted === "1") return;
+  document.documentElement.dataset.aeBooted = "1";
+
+  const tasks = [
+    initImageErrorFallback,
+    initCountdown,
+    initDrawer,
+    initConstellation,
+    initSpotlightCards,
+    initScrollAnimations,
+    initGuestDuel,
+    initHomeInteractiveControls,
+    initFaqAccordions,
+    initDeterministicMathDemo,
+    initEloExplorer,
+    initContestSimulators,
+    initAiExplorer,
+    initSecuritySim,
+    initAcademyCalculator,
+    initWalletSim,
+    initEcosystemExplorer,
+    initGoldenVault,
+    initHqLadder,
+  ];
+
+  tasks.forEach((fn) => {
+    try {
+      fn();
+    } catch (err) {
+      console.error("[Arithmo-Edge] Module init error:", fn.name, err);
+    }
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", bootArithmoEdge);
+} else {
+  bootArithmoEdge();
+}
+

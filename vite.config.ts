@@ -21,14 +21,14 @@ const htmlPages = [
   'pioneers.html',
 ];
 
-export default defineConfig(({command}) => {
+export default defineConfig(() => {
   const input: Record<string, string> = {};
   for (const page of htmlPages) {
     input[page.replace('.html', '')] = path.resolve(__dirname, page);
   }
 
   return {
-    base: command === 'build' ? '/Arithmo-Edge/' : './',
+    base: './',
     plugins: [
       react(),
       tailwindcss(),
