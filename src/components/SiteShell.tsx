@@ -36,6 +36,7 @@ export const SiteShell: React.FC<{
   children: React.ReactNode;
 }> = ({pageId, children}) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
   const drawerPanelRef = useRef<HTMLElement | null>(null);
   const toggleBtnRef = useRef<HTMLButtonElement | null>(null);
   const countdown = useCountdown();
@@ -59,6 +60,29 @@ export const SiteShell: React.FC<{
       document.body.style.overflow = '';
     };
   }, [drawerOpen]);
+
+  // Dynamically sync --ae-nav-height with the exact rendered header height (0px gap across all viewports)
+  useEffect(() => {
+    const headerEl = headerRef.current;
+    if (!headerEl) return;
+
+    const syncNavHeight = () => {
+      const h = Math.round(headerEl.getBoundingClientRect().height);
+      if (h > 0) {
+        document.documentElement.style.setProperty('--ae-nav-height', `${h}px`);
+      }
+    };
+
+    syncNavHeight();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(syncNavHeight) : null;
+    ro?.observe(headerEl);
+    window.addEventListener('resize', syncNavHeight, {passive: true});
+
+    return () => {
+      ro?.disconnect();
+      window.removeEventListener('resize', syncNavHeight);
+    };
+  }, []);
 
   // GSAP ScrollTrigger global progress bar, 3D reveals, depth parallax & telemetry counters
   useEffect(() => {
@@ -103,7 +127,7 @@ export const SiteShell: React.FC<{
     <MotionProvider>
       <div className="min-h-screen flex flex-col">
         {/* Shared Fixed Glassmorphism Navbar */}
-        <header className="fixed top-0 left-0 right-0 w-full z-[1000] glass-nav">
+        <header ref={headerRef} className="fixed top-0 left-0 right-0 w-full z-[1000] glass-nav">
           <div className="ae-container mx-auto px-3 sm:px-6 lg:px-8 min-h-16 py-2 flex items-center justify-between gap-2 sm:gap-4">
             <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
               <a href="index.html" className="nav-brand-link shrink-0" aria-label="Arithmo Edge Home">
@@ -180,8 +204,8 @@ export const SiteShell: React.FC<{
               </button>
             </div>
           </div>
+          <div className="ae-scroll-progress" aria-hidden="true" />
         </header>
-        <div className="ae-scroll-progress" aria-hidden="true" />
 
         {/* Right-Side Slide-In Overlay Navigation Drawer (01-13) — rendered unconditionally for static SSR */}
         <div
