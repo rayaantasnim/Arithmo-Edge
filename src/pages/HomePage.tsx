@@ -77,14 +77,14 @@ export const HomePage: React.FC = () => {
                 </HeroReveal>
 
                 <HeroReveal delay={0.14}>
-                  <div className="space-y-3.5 ae-prose text-base sm:text-lg text-slate-300 prose-measure leading-relaxed">
-                    <p>
+                  <div className="space-y-3.5 ae-prose text-justify text-base sm:text-lg text-slate-300 prose-measure leading-relaxed">
+                    <p className="text-justify">
                       Competitive programming has thrived for decades on real-time ELO rating systems, live global
                       rounds, and post-match peer hacking through platforms like Codeforces. Meanwhile, competitive
                       mathematics remains trapped between static, 1990s-era asynchronous forums (such as AoPS) and
                       gatekept, $300-$500+ preparatory courses.
                     </p>
-                    <p>
+                    <p className="text-justify">
                       Arithmo Edge eliminates that asymmetry. Engineered as a federated, zero-to-low-cost global
                       infrastructure, Arithmo Edge brings sub-second latency, real-time ELO matchmaking, 1v1 Bullet
                       Blitz duels, live Codeforces-style rated contests, peer-hacking phases, and deterministic
@@ -174,7 +174,7 @@ export const HomePage: React.FC = () => {
                       Olympiad Edge · Global Competitive Math
                     </div>
                     <h3 className="font-display text-xl font-bold text-white">The Olympiad Arena Revolution</h3>
-                    <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+                    <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                       <strong className="text-white">
                         5 Core Mathematical Arenas · 60 Progression Tiers · 1v1 Bullet Blitz &amp; Shadow Bot Gauntlet ·
                         Proof-Based Grading &amp; Find the Flaw
@@ -205,6 +205,10 @@ export const HomePage: React.FC = () => {
               kicker="Deterministic Client Grader · Zero Latency"
               title="Instant Olympiad Calibration Before Registration"
               summary="Every integer check runs locally at zero server latency—estimating provisional ELO brackets across all 5 arenas while keeping @handle reservations previewed until V1.0 opens on December 16, 2026."
+              details={[
+                'Your simulated Arena Readiness rating combines baseline problem difficulty (1350–1850 ELO) with a deterministic solve-speed multiplier, automatically mapping you to one of the 12 canonical Shadow Bot sparring tiers from Spark through Apex.',
+                'Once public Gmail SSO onboarding opens, every verified @handle permanently locks across all 14 federated websites via Arithmo-Core-SDK (engine.js), giving new entrants 7 days of free rename flexibility.',
+              ]}
               accentColor="#00F0FF"
             />
           </div>
@@ -240,13 +244,18 @@ export const HomePage: React.FC = () => {
             </div>
             <div className="lg:col-span-7 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-amber-300">Founding Access · Zero Pay-to-Win Guarantee</div>
-              <h3 className="font-display text-lg sm:text-xl font-bold text-white">
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug">
                 Fair Meritocracy Rewarding Early Olympiad Pioneers &amp; Institutions
               </h3>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Every Genesis cohort seat unlocks premium AI mentoring and batch academy tools without ever altering live
                 ELO math ratings. First 50 verified <code className="font-mono-tabular text-cyan-300">@handles</code>{' '}
                 start with 3 months FREE Singularity when claiming opens on December 16, 2026.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
+                Subsequent Cohort #2 entrants (next 100 verified <code className="font-mono-tabular">@handles</code>)
+                receive 3 months FREE Pro, the first 5 KYB-approved Founding Academies lock 25% off for 3 months, and
+                community referrals award +$2.00 closed-loop Arithmo Wallet credit for every 3 verified friends.
               </p>
             </div>
           </div>
@@ -263,7 +272,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <h3 className="font-display text-xl font-bold text-white">{perk.title}</h3>
                   <div className="text-xs font-mono-tabular text-slate-400">{perk.allocation}</div>
-                  <p className="ae-prose text-xs text-slate-300 leading-relaxed pt-1">{perk.detail}</p>
+                  <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed pt-1">{perk.detail}</p>
                 </div>
                 <div className="pt-3 border-t border-slate-800/80 text-[11px] font-mono-tabular text-emerald-300">
                   Zero Pay-to-Win · Verified at Gmail SSO
@@ -332,7 +341,7 @@ export const HomePage: React.FC = () => {
                       <span className="text-slate-500">{portal.categoryLabel.split(' ')[0]}</span>
                     </div>
                     <h3 className="font-display text-sm font-bold text-white">{portal.shortTitle}</h3>
-                    <p className="text-xs text-slate-400 leading-relaxed">{portal.roleSummary}</p>
+                    <p className="ae-prose text-justify text-xs text-slate-400 leading-relaxed">{portal.roleSummary}</p>
                   </div>
                   <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between gap-2 text-[11px] font-mono-tabular">
                     <span className="text-cyan-300/80 truncate">{portal.displayUrl}</span>
@@ -351,6 +360,10 @@ export const HomePage: React.FC = () => {
               kicker="Arithmo-Core-SDK (engine.js) Federation"
               title="14 Isolated Subsites · Zero Single-Origin Bottleneck"
               summary="Each specialized subsystem runs on its own resilient endpoint under arithmo-edge.github.io while sharing unified SSO identities, closed-loop Wallet credits, and live contest state."
+              details={[
+                'Cloudflare Workers act as the stateless edge glue connecting static GitHub Pages repositories to Firebase Cloud Firestore, achieving 98% read-cost reduction via public Read-Shield JSON snapshots on Subsite #7 Standings.',
+                'Traffic spikes during Sunday Mega Arena on Subsite #6 remain completely isolated from Academy classrooms on Subsite #9 or archive queries on Subsite #13, while all 14 domains remain synchronized as the custom .com rollout launches.',
+              ]}
               accentColor="#8B5CF6"
               reverse
             />
@@ -530,7 +543,7 @@ export const HomePage: React.FC = () => {
                 <h3 className="font-display text-xl font-bold text-white">
                   Unrated Guest Access &amp; Verified @handle Security
                 </h3>
-                <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                   Guests browse all 14 live standings freely and audit Find the Flaw. Registered{' '}
                   <code className="font-mono-tabular text-cyan-300">@handles</code> unlock rated competitions guarded by
                   mandatory Live Contest Full-Screen &amp; App/Tab Lockdown, optional Mon–Sat Module 7, and Sunday Mega
@@ -556,7 +569,7 @@ export const HomePage: React.FC = () => {
                 <h3 className="font-display text-xl font-bold text-white">
                   Transparent Closed-Loop Billing &amp; Legal Shield
                 </h3>
-                <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                   Lemon Squeezy and bKash/Nagad exclusively preload your closed-loop Arithmo Wallet (+10% top-up bonus).
                   Every checkout concludes with a 60-second Cancellation Grace countdown backed by Bangladesh PRC/e-TIN,
                   COPPA/GDPR-K, and EU DSA due process.
@@ -591,7 +604,7 @@ export const HomePage: React.FC = () => {
               </div>
               <h3 className="font-display text-2xl font-bold text-white">Rayaan Tasnim</h3>
               <p className="text-xs font-medium text-cyan-200">Founder &amp; Chief System Architect (13 Years Old)</p>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Architect of the <code className="font-mono-tabular text-cyan-300">Prime-Factor.app</code> pre-era into
                 the 14-portal Arithmo-Edge network,{' '}
                 <code className="font-mono-tabular text-cyan-300">Arithmo-Core-SDK (engine.js)</code>,{' '}
@@ -609,7 +622,7 @@ export const HomePage: React.FC = () => {
               </div>
               <h3 className="font-display text-2xl font-bold text-white">Jalees Habib</h3>
               <p className="text-xs font-medium text-violet-200">Co-Founder &amp; Chief Mathematical Engineer</p>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Lead architect of Olympiad problem synthesis across all 5 core arenas, the Zero-Fragmentation Olympiad Tag
                 policy, Proof-Based Grading + 2000+ ELO Grandmaster Peer Review, post-contest{' '}
                 <code className="font-mono-tabular text-violet-300">Find the Flaw</code> audits, and the{' '}
@@ -625,6 +638,10 @@ export const HomePage: React.FC = () => {
               kicker="Guardian Financial Custodianship & Dual Architect Mandate"
               title="From Prime-Factor.app to Global Olympiad Infrastructure"
               summary="Combining full-stack serverless orchestration with rigorous Golden Vault problem authorship under immutable constitutional equity vesting and conflict-free contest rules."
+              details={[
+                'Anchored by 24-month founder equity vesting (60% Core System Architect Rayaan Tasnim, 40% Chief Mathematical Architect Jalees Habib), legal governance operates under Adult Guardian Financial Custodianship with strict PRC/e-TIN tax compliance.',
+                'Co-Founders retain full HQ Competitor Privilege to participate in public rated rounds whenever strict author conflict-of-interest checks confirm zero prior exposure to Golden Vault problem drafts.',
+              ]}
               accentColor="#F59E0B"
             />
           </div>
@@ -657,15 +674,21 @@ export const HomePage: React.FC = () => {
                 Dec 6 Core Build &rarr; Dec 16 V1.0 &rarr; Dec 31 V4.0 Singularity
               </div>
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-2">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-cyan-300">Four-Wave Decimal Production Cadence</div>
-              <h3 className="font-display text-lg font-bold text-white">
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug">
                 Engineered for Zero-Downtime Public Rollout on arithmo-edge.github.io &amp; Custom .com
               </h3>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Every subsystem unlocks in audited increments across December 2026—starting with the 5 Core Arenas and
                 Shadow Bot Gauntlet in V1.0, scaling through AI &amp; Academy SaaS in V2.0–V3.0, and activating full
                 World Cup governance at Midnight Dec 31, 2026.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
+                Sequential decimal waves verify Firebase security rules, Cloudflare Edge PAT isolation, closed-loop
+                Lemon Squeezy and bKash/Nagad wallet webhooks, and QPRT-4 ChronoVault failover under live concurrency
+                before the custom <code className="font-mono-tabular text-cyan-300">.com</code> topology joins
+                production within 2 months.
               </p>
             </div>
           </div>
@@ -722,7 +745,7 @@ export const HomePage: React.FC = () => {
                     <span className="group-hover:translate-x-0.5 transition-transform">&rarr;</span>
                   </div>
                   <h3 className="font-display text-sm font-bold text-white group-hover:text-cyan-300">{sub.title}</h3>
-                  <p className="text-xs text-slate-400">{sub.desc}</p>
+                  <p className="ae-prose text-justify text-xs text-slate-400 leading-relaxed">{sub.desc}</p>
                 </SpotlightCard>
               ))}
             </div>
@@ -739,6 +762,10 @@ export const HomePage: React.FC = () => {
               kicker="Deep-Dive Flagship Showcase"
               title="Navigate Every Technical, Security & Commercial Blueprint"
               summary="Jump directly into QPRT-4 forensic containment, the 60-Tier Shadow Bot Gauntlet simulator, closed-loop Wallet checkout, or the 20-year Holding Group roadmap."
+              details={[
+                'Pages 02 through 13 document every constitutional rulebook—spanning the 10-point AoPS/MCQ comparison matrix, 14-site Arithmo-Core-SDK federation, 42 AI engines with semantic TokenMeter billing, and KYB Academy workspaces.',
+                'Inspect full 5-Tier Monotonic HQ governance rules, Patronage safeguards, and the V5.0–V11.0+ roadmap linking Olympiad Edge toward the Arithmo Database archive and 8 future discipline spin-offs.',
+              ]}
               accentColor="#10B981"
               reverse
             />

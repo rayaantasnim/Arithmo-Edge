@@ -405,8 +405,8 @@ export const PortalExplorer14: React.FC<PortalExplorer14Props> = ({
                 <div data-pe-panel="overview" className={`space-y-6 ${effectiveDetailTab === 'overview' ? '' : 'hidden'}`}>
                   {/* Original Canonical Description + Rich Architectural Introduction */}
                   <div className="space-y-3">
-                    <p data-pe-desc="" className="ae-prose text-sm text-slate-200 leading-relaxed">{selectedPortal.desc}</p>
-                    <p data-pe-intro="" className="ae-prose text-sm text-slate-300 leading-relaxed">
+                    <p data-pe-desc="" className="ae-prose text-justify text-sm text-slate-200 leading-relaxed">{selectedPortal.desc}</p>
+                    <p data-pe-intro="" className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                       {selectedPortal.architectureIntro}
                     </p>
                   </div>
@@ -518,7 +518,7 @@ export const PortalExplorer14: React.FC<PortalExplorer14Props> = ({
                               {sub.scope}
                             </span>
                           </div>
-                          <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+                          <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                             {sub.detail}
                           </p>
                         </div>

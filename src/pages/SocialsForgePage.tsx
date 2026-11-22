@@ -59,7 +59,7 @@ export const SocialsForgePage: React.FC = () => {
                 </h1>
               </HeroReveal>
               <HeroReveal delay={0.14}>
-                <p className="ae-prose text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
+                <p className="ae-prose text-justify text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
                   Instead of noisy unmoderated feeds, <span className="text-white font-semibold">Arithmo Socials</span>{' '}
                   separates KaTeX exposition blogs, <span className="font-mono-tabular text-cyan-300">@handle</span>{' '}
                   peer DMs, gated <span className="text-white font-semibold">2000+ Expert Q&amp;A</span>, and{' '}
@@ -102,7 +102,7 @@ export const SocialsForgePage: React.FC = () => {
 
           <div className="ae-deep-grid grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6 space-y-4">
-              <p className="ae-prose text-sm sm:text-base text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                 Every theorem derivation or geometric inversion walkthrough published inside Arithmo Socials is indexed
                 across Number Theory, Algebra, Geometry, and Combinatorics. When{' '}
                 <span className="text-white font-semibold">Arithmo BlogScout AI</span> and Problem Architects promote a
@@ -155,7 +155,7 @@ export const SocialsForgePage: React.FC = () => {
               </div>
               <div id="contrib-total-elo" className="font-mono-tabular text-4xl font-bold text-white">+{totalContribElo} Contribution ELO</div>
               <div id="contrib-milestone" className="text-xs font-mono-tabular text-cyan-300">{unlockedMilestone}</div>
-              <p className="text-xs text-slate-400 leading-relaxed pt-1 border-t border-slate-800">
+              <p className="ae-prose text-justify text-xs text-slate-400 leading-relaxed pt-1 border-t border-slate-800">
                 Automatic Wallet Credit grants fire at +50, +100, +250, and +500 Contribution ELO, alongside +200
                 Contribution ELO eligibility toward Headquarters Core Sentinel induction.
               </p>
@@ -184,7 +184,7 @@ export const SocialsForgePage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2 border-cyan-400/30">
               <div className="text-xs font-mono-tabular text-cyan-300">Universal Read Access</div>
               <h3 className="font-display text-lg font-bold text-white">Open to Every Student</h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Every Initiate and Scout can browse canonical proof explanations, subtle counterexamples, and Olympiad
                 techniques without spam.
               </p>
@@ -193,7 +193,7 @@ export const SocialsForgePage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2 border-violet-400/35">
               <div className="text-xs font-mono-tabular text-violet-300">Write-Access Gate</div>
               <h3 className="font-display text-lg font-bold text-white">2000+ ELO Verified Sentinels+</h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Only contenders holding 2000+ Sentinel tier or above may post authoritative answers inside Expert Q&amp;A
                 threads.
               </p>
@@ -202,7 +202,7 @@ export const SocialsForgePage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2 border-amber-400/30">
               <div className="text-xs font-mono-tabular text-amber-300">Arithmo ForumModerator AI &amp; ProofGrader AI</div>
               <h3 className="font-display text-lg font-bold text-white">Zero Noise Moderation</h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 <span className="text-white font-semibold">Arithmo ForumModerator AI</span> enforces clean discourse
                 while <span className="text-white font-semibold">Arithmo ProofGrader AI</span> runs automatic lemma
                 citation and LaTeX checks across every solved question.
@@ -210,7 +210,7 @@ export const SocialsForgePage: React.FC = () => {
             </SpotlightCard>
           </div>
           <div className="mt-6 rounded-2xl border border-violet-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[160px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.forgeQa}
                 alt="2000+ ELO Sentinel Verified Expert Q&A collaboration forum"
@@ -219,11 +219,15 @@ export const SocialsForgePage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-violet-300">Signal-Over-Noise Proof Mentoring</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Initiates ask freely without intimidation while verified 2000+ Sentinels provide clean, peer-checked
                 derivations moderated by ForumModerator AI.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Every accepted proof walkthrough cross-links back to Arena tags and Python/SymPy lemma verification so
+                students learn exact formal boundary logic rather than unvetted forum hunches.
               </p>
             </div>
           </div>
@@ -241,41 +245,41 @@ export const SocialsForgePage: React.FC = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
             <SpotlightCard className="rounded-2xl p-4 space-y-1.5 border-cyan-400/30">
               <div className="text-cyan-300 font-semibold">Pillar 01 · Similarity Block</div>
-              <p className="text-slate-400">
+              <p className="ae-prose text-justify text-slate-400">
                 PlagioGuard enforces strict &gt;75% AoPS &amp; historical archive similarity rejection.
               </p>
             </SpotlightCard>
 
             <SpotlightCard className="rounded-2xl p-4 space-y-1.5 border-violet-400/30">
               <div className="text-violet-300 font-semibold">Pillar 02 · Red-Team Attack</div>
-              <p className="text-slate-400">
+              <p className="ae-prose text-justify text-slate-400">
                 AdversarialRedTeam AI hammers drafts for boundary counterexamples (n=0, p=2).
               </p>
             </SpotlightCard>
 
             <SpotlightCard className="rounded-2xl p-4 space-y-1.5 border-emerald-400/30">
               <div className="text-emerald-300 font-semibold">Pillar 03 · SymPy Veritas</div>
-              <p className="text-slate-400">
+              <p className="ae-prose text-justify text-slate-400">
                 Deterministic symbolic execution confirms official solutions and alternate paths.
               </p>
             </SpotlightCard>
 
             <SpotlightCard className="rounded-2xl p-4 space-y-1.5 border-amber-400/30">
               <div className="text-amber-300 font-semibold">Pillar 04 · ELO Calibration</div>
-              <p className="text-slate-400">
+              <p className="ae-prose text-justify text-slate-400">
                 DifficultyCalibrator aligns point curves across General &amp; Expert divisions.
               </p>
             </SpotlightCard>
 
             <SpotlightCard className="rounded-2xl p-4 space-y-1.5 border-rose-400/30">
               <div className="text-rose-300 font-semibold">Pillar 05 · Authorship Transfer</div>
-              <p className="text-slate-400">
+              <p className="ae-prose text-justify text-slate-400">
                 Legal originality attestation + Problem Architect audit before contest deployment.
               </p>
             </SpotlightCard>
           </div>
           <div className="mt-6 rounded-2xl border border-cyan-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[160px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.forgeStudio}
                 alt="Arithmo Forge 5-Pillar problemsetting and SymPy authoring workbench"
@@ -284,11 +288,15 @@ export const SocialsForgePage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-cyan-300">1500+ ELO Problemsetting Workbench</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Every human-authored Olympiad draft runs PlagioGuard similarity defense, AdversarialRedTeam stress tests,
                 and SymPyVeritas symbolic confirmation prior to T-30s contract publication.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Approved Forge sets trigger mandatory HQ Competitor Privilege recusals for their authors and test-solvers
+                while crediting problemsetter @handles prominently in Mode 1 and Mode 2 Contest Dashboard footers.
               </p>
             </div>
           </div>
@@ -305,7 +313,7 @@ export const SocialsForgePage: React.FC = () => {
             <h2 className="section-title-fluid font-display font-bold text-white">
               Interactive Co-Founders&apos; 5×4 Golden Vault Preview
             </h2>
-            <p className="ae-prose text-sm sm:text-base text-slate-400 prose-measure mt-2">
+            <p className="ae-prose text-justify text-sm sm:text-base text-slate-400 prose-measure mt-2">
               Click any of the 5 arenas below to inspect the Private{' '}
               <span className="font-mono-tabular text-amber-300">Arithmo-Edge-Golden-Vault</span> Schema v1.2 JSON
               authored via{' '}
@@ -327,7 +335,7 @@ export const SocialsForgePage: React.FC = () => {
           <div className="space-y-6">
             <GoldenVaultInspector pathPrefix="Repository Object Path:" />
             <div className="rounded-2xl border border-amber-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[155px] relative media-frame">
+              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
                 <ResilientImage
                   src={MEDIA.forgeGoldenVault}
                   alt="Co-Founders 5x4 Private Golden Vault Schema v1.2 compilation"
@@ -336,11 +344,15 @@ export const SocialsForgePage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
               </div>
-              <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+              <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                 <div className="text-xs font-mono-tabular text-amber-300">Schema v1.2 Vault Isolation</div>
-                <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Unplayed Golden Vault sets remain read-protected behind Cloudflare Workers + Read-Only GitHub PATs
                   until the official contest clock unlocks them.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  If a scheduled championship round fails to reach the minimum 3-competitor quorum, its encrypted vault
+                  items stay permanently sealed—never leaking to Arithmo Database or Virtual Gym.
                 </p>
               </div>
             </div>
@@ -359,7 +371,7 @@ export const SocialsForgePage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 sm:p-8 space-y-3 border-cyan-400/35">
               <div className="text-xs font-mono-tabular text-cyan-300">Community Guidebook · Free</div>
               <h3 className="font-display text-xl font-bold text-white">+2 Contribution ELO per Approved Note</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 A collaborative theorem reference spanning modular lifting, functional equations, projective geometry,
                 and bijective counting. Verified student tips audited by{' '}
                 <span className="text-white font-semibold">Arithmo GuideCurator AI</span> earn{' '}
@@ -372,7 +384,7 @@ export const SocialsForgePage: React.FC = () => {
                 Exclusive Academy Guidebook · $14.99/mo (3-Day Grace Period · 100% Free on Supreme &amp; Enterprise)
               </div>
               <h3 className="font-display text-xl font-bold text-white">HQ-Authored Deep Olympiad Masterwork</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 An HQ-authored deep Olympiad masterwork curated for Academy cohorts. Any Academy Member or Mentor whose
                 contributed theorem is verified by{' '}
                 <span className="text-white font-semibold">Arithmo GuideCurator AI</span> + HQ publishes{' '}
@@ -384,7 +396,7 @@ export const SocialsForgePage: React.FC = () => {
             </SpotlightCard>
           </div>
           <div className="mt-6 rounded-2xl border border-cyan-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[160px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.forgeGuidebook}
                 alt="Dual Community and Academy Guidebooks verified theorem compendium"
@@ -393,13 +405,17 @@ export const SocialsForgePage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-cyan-300">
                 GuideCurator AI · Printable KaTeX Theorem Chapters
               </div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Community contributors earn personal Contribution ELO for clean theorem proofs published across both
                 open Community chapters and Academy masterbooks.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Both editions render crisp printable KaTeX reference chapters so regional Olympiad camps and self-study
+                learners study curated lemmas offline ahead of Daily and Sunday Mega rounds.
               </p>
             </div>
           </div>
@@ -417,7 +433,7 @@ export const SocialsForgePage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2.5 border-rose-400/30">
               <div className="text-xs font-mono-tabular text-rose-300">7-Day Restricted Appeal Access</div>
               <h3 className="font-display text-lg font-bold text-white">Transparent Forensic Review Docket</h3>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Even if a contender hits Flag 11, Subsite #11 retains a 7-day read/appeal window to download SHA-256
                 ChronoVault packets and schedule a 5-min Live Video Skill Audit with a 750+ Chief Arbiter.
               </p>
@@ -425,7 +441,7 @@ export const SocialsForgePage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2.5 border-emerald-400/30">
               <div className="text-xs font-mono-tabular text-emerald-300">Encrypted Peer Messaging</div>
               <h3 className="font-display text-lg font-bold text-white">Hard-Locked DMs During Rated Windows</h3>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Direct <code className="font-mono-tabular text-cyan-300">@handle</code> DMs automatically suspend while
                 either solver has an active rated contest lock—blocking mid-round problem sharing cleanly.
               </p>
@@ -437,6 +453,10 @@ export const SocialsForgePage: React.FC = () => {
             kicker="Fair-Play Appeal & Messaging Isolation"
             title="Subsite #11 7-Day Appeal Docket & Contest DM Hard-Lock"
             summary="Encrypted SHA-256 ChronoVault dockets remain accessible for 7-day forensic appeal scheduling while direct @handle DMs pause automatically during live rated rounds."
+            details={[
+              'Appeals run directly alongside ChronoVault SHA-256 hashes and IndexedDB draft logs so legitimately fast human prodigies present an unseen whiteboard defense cleanly before a Chief Arbiter.',
+              'DM hard-locks synchronize through engine.js edge state the moment T-0 launches across any official Daily, BdMO Warm-Up, or Sunday Mega session.',
+            ]}
             accentColor="#F43F5E"
             className="mt-6"
           />
@@ -457,6 +477,10 @@ export const SocialsForgePage: React.FC = () => {
             kicker="Peer-Audited Knowledge Ecosystem"
             title="Sentinel-Gated Q&A & Read-Only Schema v1.2 Vault Protection"
             summary="High-signal discussions pair 2000+ Sentinel peer proof answers with Cloudflare-proxied Schema v1.2 vaults that never leak into client-side bundles."
+            details={[
+              'Likes and social reactions grant strictly 0 ELO—ensuring advancement flows exclusively from AI-curated + Problem Architect approved Blog-to-Lab expositions and Guidebook theorem chapters.',
+              'Verified +50, +100, +250, and +500 Contribution ELO tiers disburse automatic Arithmo Wallet credits directly to the contributor’s @handle.',
+            ]}
             accentColor="#8B5CF6"
             reverse
             className="mt-6"

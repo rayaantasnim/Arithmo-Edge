@@ -24,12 +24,42 @@
   --ae-emerald: #10b981;
   --ae-rose: #f43f5e;
 
-  --ae-nav-height: 66px;
+  --ae-nav-height: 68px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 375px) and (max-width: 639px) {
   :root {
-    --ae-nav-height: 82px;
+    --ae-nav-height: 70px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  :root {
+    --ae-nav-height: 72px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --ae-nav-height: 92px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  :root {
+    --ae-nav-height: 88px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1535px) {
+  :root {
+    --ae-nav-height: 86px;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --ae-nav-height: 88px;
   }
 }
 
@@ -45,6 +75,7 @@
       "Segoe UI",
       sans-serif;
     scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--ae-nav-height) + 18px);
     overflow-x: clip;
   }
 
@@ -103,6 +134,34 @@
   h1,
   h2 {
     text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  sub,
+  sup {
+    font-size: 0.72em;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sup {
+    top: -0.45em;
+  }
+
+  sub {
+    bottom: -0.22em;
+  }
+
+  main {
+    min-width: 0;
+    width: 100%;
+    overflow-x: clip;
+  }
+
+  section[id],
+  [id] {
+    scroll-margin-top: calc(var(--ae-nav-height) + 18px);
   }
 }
 
@@ -134,6 +193,8 @@
 .ae-prose {
   text-align: justify;
   text-justify: inter-word;
+  line-height: 1.72;
+  overflow-wrap: break-word;
   hyphens: auto;
   -webkit-hyphens: auto;
 }
@@ -142,6 +203,7 @@
 .ae-container {
   width: 100%;
   max-width: 1380px;
+  min-width: 0;
   margin-left: auto;
   margin-right: auto;
 }
@@ -668,31 +730,200 @@
 }
 
 /* ============================================================================
+   Global Responsive Layout, Math Statement, Comparison Matrix & Overlap Guards
+   ============================================================================ */
+
+/* Prevent grid/flex children from forcing horizontal page overflow */
+main section,
+main .glass-panel,
+main .spotlight-card {
+  max-width: 100%;
+  min-width: 0;
+}
+
+main .grid > *,
+main [class*="col-span-"] {
+  min-width: 0;
+}
+
+main code,
+[data-pe-url],
+[data-vault-path],
+[data-pe-deep-vault-path] {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+/* Sticky inspectors clear the dynamic fixed header height */
+.lg\:sticky[class*="lg:top-24"] {
+  top: calc(var(--ae-nav-height) + 14px);
+}
+
+/* Ensure SectionHeader action bars (tabs/buttons) wrap cleanly within narrow screens */
+.flex-wrap > .shrink-0:has([data-matrix-cat], [data-credits-tab], [data-sov-filter], [data-pe-filter], [role="tab"], a.btn-cyber, a.btn-glass) {
+  max-width: 100%;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+div:has(> [data-matrix-cat]),
+div:has(> [data-credits-tab]),
+div:has(> [data-sov-filter]),
+div:has(> [data-contest-tab]),
+div:has(> [data-arena-select]),
+div:has(> [data-sbg-arena]) {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+/* Guest Duel Sandbox: prevent input placeholder clipping ("Click Start 60s Gues...") & superscript collisions */
+[data-guest-duel-root] [data-gd-statement] {
+  line-height: 1.85;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+[data-guest-duel-root] [data-gd-hint-box],
+[data-guest-duel-root] [data-gd-timeout-explain],
+[data-guest-duel-root] [data-gd-solved-explain],
+[data-guest-duel-root] [data-gd-wrong] {
+  line-height: 1.78;
+  overflow-wrap: break-word;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+[data-guest-duel-root] [data-gd-form] {
+  flex-wrap: wrap !important;
+  align-items: stretch;
+}
+
+[data-guest-duel-root] [data-gd-input] {
+  flex: 1 1 280px !important;
+  min-width: min(100%, 260px) !important;
+}
+
+[data-guest-duel-root] [data-gd-handle-form] .flex:has(> #guest-handle-claim) {
+  flex-wrap: wrap;
+}
+
+[data-guest-duel-root] #guest-handle-claim {
+  flex: 1 1 175px;
+  min-width: 0;
+}
+
+[data-guest-duel-root] [data-gd-handle-btn] {
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+
+/* Custom overflow-x tables inside responsive wrappers */
+.glass-panel.overflow-x-auto {
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Footer resilience */
+.ae-footer-status {
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+/* ============================================================================
    7 Custom CSS3 Device Breakpoints (320px .. 1536px+)
    ============================================================================ */
 
 /* 1. Ultra-Small Mobile (<= 374px) */
 @media (max-width: 374px) {
   :root {
-    --ae-nav-height: 60px;
+    --ae-nav-height: 68px;
   }
   .nav-tagline {
     display: none;
   }
   .ae-container {
-    padding-left: 0.875rem;
-    padding-right: 0.875rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
   .hero-title-fluid {
-    font-size: 1.65rem;
+    font-size: 1.62rem;
+    line-height: 1.12;
+  }
+  .section-title-fluid {
+    font-size: 1.3rem;
+    line-height: 1.2;
   }
   .ae-countdown-grid {
-    gap: 0.375rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.5rem;
   }
   .ae-bento-grid,
   .ae-bento-grid-3,
   .ae-deep-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .ae-hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ae-hero-cta > a,
+  .ae-hero-cta > button {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  #nav-drawer-panel {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 1.125rem;
+  }
+  [data-guest-duel-root] {
+    padding: 1rem !important;
+  }
+  [data-guest-duel-root] [data-gd-clock-wrap] {
+    min-width: 88px;
+    padding: 0.4rem 0.65rem;
+  }
+  [data-guest-duel-root] [data-gd-start]:not(.hidden) {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  [data-guest-duel-root] [data-gd-input] {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 0.775rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  [data-guest-duel-root] [data-gd-submit] {
+    flex: 1 1 auto;
+  }
+  [data-guest-duel-root] [data-gd-handle-btn] {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  [data-wallet-sim] .grid.grid-cols-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  [data-wallet-sim] [data-ws-proceed],
+  [data-sbg-panel] [data-sbg-queue-btn],
+  [data-sbg-panel] [data-sbg-sim-fallback],
+  .btn-cyber,
+  .btn-glass {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  [data-sbg-panel] .grid.grid-cols-3,
+  div:has(> [data-why-bot]),
+  .grid.grid-cols-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   button,
   [role="button"],
@@ -705,7 +936,7 @@
 /* 2. Standard Mobile (375px – 639px) */
 @media (min-width: 375px) and (max-width: 639px) {
   :root {
-    --ae-nav-height: 64px;
+    --ae-nav-height: 70px;
   }
   .nav-tagline {
     display: none;
@@ -719,6 +950,49 @@
     flex-direction: column;
     align-items: stretch;
   }
+  .ae-hero-cta > a,
+  .ae-hero-cta > button {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  #nav-drawer-panel {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 1.25rem;
+  }
+  [data-guest-duel-root] {
+    padding: 1.125rem !important;
+  }
+  [data-guest-duel-root] [data-gd-start]:not(.hidden) {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  [data-guest-duel-root] [data-gd-input] {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 0.8125rem;
+  }
+  [data-guest-duel-root] [data-gd-submit] {
+    flex: 1 1 auto;
+  }
+  [data-guest-duel-root] [data-gd-handle-btn] {
+    flex: 1 1 100%;
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  [data-wallet-sim] [data-ws-rail],
+  [data-wallet-sim] [data-ws-proceed],
+  [data-sbg-panel] [data-sbg-queue-btn],
+  [data-sbg-panel] [data-sbg-sim-fallback],
+  a.btn-cyber,
+  a.btn-glass {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
   button,
   [role="button"],
   .btn-cyber,
@@ -727,10 +1001,45 @@
   }
 }
 
+/* Comparison Matrix & Sovereign Council Tables — Clean Stacked Cards on Mobile (<= 639px) */
+@media (max-width: 639px) {
+  .min-w-\[760px\],
+  .min-w-\[520px\],
+  .min-w-\[500px\] {
+    min-width: 0 !important;
+    width: 100%;
+  }
+  .min-w-\[760px\] > .grid.grid-cols-12:first-child,
+  .min-w-\[520px\] > .grid.grid-cols-3:first-child,
+  .min-w-\[500px\] > .grid.grid-cols-3:first-child {
+    display: none;
+  }
+  button[data-matrix-row]:not(.hidden) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.625rem;
+    padding: 1rem 1.125rem;
+    align-items: flex-start;
+  }
+  button[data-matrix-row] > .col-span-4 {
+    grid-column: 1 / -1 !important;
+    width: 100%;
+    min-width: 0;
+  }
+  .min-w-\[520px\] [data-sov-row]:not(.hidden),
+  .min-w-\[500px\] .grid.grid-cols-3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.375rem;
+    padding: 1rem 1.125rem;
+  }
+  [data-pe-url] {
+    width: 100%;
+  }
+}
+
 /* 3. Large Mobile / Phablet (640px – 767px) */
 @media (min-width: 640px) and (max-width: 767px) {
   :root {
-    --ae-nav-height: 66px;
+    --ae-nav-height: 72px;
   }
   .nav-tagline {
     display: none;
@@ -740,6 +1049,29 @@
   }
   .ae-deep-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+  #comparison-matrix .min-w-\[760px\] {
+    min-width: 0 !important;
+    width: 100%;
+  }
+  #comparison-matrix .min-w-\[760px\] > .grid.grid-cols-12:first-child {
+    display: none;
+  }
+  #comparison-matrix button[data-matrix-row]:not(.hidden) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.65rem;
+    padding: 1.125rem 1.25rem;
+  }
+  #comparison-matrix button[data-matrix-row] > .col-span-4 {
+    grid-column: 1 / -1 !important;
+    min-width: 0;
+  }
+  [data-guest-duel-root] [data-gd-start]:not(.hidden) {
+    flex: 0 1 auto;
+  }
+  [data-guest-duel-root] [data-gd-input] {
+    flex: 1 1 280px !important;
+    min-width: min(100%, 270px) !important;
   }
   button,
   [role="button"],
@@ -752,13 +1084,24 @@
 /* 4. Tablet Portrait & Landscape (768px – 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   :root {
-    --ae-nav-height: 82px;
+    --ae-nav-height: 92px;
   }
   .nav-tagline {
     display: block;
-    max-width: 30rem;
-    line-height: 1.28;
+    max-width: 28rem;
+    font-size: 11px;
+    line-height: 1.25;
     white-space: normal;
+  }
+  #comparison-matrix .min-w-\[760px\] {
+    min-width: 0 !important;
+    width: 100%;
+  }
+  #comparison-matrix .min-w-\[760px\] > .grid.grid-cols-12:first-child,
+  #comparison-matrix button[data-matrix-row]:not(.hidden) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    gap: 0.875rem;
   }
   #nav-drawer-panel {
     width: 420px;
@@ -769,17 +1112,24 @@
 /* 5. Standard Laptops (1024px – 1279px) */
 @media (min-width: 1024px) and (max-width: 1279px) {
   :root {
-    --ae-nav-height: 82px;
+    --ae-nav-height: 88px;
   }
   .nav-tagline {
     display: block;
-    max-width: 42rem;
-    line-height: 1.3;
+    max-width: 40rem;
+    line-height: 1.28;
     white-space: normal;
   }
   .ae-container {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+  [data-guest-duel-root] [data-gd-input] {
+    flex: 1 1 270px !important;
+    min-width: min(100%, 260px) !important;
+  }
+  [data-guest-duel-root] [data-gd-handle-btn] {
+    flex: 1 1 auto;
   }
   #nav-drawer-panel {
     width: 450px;
@@ -790,7 +1140,7 @@
 /* 6. Full HD Desktops (1280px – 1535px) */
 @media (min-width: 1280px) and (max-width: 1535px) {
   :root {
-    --ae-nav-height: 82px;
+    --ae-nav-height: 86px;
   }
   .nav-tagline {
     display: block;
@@ -812,7 +1162,7 @@
 /* 7. 2K / 4K Ultra-Wide Displays (>= 1536px) */
 @media (min-width: 1536px) {
   :root {
-    --ae-nav-height: 84px;
+    --ae-nav-height: 88px;
   }
   .nav-tagline {
     display: block;

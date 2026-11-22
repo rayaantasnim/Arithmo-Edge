@@ -258,7 +258,7 @@ export const GovernancePage: React.FC = () => {
                 </h1>
               </HeroReveal>
               <HeroReveal delay={0.14}>
-                <p className="ae-prose text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
+                <p className="ae-prose text-justify text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
                   Authority at Arithmo-Edge cannot be purchased with subscriptions or Patronage. Governance inside the{' '}
                   <span className="text-white font-semibold">Headquarters Core War-Room</span> is earned strictly along
                   the monotonic <span className="font-mono-tabular text-cyan-300">HQ ELO Ladder</span>—unlocking Plus,
@@ -347,7 +347,7 @@ export const GovernancePage: React.FC = () => {
                 Founder &amp; Chief System Architect · Reserved Title: Core System Architect
               </div>
               <h3 className="font-display text-2xl font-bold text-white">Rayaan Tasnim (13 Years Old)</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Architect behind the 14-website GitHub Pages federation, 42-AI engine routing, QPRT-4 ChronoVault,
                 14-Point Legal Compliance Shield, and{' '}
                 <span className="font-mono-tabular text-cyan-300">Arithmo-Core-SDK</span> (60% Equity Allocation ·
@@ -365,7 +365,7 @@ export const GovernancePage: React.FC = () => {
                 Co-Founder &amp; Chief Mathematical Engineer · Reserved Title: Chief Mathematical Architect
               </div>
               <h3 className="font-display text-2xl font-bold text-white">Jalees Habib</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Co-architect of the 5 Core Arenas, zero-fragmentation taxonomy, SymPy verification rubrics, and the
                 Co-Founders&apos; Private 5×4 Golden Vault problem standard (40% Equity Allocation · 24-month vesting ·
                 1000+ HQ ELO).
@@ -383,6 +383,10 @@ export const GovernancePage: React.FC = () => {
             kicker="Founding Stewardship Charter"
             title="Core System Architect & Chief Mathematical Architect"
             summary="Constitutional roles anchor the 14-portal federation with strict 60%/40% equity vesting, Guardian Financial Custodianship, and Prime Sovereign oversight."
+            details={[
+              'Behind the statutory 60% / 40% legal governance split, economic allocation operates as 40% personal Rayaan Tasnim, 40% personal Jalees Habib, and a dedicated 20% System Operations & Upgrade Reserve under unified 24-month vesting.',
+              'Guardian Financial Custodianship places all revenues and infrastructure settlements inside transparent fiduciary escrow while preserving strictly meritocratic Prime Sovereign Quorum standards.',
+            ]}
             accentColor="#00F0FF"
             className="mt-6"
           />
@@ -440,7 +444,7 @@ export const GovernancePage: React.FC = () => {
                 </div>
                 <div className="rounded-xl border border-slate-800 bg-slate-950/75 p-4">
                   <div className="text-xs text-cyan-300 font-semibold mb-1">Governance &amp; War-Room Duties</div>
-                  <p id="hq-inspect-duties" className="text-sm text-slate-300 leading-relaxed">{activeTier.duties}</p>
+                  <p id="hq-inspect-duties" className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">{activeTier.duties}</p>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-3 text-xs">
                   <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3">
@@ -588,7 +592,7 @@ export const GovernancePage: React.FC = () => {
                         : 'Incomplete Standard Gate Checklist'}
                     </div>
                   </div>
-                  <p data-ind-desc="" className="text-xs text-slate-200 leading-relaxed">
+                  <p data-ind-desc="" className="ae-prose text-justify text-xs text-slate-200 leading-relaxed">
                     {inductionApproved
                       ? 'Candidate enters at Core Sentinel (100+ HQ ELO), unlocks Free Plus perks, and retains full conflict-free public competing eligibility.'
                       : 'Core Sentinel requires +200 Contribution ELO, 6 consecutive clean rated matches (100% trust score), an official Prime Sovereign Certificate, and affirmative user consent.'}
@@ -597,7 +601,7 @@ export const GovernancePage: React.FC = () => {
 
                 <div className="rounded-2xl border border-slate-800 bg-slate-950/85 p-5 space-y-2.5">
                   <div className="text-xs font-mono-tabular text-violet-300">Strict Positional Chronology Rule</div>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                     Even if a newly inducted member accumulates higher raw HQ ELO (e.g., <span className="font-mono-tabular text-white">620 HQ ELO</span>)
                     than an earlier-inducted senior officer (<span className="font-mono-tabular text-white">540 HQ ELO</span>),
                     Strict Positional Chronology guarantees the junior member <span className="text-white font-semibold">never overtakes</span>{' '}
@@ -683,7 +687,7 @@ export const GovernancePage: React.FC = () => {
                       : 'Recusal Enforced · Rated Registration Sealed'}
                   </span>
                 </div>
-                <p data-conflict-reason="" className="text-sm text-slate-200 leading-relaxed">{activeScenario.reason}</p>
+                <p data-conflict-reason="" className="ae-prose text-justify text-sm text-slate-200 leading-relaxed">{activeScenario.reason}</p>
                 <div className="text-xs font-mono-tabular text-slate-300">
                   Enforcement Layer: Cloudflare Worker Token Isolation + 100% Immutable Audit Log
                 </div>
@@ -691,7 +695,7 @@ export const GovernancePage: React.FC = () => {
             </div>
 
             <div className="rounded-xl border border-slate-800 overflow-hidden grid md:grid-cols-12 items-stretch bg-slate-950/60">
-              <div className="md:col-span-4 aspect-[16/10] md:aspect-auto min-h-[150px] relative media-frame">
+              <div className="md:col-span-4 aspect-[16/10] md:aspect-auto min-h-[185px] relative media-frame">
                 <ResilientImage
                   src={MEDIA.govPrivilege}
                   alt="HQ Competitor Privilege recusal isolation firewall"
@@ -700,11 +704,16 @@ export const GovernancePage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
               </div>
-              <div className="md:col-span-8 p-5 flex flex-col justify-center space-y-1">
+              <div className="md:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                 <div className="text-xs font-mono-tabular text-emerald-300">Conflict-Free Competitive Fairness</div>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Officers retain full rated eligibility across all rounds they did not author, test-solve, or inspect,
                   backed by hardware-isolated Cloudflare Worker access scopes.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Whenever an HQ Problem Architect or Arbiter touches a Golden Vault draft during T-48h verification,
+                  engine.js automatically locks that round’s rated registration while redirecting the steward into Observer
+                  Clarification mode.
                 </p>
               </div>
             </div>
@@ -775,7 +784,7 @@ export const GovernancePage: React.FC = () => {
             </div>
           </div>
           <div className="mt-6 rounded-2xl border border-amber-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[155px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.govSovereigns}
                 alt="Honorary Prime Sovereign Council lifetime constitutional stewardship"
@@ -784,11 +793,16 @@ export const GovernancePage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-amber-300">Top 3 Prime Sovereign Quorum (1000+ HQ ELO)</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Governs constitutional amendments, Direct Sovereign Inductions, and Prime Sovereign Certificate
                 endorsements without ever monetizing rank titles.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Honoring the permanent <code className="text-amber-300">@handle | HQ ELO | Honorary Title</code> ledger
+                format, Top 3 Prime Sovereigns hold Flag-Immune constitutional stewardship while maintaining complete
+                separation between cash patronage and rank advancement.
               </p>
             </div>
           </div>
@@ -830,7 +844,7 @@ export const GovernancePage: React.FC = () => {
                       <Coffee className="w-4 h-4 text-amber-300 shrink-0" />
                       <span>{tier.title}</span>
                     </div>
-                    <p className="text-xs text-slate-300 leading-relaxed">{tier.allocation}</p>
+                    <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">{tier.allocation}</p>
                   </button>
                 );
               })}
@@ -842,7 +856,7 @@ export const GovernancePage: React.FC = () => {
                   Selected Ledger Allocation ({activePatron.amount} · {activePatron.title})
                 </div>
                 <div data-gov-patron-perk="" className="text-sm text-white font-semibold">{activePatron.perk}</div>
-                <p className="text-xs text-slate-400">
+                <p className="ae-prose text-justify text-xs text-slate-400">
                   Guarantee: <strong className="text-emerald-300">0 ELO points, 0 contest advantage, 0 moderation authority</strong>.
                 </p>
               </div>
@@ -851,7 +865,7 @@ export const GovernancePage: React.FC = () => {
               </a>
             </div>
             <div className="rounded-xl border border-slate-800 overflow-hidden grid md:grid-cols-12 items-stretch bg-slate-950/60">
-              <div className="md:col-span-4 aspect-[16/10] md:aspect-auto min-h-[150px] relative media-frame">
+              <div className="md:col-span-4 aspect-[16/10] md:aspect-auto min-h-[185px] relative media-frame">
                 <ResilientImage
                   src={MEDIA.govPatrons}
                   alt="Wall of Patrons infrastructure ledger separated from ELO governance"
@@ -860,11 +874,15 @@ export const GovernancePage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
               </div>
-              <div className="md:col-span-8 p-5 flex flex-col justify-center space-y-1">
+              <div className="md:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                 <div className="text-xs font-mono-tabular text-emerald-300">Zero ELO · Zero Authority Patronage Firewall</div>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Philanthropic support directly underwrites custom .com DNS, SymPy workers, and free regional guidebooks
                   with a permanent zero-leverage guarantee.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Every contribution clears inside Guardian Financial Custodianship ledgers so Daily arenas, Sunday
+                  Mega qualifiers, and Top 128 World Cup seats stay 100% Free Forever for young solvers worldwide.
                 </p>
               </div>
             </div>
@@ -893,7 +911,7 @@ export const GovernancePage: React.FC = () => {
             <SpotlightCard className="lg:col-span-4 rounded-2xl p-6 space-y-4 border-cyan-400/30">
               <Scale className="w-6 h-6 text-cyan-300" />
               <h3 className="font-display text-lg font-bold text-white">Dual-Verified Stewardship</h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Every HQ promotion, contest recusal, and Patron receipt is auditable under our 14-Point Legal Shield and
                 Guardian Financial Custodianship.
               </p>
@@ -913,6 +931,10 @@ export const GovernancePage: React.FC = () => {
             kicker="Constitutional Governance FAQ"
             title="Zero-Leverage Patronage & Automatic Conflict Recusal"
             summary="Every HQ arbiter recuses automatically on authored contests while financial patronage remains cryptographically separated from ELO and match adjudication."
+            details={[
+              'Three standard induction gates (+200 Contribution ELO, 6 clean rated matches, Sovereign Certificate & User Consent) pair with Strict Positional Chronology to block cronyism or sudden leapfrogging.',
+              'Supreme Headquarters AI inside Subsite #12 supports 750+ Chief Arbiters and Top 3 Prime Sovereigns exclusively for fair forensic appeals and QPRT-4 vault audits.',
+            ]}
             accentColor="#F59E0B"
             reverse
             className="mt-6"

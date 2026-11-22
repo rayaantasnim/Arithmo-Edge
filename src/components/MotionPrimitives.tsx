@@ -191,6 +191,7 @@ export const CyberMediaFrame: React.FC<{
   kicker?: string;
   title?: string;
   summary?: string;
+  details?: string[];
   accentColor?: string;
   className?: string;
   reverse?: boolean;
@@ -200,11 +201,12 @@ export const CyberMediaFrame: React.FC<{
   kicker,
   title,
   summary,
+  details,
   accentColor = '#00F0FF',
   className = '',
   reverse = false,
 }) => {
-  const hasCopy = Boolean(kicker || title || summary);
+  const hasCopy = Boolean(kicker || title || summary || (details && details.length > 0));
   if (!hasCopy) {
     return (
       <div
@@ -223,7 +225,7 @@ export const CyberMediaFrame: React.FC<{
       className={`glass-panel rounded-2xl overflow-hidden grid lg:grid-cols-12 items-stretch border border-slate-800/80 ${className}`}
     >
       <div
-        className={`lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[175px] relative ae-media-cyber ${
+        className={`lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative ae-media-cyber ${
           reverse ? 'lg:order-2' : ''
         }`}
       >
@@ -232,14 +234,22 @@ export const CyberMediaFrame: React.FC<{
         </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#03050c] via-[#03050c]/30 to-transparent z-[3]" />
       </div>
-      <div className={`lg:col-span-8 p-5 sm:p-6 flex flex-col justify-center space-y-1.5 ${reverse ? 'lg:order-1' : ''}`}>
+      <div className={`lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5 ${reverse ? 'lg:order-1' : ''}`}>
         {kicker && (
           <div className="text-xs font-mono-tabular font-semibold" style={{color: accentColor}}>
             {kicker}
           </div>
         )}
-        {title && <h3 className="font-display text-lg font-bold text-white">{title}</h3>}
-        {summary && <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">{summary}</p>}
+        {title && <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug">{title}</h3>}
+        {summary && (
+          <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">{summary}</p>
+        )}
+        {details &&
+          details.map((paragraph, idx) => (
+            <p key={idx} className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
       </div>
     </div>
   );

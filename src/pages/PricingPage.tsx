@@ -55,7 +55,7 @@ export const PricingPage: React.FC = () => {
                 </h1>
               </HeroReveal>
               <HeroReveal delay={0.14}>
-                <p className="ae-prose text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
+                <p className="ae-prose text-justify text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
                   Every daily contest, Sunday Mega Arena, 1v1 Bullet Blitz, Virtual Gym ghost run, and Top 128 World
                   Cup qualification is <span className="text-white font-semibold">100% Free Forever</span>. All paid
                   subscriptions, Shadow Bot Gauntlet packs, and Token bundles clear exclusively via closed-loop{' '}
@@ -212,6 +212,10 @@ export const PricingPage: React.FC = () => {
             kicker="Merit-Unlocked Subscription Tiers"
             title="Free Competition Forever · Upgrade via Wallet or HQ ELO"
             summary="Every personal tier unlocks organically at 100+, 300+, and 750+ Headquarters ELO—while Genesis Launch cohorts secure early access perks cleanly."
+            details={[
+              'Core Sentinels (100+ HQ ELO) unlock Plus ($2.99/mo), Problem Architects (300+ HQ ELO) unlock Pro ($5.99/mo), and Chief Arbiters (750+ HQ ELO) unlock Singularity ($12.99/mo) alongside Supreme HQ AI at zero cost.',
+              'Top 3 Prime Sovereigns (1000+ HQ ELO) receive 100% unlimited access to all AI models and Pay-As-You-Go tools strictly by audited stewardship—never by cash checkout.',
+            ]}
             accentColor="#00F0FF"
             className="mt-6"
           />
@@ -228,7 +232,7 @@ export const PricingPage: React.FC = () => {
           />
           <WalletCheckoutSimulator />
           <div className="mt-6 rounded-2xl border border-cyan-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[165px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.priceWallet}
                 alt="Arithmo Wallet closed-loop Lemon Squeezy and bKash/Nagad preload ledger"
@@ -237,11 +241,15 @@ export const PricingPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-cyan-300">Closed-Loop Credit Settlement (+10% Bonus)</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Every Wallet top-up stays non-withdrawable, exempts ELO from cash purchase, and settles instant
                 subscriptions, Shadow Bot quotas, or @handle friend gifts inside strict Firestore ledgers.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Once confirmed inside checkout, a live 60-second Cancellation Grace countdown permits instant one-click
+                reversal before compute tokens unlock and our 1-month minimum cycle finalizes.
               </p>
             </div>
           </div>
@@ -257,7 +265,7 @@ export const PricingPage: React.FC = () => {
             subtitle="Expand monthly Gauntlet limits or remove ±200 ELO calibration caps without switching monthly subscriptions."
           />
           <div className="mb-6 rounded-2xl border border-violet-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[160px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.priceBotPacks}
                 alt="Precision Shadow Bot Gauntlet pack add-ons up to 3200+ ELO"
@@ -266,11 +274,16 @@ export const PricingPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-violet-300">Zero Subscription Lock-In</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Scale Unbounded Shadow Bot challenges cleanly on-demand whenever preparing for regional or national
                 Olympiad qualifiers—without upgrading your monthly plan tier.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Each pack unlocks direct ELO calibration anywhere from Spark BOT (0–799) up to Vanguard (2700–2999) and
+                Apex BOT (3000+), running strict 100% Rated (0.75× K-factor) or Private Unrated drills with QPRT-4
+                verification.
               </p>
             </div>
           </div>
@@ -284,7 +297,7 @@ export const PricingPage: React.FC = () => {
                     <span className="text-emerald-300 font-bold">${pack.price.toFixed(2)}</span>
                   </div>
                   <h3 className="font-display text-lg font-bold text-white">{pack.name}</h3>
-                  <p className="text-xs text-slate-300 leading-relaxed">{pack.summary}</p>
+                  <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">{pack.summary}</p>
                 </div>
                 <ul className="text-[11px] text-slate-400 space-y-1 pt-2 border-t border-slate-800/80">
                   {pack.perks.map((p) => (
@@ -309,7 +322,7 @@ export const PricingPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-cyan-300">Pack 01</div>
               <div className="font-display font-bold text-white">AI General Starter Pack</div>
               <div className="text-lg font-mono-tabular text-emerald-300">$0.99 · 20 Tokens</div>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 20 permanent no-deadline tokens for Arithmo Personal AI: General (1x).
               </p>
             </SpotlightCard>
@@ -318,7 +331,7 @@ export const PricingPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-cyan-300">Pack 02</div>
               <div className="font-display font-bold text-white">AI Premium 2x Deep Pack</div>
               <div className="text-lg font-mono-tabular text-emerald-300">$2.99 · 30 Tokens</div>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 30 permanent tokens for Arithmo Personal AI: Premium (2x) Hybrid Models &amp; High Priority.
               </p>
             </SpotlightCard>
@@ -327,7 +340,7 @@ export const PricingPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-violet-300">Pack 03</div>
               <div className="font-display font-bold text-white">24-Hour AI Grandmaster Sprint</div>
               <div className="text-lg font-mono-tabular text-emerald-300">$3.99 · 24 Hours</div>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 24 hours of UNLIMITED access to BOTH General (1x) and Premium (2x) models.
               </p>
             </SpotlightCard>
@@ -336,7 +349,7 @@ export const PricingPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-violet-300">Pack 04</div>
               <div className="font-display font-bold text-white">Duelist 5-Pack</div>
               <div className="text-lg font-mono-tabular text-emerald-300">$0.99 · 5 Tokens</div>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 5 permanent tokens for 1v1 Bullet Blitz &amp; Direct Friend Challenges (@handle/Link).
               </p>
             </SpotlightCard>
@@ -345,7 +358,7 @@ export const PricingPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-amber-300">Pack 05</div>
               <div className="font-display font-bold text-white">24-Hour Unlimited Arena &amp; Room Pass</div>
               <div className="text-lg font-mono-tabular text-emerald-300">$1.99 · 24 Hours</div>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 24 hours of UNLIMITED 1v1 duels + Private Virtual Gym Rooms (max 10 members).
               </p>
             </SpotlightCard>
@@ -354,7 +367,7 @@ export const PricingPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-amber-300">Pack 06</div>
               <div className="font-display font-bold text-white">Forge Contest Host Token</div>
               <div className="text-lg font-mono-tabular text-emerald-300">$2.49 · 1 Host Pass</div>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 One-time pass to host 1 custom contest on Subsite #10 (Arithmo Forge) (1500+ ELO required).
               </p>
             </SpotlightCard>
@@ -363,7 +376,7 @@ export const PricingPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-emerald-300">Pack 07</div>
               <div className="font-display font-bold text-white">Deep Contest Post-Mortem &amp; Mistake Deck</div>
               <div className="text-lg font-mono-tabular text-emerald-300">$0.99 · Full Report</div>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 Solve-time heatmap, weak-tag report &amp; 50-card spaced-repetition deck per completed round.
               </p>
             </SpotlightCard>
@@ -372,13 +385,13 @@ export const PricingPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-rose-300">Pack 08</div>
               <div className="font-display font-bold text-white">Arithmo Wallet Credit Bundles</div>
               <div className="text-lg font-mono-tabular text-emerald-300">$5 / $10 / $25 / $50</div>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 Instant +10% free bonus credit usable for packs, friend @handle gifting, and academy dues.
               </p>
             </SpotlightCard>
           </div>
           <div className="mt-6 rounded-2xl border border-slate-800 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[160px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.priceCorePacks}
                 alt="Permanent zero-expiration AI, Duelist, and Mistake Deck token bundles"
@@ -387,11 +400,15 @@ export const PricingPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-emerald-300">Lifetime Token Persistence &amp; @handle Gifting</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Core Token packs never expire across semesters or summer Olympiad camps—and any Arithmo Wallet holder
                 can gift AI or Duelist packs directly to teammates via verified <code className="text-cyan-300">@handle</code>.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Dynamic TokenMeter enforcement deducts zero tokens on polite greetings and exact proportional weights on
+                multi-problem bundles so casual learners preserve every permanent credit until high-value exam sprints.
               </p>
             </div>
           </div>
@@ -408,7 +425,7 @@ export const PricingPage: React.FC = () => {
           <div className="glass-panel rounded-2xl p-6 sm:p-8">
             <div className="grid lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-6 space-y-4">
-                <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                   Preload <span className="text-white font-semibold">Arithmo Credits</span> ($5–$50) via{' '}
                   <span className="text-cyan-300">Lemon Squeezy</span> or{' '}
                   <span className="text-rose-300">bKash/Nagad</span> with an automatic{' '}
@@ -469,6 +486,10 @@ export const PricingPage: React.FC = () => {
             kicker="Closed-Loop +10% Top-Up & Contribution Grants"
             title="Instant Bonus Credits & +50 to +500 Contribution ELO Rewards"
             summary="Every cash wallet top-up adds +10% bonus credits immediately, while verified Forge problemsetting, Blog-to-Lab articles, and Guidebook theorems grant free credits."
+            details={[
+              'Authors who publish accepted KaTeX theorem expositions via Blog-to-Lab (+5 Contribution ELO) or curated Guidebook chapters (+2 Contribution ELO) unlock recurring Wallet milestones at +50, +100, +250, and +500 ELO without spending money.',
+              'Top-ups convert exclusively into non-withdrawable ecosystem Credits settled via Lemon Squeezy worldwide or bKash/Nagad regionally under strict Youth Privacy & Guardian Custodianship ledgers.',
+            ]}
             accentColor="#10B981"
             reverse
             className="mt-6"
@@ -487,7 +508,7 @@ export const PricingPage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 sm:p-8 space-y-3 border-cyan-400/30">
               <div className="text-xs font-mono-tabular text-cyan-300">Personal Contenders</div>
               <h3 className="font-display text-xl font-bold text-white">Individual Growth &amp; Self-Study</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Includes Free-forever rated arenas across all 5 topics, optional AI token &amp; Shadow Bot packs
                 ($0.99+), and automatic free subscription upgrades unlocked purely through Headquarters stewardship (100+
                 to 1000+ HQ ELO).
@@ -499,7 +520,7 @@ export const PricingPage: React.FC = () => {
               <h3 className="font-display text-xl font-bold text-white">
                 Cohort Analytics &amp; Inter-Academy Clashes
               </h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Starts at $29.99/mo with $0.99/member dues (first 5 Founding Academies lock 25% OFF for 3 months),
                 waiving up to 10 Admin seats and unlocking Guild AI Batch Radar, Virtual Edu Labs, and Inter-Academy
                 Clashes.
@@ -507,7 +528,7 @@ export const PricingPage: React.FC = () => {
             </SpotlightCard>
           </div>
           <div className="mt-6 rounded-2xl border border-emerald-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[160px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.priceZeroPtw}
                 alt="Constitutional Zero Pay-to-Win guarantee isolating compute subscriptions from ELO"
@@ -516,11 +537,15 @@ export const PricingPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-emerald-300">Verified Zero Pay-to-Win Firewall</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Subscriptions fund Gemini/Qwen-Math hybrid mentoring, Mistake Decks, and private training rooms—while
                 Daily Contests, Sunday Mega, and World Cup qualification always remain 100% Free Forever.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Cryptographic role isolation ensures paid membership status never grants contest hints, rating shields,
+                priority peer-review verdicts, or governance weight inside the HQ command ladder.
               </p>
             </div>
           </div>
@@ -542,7 +567,7 @@ export const PricingPage: React.FC = () => {
               <h3 className="font-display text-xl font-bold text-white">
                 Zero-Refund Post-Grace &amp; Closed-Loop Integrity
               </h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 After the <span className="text-emerald-300 font-semibold">1-minute (60s) Cancellation Grace window</span>{' '}
                 closes and compute tokens provision, purchases operate under a strict{' '}
                 <span className="text-white font-semibold">1-month minimum cycle &amp; Zero-Refund policy</span>. Global

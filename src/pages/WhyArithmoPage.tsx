@@ -239,7 +239,7 @@ export const WhyArithmoPage: React.FC = () => {
                 </h1>
               </HeroReveal>
               <HeroReveal delay={0.14}>
-                <p className="ae-prose text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
+                <p className="ae-prose text-justify text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
                   For decades, Olympiad preparation has been trapped between static downloadable PDFs, 20-year-old
                   thread forums like <span className="text-white font-semibold">AoPS</span>, and shallow multiple-choice
                   quiz apps that reward guessing over deductive rigor.{' '}
@@ -290,22 +290,30 @@ export const WhyArithmoPage: React.FC = () => {
               <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
                 <div className="text-xs font-mono-tabular text-rose-300">Legacy PDFs &amp; Forums</div>
                 <div className="font-display text-lg font-bold text-white mt-1">Zero Live ELO Loop</div>
-                <p className="text-xs text-slate-400 mt-1">No live matchmaking, no clock pressure, unverified solutions</p>
+                <p className="ae-prose text-justify text-xs text-slate-400 mt-1">
+                  No live matchmaking, no clock pressure, unverified solutions
+                </p>
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
                 <div className="text-xs font-mono-tabular text-amber-300">Shallow MCQ Quiz Apps</div>
                 <div className="font-display text-lg font-bold text-white mt-1">No Proof Authenticity</div>
-                <p className="text-xs text-slate-400 mt-1">Guessable options miss Olympiad deduction &amp; edge cases</p>
+                <p className="ae-prose text-justify text-xs text-slate-400 mt-1">
+                  Guessable options miss Olympiad deduction &amp; edge cases
+                </p>
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
                 <div className="text-xs font-mono-tabular text-cyan-300">Arithmo-Edge Engine</div>
                 <div className="font-display text-lg font-bold text-white mt-1">Codeforces × Chess.com</div>
-                <p className="text-xs text-slate-400 mt-1">10 Core ELOs, Shadow Bots, SymPy grading &amp; Find the Flaw</p>
+                <p className="ae-prose text-justify text-xs text-slate-400 mt-1">
+                  10 Core ELOs, Shadow Bots, SymPy grading &amp; Find the Flaw
+                </p>
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
                 <div className="text-xs font-mono-tabular text-emerald-300">Access Policy</div>
                 <div className="font-display text-lg font-bold text-white mt-1">100% Free Forever</div>
-                <p className="text-xs text-slate-400 mt-1">Compete across all 5 Arenas &amp; World Cup with $0 barriers</p>
+                <p className="ae-prose text-justify text-xs text-slate-400 mt-1">
+                  Compete across all 5 Arenas &amp; World Cup with $0 barriers
+                </p>
               </div>
             </div>
           </HeroReveal>
@@ -407,7 +415,7 @@ export const WhyArithmoPage: React.FC = () => {
                   Selected Verdict · {activeRow.dimension}
                 </div>
                 <div data-matrix-verdict-title="" className="font-display text-lg font-bold text-white">{activeRow.arithmo}</div>
-                <p data-matrix-verdict-reason="" className="text-xs sm:text-sm text-slate-300 leading-relaxed">{activeRow.edgeReason}</p>
+                <p data-matrix-verdict-reason="" className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">{activeRow.edgeReason}</p>
               </div>
               <a href="architecture.html" className="btn-glass px-4 py-2.5 text-xs whitespace-nowrap shrink-0">
                 Inspect Architecture →
@@ -419,6 +427,10 @@ export const WhyArithmoPage: React.FC = () => {
               kicker="Architectural Comparison Telemetry"
               title="Why Static Asynchronous Forums Cannot Match Real-Time ELO"
               summary="Live clocks, deterministic BigInt & SymPy verification, isolated arena ratings, and blinded peer review eliminate guessing games and rating stagnation."
+              details={[
+                'Every contest round isolates General speed accuracy from Expert deductive rigor across Number Theory, Algebra, Geometry, Combinatorics, and Mixed Olympiad—giving students objective mastery ratings rather than unverified thread upvotes.',
+                'Post-contest Find the Flaw windows and adversarial red-teaming ensure no brittle problem leaks or ambiguous solution claims remain unchallenged across global standings.',
+              ]}
               accentColor="#00F0FF"
               reverse
             />
@@ -450,7 +462,7 @@ export const WhyArithmoPage: React.FC = () => {
                   <span>5 Core Arenas · 60 Rank Tiers · Zero-Wait 1v1</span>
                 </div>
                 <h3 className="font-display text-xl font-bold text-white">Isolated General + Expert ELO Engine</h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Each of the 5 Core Arenas (<span className="text-white font-medium">Number Theory, Algebra, Geometry, Combinatorics &amp; Permutation, Mixed Mathematical Olympiad</span>) maintains separate General (velocity) &amp; Expert (proof) tracks, combining via{' '}
                   <code className="font-mono-tabular text-cyan-300">(General + Expert) / 2</code> for 12 titles per arena (60 total).
                 </p>
@@ -469,7 +481,7 @@ export const WhyArithmoPage: React.FC = () => {
 
               <SpotlightCard className="rounded-2xl p-6 space-y-2 border-violet-400/30">
                 <div className="text-xs font-mono-tabular text-violet-300">1v1 Arena Contest Tab Architecture</div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   <strong className="text-white">Ranked Arena Duel</strong> searches ±100 ELO for 60s before engaging a{' '}
                   <strong className="text-cyan-300">100% Rated Stealth ELO-Mirror Bot</strong> (0.75× K-factor).{' '}
                   <strong className="text-white">Direct Rival Challenge</strong> mints 5-min invite URLs with zero quota
@@ -546,7 +558,7 @@ export const WhyArithmoPage: React.FC = () => {
                     <div data-why-bot-tele="" className="text-xs font-mono-tabular text-slate-400">{activeBot.telemetryProfile}</div>
                   </div>
                 </div>
-                <p data-why-bot-style="" className="text-xs text-slate-300 max-w-sm">{activeBot.style}</p>
+                <p data-why-bot-style="" className="ae-prose text-justify text-xs text-slate-300 max-w-sm">{activeBot.style}</p>
               </div>
             </div>
           </div>
@@ -574,7 +586,7 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-cyan-400/30">
                 <Trophy className="w-5 h-5 text-cyan-300" />
                 <h3 className="font-display text-base font-bold text-white">7-Day Calendar &amp; Sunday Mega</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Daily rotated Mon–Sat rounds culminate in Sunday Mega Arena (100 min, 10 Qs, Max 2 subs/Q, T+3h finalization).
                 </p>
               </SpotlightCard>
@@ -582,7 +594,7 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-violet-400/30">
                 <Scale className="w-5 h-5 text-violet-300" />
                 <h3 className="font-display text-base font-bold text-white">Proof Grading + 2000+ Peer Audit</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   0–7 Olympiad proof rubric graded via ProofGrader AI, SymPy, 2000+ Sentinel reviewers, and post-contest Find the Flaw.
                 </p>
               </SpotlightCard>
@@ -590,7 +602,7 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-amber-400/30">
                 <Sparkles className="w-5 h-5 text-amber-300" />
                 <h3 className="font-display text-base font-bold text-white">BdMO Special Warm-Up</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Human-authored Default Expert-Only Rated Warm-Up Championship divided cleanly by Primary, Junior, Secondary &amp; Higher Secondary.
                 </p>
               </SpotlightCard>
@@ -598,14 +610,14 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-emerald-400/30">
                 <Lock className="w-5 h-5 text-emerald-300" />
                 <h3 className="font-display text-base font-bold text-white">&lt; 3 Quorum Sealing</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Suspended rounds (&lt; 3 competitors) trigger zero ELO loss and never leak to Arithmo Database or Virtual Gym.
                 </p>
               </SpotlightCard>
             </div>
 
             <div className="rounded-2xl border border-amber-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-              <div className="lg:col-span-5 aspect-[16/10] lg:aspect-auto min-h-[200px] relative media-frame">
+              <div className="lg:col-span-5 aspect-[16/10] lg:aspect-auto min-h-[210px] relative media-frame">
                 <ResilientImage
                   src={MEDIA.whyProofs}
                   alt="Olympiad handwritten proof derivation and LaTeX peer audit validation"
@@ -617,14 +629,19 @@ export const WhyArithmoPage: React.FC = () => {
                   0–7 IMO Proof Rubric · SymPy + 2000+ Sentinel Peer Review
                 </div>
               </div>
-              <div className="lg:col-span-7 p-6 flex flex-col justify-center space-y-2">
+              <div className="lg:col-span-7 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                 <div className="text-xs font-mono-tabular text-amber-300">Beyond Guessing Final Digits</div>
-                <h3 className="font-display text-lg font-bold text-white">
+                <h3 className="font-display text-lg font-bold text-white leading-snug">
                   Full Deductive Rigor with Post-Contest Find the Flaw Audits
                 </h3>
-                <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Expert rounds combine in-browser GeoGebra diagramming, Drag-and-Drop KaTeX lemmas, 2000+ ELO blind
                   grading, and 2-minute global SymPy rejudging whenever an official counterexample is surfaced.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  With submissions capped strictly at 2 attempts per Expert problem and indexed locally inside IndexedDB
+                  draft vaults, contestants draft full multi-stage derivations cleanly without fear of network drops or
+                  last-second guess-spamging.
                 </p>
               </div>
             </div>
@@ -671,7 +688,7 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-cyan-400/30">
                 <div className="text-xs font-mono-tabular text-cyan-300">Subsite #8 · Arithmo Personal AI</div>
                 <h3 className="font-display text-base font-bold text-white">In-Chat Dual-Model Selector</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Switch seamlessly between General (1× Gemini) and Premium Hybrid (2× Qwen-Math-72B + Python SymPy) with
                   dynamic semantic token metering.
                 </p>
@@ -680,7 +697,7 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-violet-400/30">
                 <div className="text-xs font-mono-tabular text-violet-300">Subsite #9 · Arithmo Guild AI</div>
                 <h3 className="font-display text-base font-bold text-white">Cohort Batch Intelligence</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Powers institutional Academy rosters with Batch Radar analytics, automated Task homework sets, and
                   weakness clustering.
                 </p>
@@ -689,7 +706,7 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-emerald-400/30">
                 <div className="text-xs font-mono-tabular text-emerald-300">Subsite #13 · Arithmo Database</div>
                 <h3 className="font-display text-base font-bold text-white">AI Step-by-Step Editorials</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Pairs past Arithmo contests and historical IMO, Putnam, RMM, BMO &amp; BdMO sets with SymPy-verified
                   walkthroughs.
                 </p>
@@ -698,7 +715,7 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-amber-400/30">
                 <div className="text-xs font-mono-tabular text-amber-300">Zero-Copy Mathematical Genome</div>
                 <h3 className="font-display text-base font-bold text-white">Original Difficulty Distillation</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Extracts structural difficulty signatures from BdMO, IMO, APMO, Putnam, RMM &amp; BMO without copying
                   problems—and stays embargoed during live contests.
                 </p>
@@ -729,7 +746,7 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-cyan-400/30">
                 <ShieldCheck className="w-5 h-5 text-cyan-300" />
                 <h3 className="font-display text-base font-bold text-white">App &amp; Full-Screen Lockdown</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Mandatory live contest Full-Screen &amp; Tab/App Lockdown with Soft-Pinch AI alerts (`Arithmo Alert AI`) paired with optional Module 7 webcam/gaze verification on daily rounds.
                 </p>
               </SpotlightCard>
@@ -737,7 +754,7 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-violet-400/30">
                 <Cpu className="w-5 h-5 text-violet-300" />
                 <h3 className="font-display text-base font-bold text-white">30s Hot-Swap &amp; GridShield</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Mid-contest anomalies trigger 30-second reserve problem swaps, ChronoVault ISP outage freezes, and automated GridShield global clock pauses.
                 </p>
               </SpotlightCard>
@@ -745,7 +762,7 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-amber-400/30">
                 <Lock className="w-5 h-5 text-amber-300" />
                 <h3 className="font-display text-base font-bold text-white">11-Flag Progressive Ladder</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Auditable telemetry flags escalate from 3-day cooloffs to Flag 11 permanent IP/device blackhole with 4-Step Forensic Appeals.
                 </p>
               </SpotlightCard>
@@ -753,7 +770,7 @@ export const WhyArithmoPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-emerald-400/30">
                 <CheckCircle2 className="w-5 h-5 text-emerald-300" />
                 <h3 className="font-display text-base font-bold text-white">Zero Pay-to-Win Ironclad Promise</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Paid tiers ($2.99–$12.99) and Wallet packs never sell ELO points, match boosts, or contest privileges. Competitive advancement is strictly meritocratic.
                 </p>
               </SpotlightCard>
@@ -829,7 +846,7 @@ export const WhyArithmoPage: React.FC = () => {
                   <h3 className="font-display text-xl sm:text-2xl font-bold text-white">
                     {s.headline}
                   </h3>
-                  <p className="ae-prose text-sm text-slate-300 leading-relaxed">{s.summary}</p>
+                  <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">{s.summary}</p>
                   <div className="pt-2">
                     <a
                       href={s.ctaHref}
@@ -858,7 +875,7 @@ export const WhyArithmoPage: React.FC = () => {
             ))}
 
             <div className="rounded-2xl border border-slate-800 overflow-hidden grid lg:grid-cols-12 items-stretch bg-slate-950/75">
-              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[170px] relative media-frame">
+              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
                 <ResilientImage
                   src={MEDIA.whyStakeholders}
                   alt="Students, academies, and Olympiad coaches collaborating on shared math goals"
@@ -867,11 +884,16 @@ export const WhyArithmoPage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-[#050811]/35 to-transparent" />
               </div>
-              <div className="lg:col-span-8 p-5 sm:p-6 flex flex-col justify-center space-y-1.5">
+              <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                 <div className="text-xs font-mono-tabular text-cyan-300">Unified Tri-Stakeholder Flywheel</div>
-                <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Students earn transparent merit rankings, Schools &amp; Coaching Centers deploy verified KYB cohorts,
                   and elite Problemsetters govern Golden Vaults without sacrificing live competing privileges.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  As coaches assign curated drills via Academy Task Tabs and 1500+ Contenders author audited originals
+                  through Arithmo Forge, the shared Subsite #13 archive compounds cleanly for learners worldwide—all
+                  under strict COPPA/GDPR-K and Zero Pay-to-Win safeguards.
                 </p>
               </div>
             </div>
@@ -891,7 +913,7 @@ export const WhyArithmoPage: React.FC = () => {
                 <h2 className="section-title-fluid font-display font-bold text-white">
                   Claim Your @handle in the Founding Cohort
                 </h2>
-                <p className="ae-prose text-sm sm:text-base text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                   Begin immediately with <span className="text-white font-semibold">No-Login 60-Second Guest Access</span>{' '}
                   or lock in Genesis Early-Bird launch perks as all 14 portals come online toward Midnight Dec 31, 2026.
                 </p>
@@ -910,17 +932,17 @@ export const WhyArithmoPage: React.FC = () => {
                 <div className="rounded-xl border border-amber-400/35 bg-amber-400/10 p-4">
                   <div className="font-mono-tabular text-amber-300 font-bold">First 50 Verified @handles</div>
                   <div className="font-display text-base font-bold text-white mt-0.5">3 Months FREE Singularity</div>
-                  <p className="text-slate-300 mt-1">Unlimited AI Premium hybrid, Private Rooms &amp; 150/mo Shadow Bots.</p>
+                  <p className="ae-prose text-justify text-slate-300 mt-1">Unlimited AI Premium hybrid, Private Rooms &amp; 150/mo Shadow Bots.</p>
                 </div>
                 <div className="rounded-xl border border-violet-400/35 bg-violet-400/10 p-4">
                   <div className="font-mono-tabular text-violet-300 font-bold">Next 100 Verified @handles</div>
                   <div className="font-display text-base font-bold text-white mt-0.5">3 Months FREE Pro</div>
-                  <p className="text-slate-300 mt-1">150 monthly AI queries + Smart Mistake Deck + 50/mo Unbounded Bots.</p>
+                  <p className="ae-prose text-justify text-slate-300 mt-1">150 monthly AI queries + Smart Mistake Deck + 50/mo Unbounded Bots.</p>
                 </div>
                 <div className="rounded-xl border border-cyan-400/35 bg-cyan-400/10 p-4">
                   <div className="font-mono-tabular text-cyan-300 font-bold">No-Login Guest Sandbox</div>
                   <div className="font-display text-base font-bold text-white mt-0.5">Instant 60-Second Math Duel</div>
-                  <p className="text-slate-300 mt-1">Test your provisional Olympiad ELO right from the Home Command Deck.</p>
+                  <p className="ae-prose text-justify text-slate-300 mt-1">Test your provisional Olympiad ELO right from the Home Command Deck.</p>
                 </div>
               </div>
             </div>
@@ -932,6 +954,10 @@ export const WhyArithmoPage: React.FC = () => {
               kicker="Founding Rollout Window · Dec 16 – Dec 31, 2026"
               title="Enter Before V4.0 Grand Singularity Unlocks"
               summary="Verify early to secure permanent Genesis status across all 14 federated portals, unlocked prior to our custom .com edge cutover."
+              details={[
+                'Series 1–4 rollout deploys sequentially across all 14 portals between Dec 16 and Dec 31, 2026 Midnight, culminating in Top 128 World Cup seeding and Arithmo Database activation.',
+                'Existing arithmo-edge.github.io endpoints remain permanently synchronized with the upcoming custom .com production deployment via Arithmo-Core-SDK (engine.js).',
+              ]}
               accentColor="#8B5CF6"
             />
           </div>

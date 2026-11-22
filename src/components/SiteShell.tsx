@@ -340,7 +340,7 @@ export const SiteShell: React.FC<{
                   </div>
                 </div>
 
-                <p className="text-sm text-slate-300/90 leading-relaxed ae-prose">
+                <p className="ae-prose text-justify text-sm text-slate-300/90 leading-relaxed">
                   The World&apos;s First Real-Time ELO-Rated Competitive Mathematics &amp; Olympiad Mega-Ecosystem,
                   Powered by Olympiad Edge. Launching V1.0 on Dec 16, 2026; custom .com domain follows in 2 months.
                 </p>
@@ -450,43 +450,14 @@ export const SiteShell: React.FC<{
                   </a>
                 </div>
 
-                <div className="pt-1 space-y-1.5 text-[11px] font-mono-tabular text-slate-400">
-                  <div>
-                    <a
-                      href="https://github.com/Arithmo-Edge"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-cyan-300/90 hover:text-cyan-200 hover:underline break-all"
-                    >
-                      https://github.com/Arithmo-Edge
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://www.linkedin.com/in/rayaan-tasnim/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sky-300/90 hover:text-sky-200 hover:underline break-all"
-                    >
-                      https://www.linkedin.com/in/rayaan-tasnim/
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="mailto:rayaantasnim@gmail.com"
-                      className="text-slate-300 hover:text-cyan-200 hover:underline break-all"
-                    >
-                      rayaantasnim@gmail.com
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
 
             <div className="text-xs text-slate-400 leading-relaxed">
               <hr className="ae-footer-hr" />
               <center className="leading-relaxed">
-                Authorized by Rayaan Tasnim <br />
+                Core System Architecture by Rayaan Tasnim <br />
+                Mathematical Architecture by Jalees Habib <br />
                 © All Rights Reserved <br />
                 © Arithmo-Edge 2026<br />
                 Powered by Olympiad Edge

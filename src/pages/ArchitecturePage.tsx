@@ -157,7 +157,7 @@ export const ArchitecturePage: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-[#060913]/40 to-transparent" />
                   <div className="absolute bottom-0 inset-x-0 p-6">
                     <div className="text-xs text-cyan-300 font-mono-tabular">github.com/Arithmo-Edge</div>
-                    <p className="ae-prose text-sm text-slate-200 mt-1">
+                    <p className="ae-prose text-justify text-sm text-slate-200 mt-1.5 leading-relaxed">
                       Each subsite enforces its own domain security boundary while synchronizing Auth, 10 Core ELOs, and
                       Arithmo Wallet state in milliseconds.
                     </p>
@@ -204,17 +204,21 @@ export const ArchitecturePage: React.FC = () => {
                 />
               </div>
               <div className="md:col-span-8 p-6 sm:p-8 flex flex-col justify-between gap-4">
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   <div className="text-xs font-mono-tabular text-emerald-400">
                     13 · Post-Launch Global Knowledge Archive · arithmo-edge.github.io/arithmo-database/
                   </div>
-                  <h3 className="font-display text-lg sm:text-xl font-bold text-white">
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug">
                     Subsite #13: Arithmo Database &amp; Editorials
                   </h3>
-                  <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+                  <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                     Catalogs concluded Arithmo rounds across the 5 arenas (never leaking suspended &lt;3 quorum sets)
                     alongside <span className="text-white font-medium">IMO, Putnam, RMM, BMO, and BdMO</span>—with
                     AI-Generated Step-by-Step Editorials.
+                  </p>
+                  <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
+                    Zero-Fragmentation topic tags hidden during live contests unlock automatically inside Subsite #13 once
+                    Find the Flaw and MBTS windows close, enabling filtered theorem training and V10.3 Mistake Deck exports.
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-3">
@@ -255,7 +259,7 @@ export const ArchitecturePage: React.FC = () => {
                 <span>Sub-50ms Edge Workers</span>
               </div>
               <h3 className="font-display text-lg font-bold text-white">Instant Contest &amp; Bot Dispatch</h3>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Cloudflare Workers handle live queue matching (60s Ranked Pool, 5m Rival Links), Read-Only Golden Vault
                 fetching, and Gemini/Qwen-Math API routing without spinning cold CI runners.
               </p>
@@ -267,7 +271,7 @@ export const ArchitecturePage: React.FC = () => {
                 <span>Firebase Real-Time Ledger</span>
               </div>
               <h3 className="font-display text-lg font-bold text-white">Atomic Firestore Transactions</h3>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Closed-loop Wallet balances, 60-second order grace holds, Gmail SSO sessions, and live 14-board rating
                 deltas execute inside strict Firestore security rules.
               </p>
@@ -279,7 +283,7 @@ export const ArchitecturePage: React.FC = () => {
                 <span>Custom .com in 2 Months</span>
               </div>
               <h3 className="font-display text-lg font-bold text-white">Dual GitHub Pages + .com Topology</h3>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Current public showcase runs seamlessly at{' '}
                 <code className="font-mono-tabular text-cyan-300">arithmo-edge.github.io</code> while our dedicated{' '}
                 <code className="font-mono-tabular text-emerald-300">.com</code> custom domain joins production in 2
@@ -288,7 +292,7 @@ export const ArchitecturePage: React.FC = () => {
             </SpotlightCard>
           </div>
           <div className="mt-6 rounded-2xl border border-cyan-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[180px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[205px] relative media-frame">
               <ResilientImage
                 src={MEDIA.archCloudflare}
                 alt="Cloudflare Workers global edge proxy routing zero-latency contests"
@@ -300,12 +304,20 @@ export const ArchitecturePage: React.FC = () => {
                 Cloudflare Workers Edge Routing · Zero Cold CI Delays
               </div>
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-2">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-cyan-300">Edge Security Proxy Architecture</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug">
+                Zero GitHub Actions in Live Matchmaking, AI &amp; Vault Flows
+              </h3>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 GitHub Actions never touches live match ticks, rating adjustments, or AI prompts. Cloudflare Edge
                 Workers validate tokens serverlessly before querying Firebase Cloud Firestore or encrypted Golden Vault
                 repositories.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
+                All private GitHub Personal Access Tokens and Gemini / Qwen-Math credentials stay strictly sealed inside
+                Cloudflare Worker secrets, enforcing T-30s problem reveals, Subsite #8 contest Hard-Locks, and instant
+                T+1h/T+3h standing snapshots at zero CI wait overhead.
               </p>
             </div>
           </div>
@@ -321,12 +333,23 @@ export const ArchitecturePage: React.FC = () => {
               <h2 className="section-title-fluid font-display font-bold text-white">
                 Arithmo-Core-SDK (engine.js) Cross-Portal Sync
               </h2>
-              <p className="ae-prose text-sm sm:text-base text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                 Every subsite imports the shared <code className="font-mono-tabular text-cyan-300">engine.js</code>{' '}
                 runtime from <code className="font-mono-tabular">github.com/Arithmo-Edge/Arithmo-Core-SDK</code>. This
                 guarantees unified Firebase Auth session hydration, synchronized 10 Core ELO telemetry, closed-loop
                 Arithmo Wallet deduction checks, and instantaneous QPRT-4 contest lockouts without duplicating business
                 logic across 14 repositories.
+              </p>
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
+                During live institutional use on Subsite #9 Academy Arena, <code className="font-mono-tabular">engine.js</code>{' '}
+                atomically toggles between <code className="font-mono-tabular text-cyan-300">@handle</code> and{' '}
+                <code className="font-mono-tabular text-violet-300">@handle-academyname</code> context keys—ensuring
+                homework tasks and classroom mock sprints never bleed into a student&apos;s public global ELOs.
+              </p>
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
+                On unstable student connections across the 7 responsive breakpoints, the SDK flushes draft LaTeX blocks
+                and GeoGebra states into local IndexedDB checkpoints every keystroke, coordinating seamless AES-256
+                telemetry heartbeats and Hard-Lock triggers whenever Subsite #6 opens an active round.
               </p>
             </div>
             <div className="lg:col-span-6 space-y-4">
@@ -366,7 +389,7 @@ export const ArchitecturePage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 sm:p-8 space-y-3">
               <div className="text-xs font-mono-tabular text-cyan-300">Hot Storage Layer · Real-Time State</div>
               <h3 className="font-display text-xl font-bold text-white">Unified Cloud Firestore</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Handles sub-second live match scores, 14 real-time leaderboards, active{' '}
                 <code className="font-mono-tabular text-cyan-300">1v1 Bullet Blitz</code> rooms,{' '}
                 <code className="font-mono-tabular text-cyan-300">Arithmo Wallet</code> ledger transactions,{' '}
@@ -379,7 +402,7 @@ export const ArchitecturePage: React.FC = () => {
                 Cold Storage Layer · 24h Zero-PII Nightly Compaction
               </div>
               <h3 className="font-display text-xl font-bold text-white">Private Zero-PII JSONL Data Lake</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Every 24 hours, automated background pipelines strip all PII (emails, legal names, IPs), flush
                 concluded submissions, <code className="font-mono-tabular text-emerald-300">MBTS</code> telemetry, and{' '}
                 <code className="font-mono-tabular text-emerald-300">Find the Flaw</code> traces into compressed{' '}
@@ -395,6 +418,10 @@ export const ArchitecturePage: React.FC = () => {
               kicker="Automated 24h PII Scrubbing Pipeline"
               title="Sub-Millisecond Hot Reads Meets Immutable Cold Archival"
               summary="All PII leaves the analytics path before nightly shards compact into GitHub cold storage, keeping Firestore billing lean at any student volume."
+              details={[
+                'Only active contests, open 1v1 lobbies, 60-second order grace holds, and current ELO standings remain in hot Cloud Firestore, preventing unbounded collection bloat as seasonal volume scales across global Olympiads.',
+                'Even if a competitor deletes their @handle, the permanent tombstone locks the username while anonymized historical problem-solving traces remain safely inside the Zero-PII cold JSONL lake for AI calibration.',
+              ]}
               accentColor="#10B981"
             />
           </div>
@@ -412,7 +439,7 @@ export const ArchitecturePage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2">
               <div className="text-xs font-mono-tabular text-cyan-300">Cloudflare Worker Edge Proxy</div>
               <h3 className="font-display text-lg font-bold text-white">Token &amp; PAT Isolation</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Proxies read-only Golden Vault <code className="font-mono-tabular">.json</code> problem sets and
                 Gemini/Qwen-Math API dispatches without exposing credentials on static GitHub Pages clients.
               </p>
@@ -420,7 +447,7 @@ export const ArchitecturePage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2">
               <div className="text-xs font-mono-tabular text-violet-300">Read-Shield Snapshot Pattern</div>
               <h3 className="font-display text-lg font-bold text-white">98% Firestore Read Reduction</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Public standings and archive indexes compile into static JSON snapshots served at the edge, shielding
                 Firestore quotas from traffic spikes.
               </p>
@@ -428,14 +455,14 @@ export const ArchitecturePage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2">
               <div className="text-xs font-mono-tabular text-emerald-300">Stale-While-Revalidate</div>
               <h3 className="font-display text-lg font-bold text-white">Deterministic Local Cache</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Contest statements, LaTeX templates, and guidebook chapters cache cleanly in browser storage for instant
                 resume across flaky connections.
               </p>
             </SpotlightCard>
           </div>
           <div className="mt-6 rounded-2xl border border-emerald-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[175px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[205px] relative media-frame">
               <ResilientImage
                 src={MEDIA.archPwa}
                 alt="PWA offline IndexedDB resilience and static edge snapshot caching"
@@ -444,11 +471,19 @@ export const ArchitecturePage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-[#050811]/35 to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-emerald-300">IndexedDB + Read-Shield Snapshot Layer</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug">
+                98% Edge Read Reduction &amp; Zero-Loss ISP Dropout Survival
+              </h3>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Even if a rural competitor loses broadband mid-contest, IndexedDB keystroke persistence and stale-while-revalidate
                 PWA caches keep every proof draft intact until ChronoVault reconnects.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
+                Simultaneously, public visitors browsing Subsite #7 Standings without login read compressed Read-Shield
+                edge snapshots rather than raw database documents—cutting Firestore read exhaustion by 98% across peak
+                Sunday Mega traffic.
               </p>
             </div>
           </div>
@@ -508,7 +543,7 @@ export const ArchitecturePage: React.FC = () => {
             </div>
 
             <div className="rounded-xl border border-slate-800 overflow-hidden grid md:grid-cols-12 items-stretch bg-slate-950/60">
-              <div className="md:col-span-4 aspect-[16/10] md:aspect-auto min-h-[150px] relative media-frame">
+              <div className="md:col-span-4 aspect-[16/10] md:aspect-auto min-h-[185px] relative media-frame">
                 <ResilientImage
                   src={MEDIA.archBigInt}
                   alt="In-browser deterministic BigInt Miller-Rabin primality code execution"
@@ -517,11 +552,19 @@ export const ArchitecturePage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-[#050811]/35 to-transparent" />
               </div>
-              <div className="md:col-span-8 p-5 flex flex-col justify-center space-y-1">
+              <div className="md:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                 <div className="text-xs font-mono-tabular text-cyan-300">Deterministic Zero-Round-Trip Computation</div>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <h3 className="font-display text-base sm:text-lg font-bold text-white leading-snug">
+                  Exact 64-Bit Integer &amp; Primality Verification Inside Every Tab
+                </h3>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Unlike legacy servers that choke under simultaneous prime checks, BigInt Miller-Rabin (7-base) and
                   Brent-Pollard&apos;s Rho verify numeric invariants directly inside the contestant&apos;s browser tab.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
+                  Pairing local Number Theory checks with Web Audio countdown cues eliminates network jitter from General
+                  Velocity Flow rounds while offloading symbolic algebraic &amp; geometric sanity checks cleanly to Python
+                  SymPy sandboxes behind Cloudflare Workers.
                 </p>
               </div>
             </div>
@@ -544,7 +587,7 @@ export const ArchitecturePage: React.FC = () => {
               >
                 <div className="font-mono-tabular text-xs text-cyan-400">BluePrint</div>
                 <h3 className="font-display text-base font-bold text-white">Architecture Spec</h3>
-                <p className="ae-prose text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   QPRT-4 mathematical proofs, 14-portal contracts, and governance constitutions.
                 </p>
               </SpotlightCard>
@@ -554,7 +597,7 @@ export const ArchitecturePage: React.FC = () => {
               >
                 <div className="font-mono-tabular text-xs text-violet-400">JSON-Converter</div>
                 <h3 className="font-display text-base font-bold text-white">Schema v1.2 Studio</h3>
-                <p className="ae-prose text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   LaTeX-to-JSON validator powering the Co-Founders&apos; 5×4 Golden Vault.
                 </p>
               </SpotlightCard>
@@ -564,7 +607,7 @@ export const ArchitecturePage: React.FC = () => {
               >
                 <div className="font-mono-tabular text-xs text-emerald-400">Arithmo-Core-SDK</div>
                 <h3 className="font-display text-base font-bold text-white">engine.js Runtime</h3>
-                <p className="ae-prose text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   Synchronizes Auth, Dual-Handles, Wallet ledger, and 10 Core Arena ELOs.
                 </p>
               </SpotlightCard>
@@ -580,6 +623,10 @@ export const ArchitecturePage: React.FC = () => {
               kicker="Transparent Open Architecture"
               title="Auditable SDKs & Schema Contracts on GitHub"
               summary="Verify our public mathematical specifications, Schema v1.2 studio converters, and client-side BigInt primitives directly inside github.com/Arithmo-Edge."
+              details={[
+                'Public repositories publish deterministic KaTeX rendering schemas, client-side number-theoretic primitives, and SDK interfaces—while official contest vaults, Golden Vault problem banks, and QPRT-4 biometric weight thresholds remain sealed inside private encrypted storage.',
+                'Developers, school math clubs, and security researchers can inspect how Arithmo-Core-SDK maintains strict separation of concerns between static GitHub Pages presentation layers and edge-enforced Firebase security rules.',
+              ]}
               accentColor="#00F0FF"
               reverse
             />

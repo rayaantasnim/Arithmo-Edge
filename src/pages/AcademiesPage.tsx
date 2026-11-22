@@ -274,6 +274,10 @@ export const AcademiesPage: React.FC = () => {
             kicker="Founding Cohort Telemetry"
             title="Transparent Institutional Forecasting & Fee-Waived Governance"
             summary="Model monthly member dues, Guild AI allocations, and early-bird 25% cohort discounts across starter math clubs through national universities."
+            details={[
+              'Every tier automatically waives monthly seat dues for 1–5 Admins (expanding to 1–10 Admins on Academy Enterprise) and accommodates up to 15 dedicated Mentors to run homework pipelines without administrative per-head friction.',
+              'The first 5 manually KYB-approved Founding Academies lock 25% OFF across all invoices during their initial 3 months while retaining full access to Batch Radar weakness diagnostics and Inter-Academy Clashes.',
+            ]}
             accentColor="#00F0FF"
             className="mt-6"
           />
@@ -344,7 +348,7 @@ export const AcademiesPage: React.FC = () => {
             </SpotlightCard>
           </div>
           <div className="mt-6 rounded-2xl border border-violet-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[165px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.acadGuildAi}
                 alt="Arithmo Guild AI cohort batch radar and institutional seat analytics"
@@ -353,11 +357,16 @@ export const AcademiesPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-violet-300">Arithmo Guild AI &amp; Batch Radar</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Every institutional tier unlocks centralized homework workflows, automated cohort weakness clustering,
                 and up to 10 completely fee-waived Admin faculty seats.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Academy Supreme and Academy Enterprise tiers further include 100% free Inter-Academy Clash tickets,
+                collaborative Virtual Edu Labs, and the HQ-authored Exclusive Academy Guidebook so coaches never pay
+                surprise per-event surcharges.
               </p>
             </div>
           </div>
@@ -375,7 +384,7 @@ export const AcademiesPage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2 border-cyan-400/30">
               <div className="text-xs font-mono-tabular text-cyan-300">Role 01 · Admins (1–5 or 1–10)</div>
               <h3 className="font-display text-lg font-bold text-white">Seat-Waived Governors</h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 All 1–5 Admins (1–10 on Enterprise) have monthly seat dues waived. Manage KYB verification, Guild AI
                 budgets, Inter-Academy Clashes, and Mentor permissions.
               </p>
@@ -384,7 +393,7 @@ export const AcademiesPage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2 border-violet-400/30">
               <div className="text-xs font-mono-tabular text-violet-300">Role 02 · Mentors (1–15)</div>
               <h3 className="font-display text-lg font-bold text-white">Instructors &amp; Problem Curators</h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Assign practice sets inside the Centralized Task Tab, inspect Batch Radar cohort bottlenecks, and run
                 Virtual Edu Lab proof walkthroughs.
               </p>
@@ -393,7 +402,7 @@ export const AcademiesPage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2 border-emerald-400/30">
               <div className="text-xs font-mono-tabular text-emerald-300">Role 03 · Enrolled Members</div>
               <h3 className="font-display text-lg font-bold text-white">Synchronized Student Contenders</h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Complete institutional assignments in the Task Tab under academy-scoped handles while climbing personal
                 arena ELOs independently.
               </p>
@@ -405,6 +414,10 @@ export const AcademiesPage: React.FC = () => {
             kicker="3-Role Institutional Flow"
             title="Admin Governors, Mentor Curators & Synchronized Task Tabs"
             summary="Separate institutional oversight from student personal ratings while empowering mentors with unified Task Tab assignments and Batch Radar heatmaps."
+            details={[
+              'Mentors push weekly modular arithmetic, inequality, or projective geometry problem sets straight into each student’s Task Tab with automatic deadline tracking and cohort completion telemetry.',
+              'Batch Radar aggregates anonymized solve times across all enrolled handles so coaching teams spot collective weak tags immediately before regional Olympiad qualifiers.',
+            ]}
             accentColor="#8B5CF6"
             reverse
             className="mt-6"
@@ -421,7 +434,7 @@ export const AcademiesPage: React.FC = () => {
           />
           <div className="ae-deep-grid grid lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-6 space-y-4">
-              <p className="ae-prose text-sm sm:text-base text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                 A student studying under Dhaka Math Club carries both a personal handle (
                 <span className="font-mono-tabular text-cyan-300">@username</span>) and an isolated academy workspace key
                 (<span className="font-mono-tabular text-violet-300">@username-academyname</span>). New institutions
@@ -462,6 +475,22 @@ export const AcademiesPage: React.FC = () => {
                   <span data-acad-kyb-label="">{kybModalOpen ? 'Hide Pop-Up KYB Spec' : 'Preview Pop-Up KYB Modal'}</span>
                 </button>
               </div>
+              <div className="grid sm:grid-cols-2 gap-3 pt-1">
+                <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4 space-y-1.5">
+                  <div className="text-xs font-mono-tabular text-cyan-300">Zero Rating Contamination</div>
+                  <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
+                    Dual-Handle routing guarantees failed experimental proofs or incomplete homework drills inside an
+                    academy classroom never deduct points from a student&apos;s personal global ELO.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4 space-y-1.5">
+                  <div className="text-xs font-mono-tabular text-violet-300">Campus Subnet Verification</div>
+                  <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
+                    Manual Pop-Up KYB approval binds official school domains and lab IPs so dozens of legitimate
+                    students in one lecture hall never trip QPRT-4 alt-account alerts.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="lg:col-span-6 space-y-4">
@@ -477,7 +506,7 @@ export const AcademiesPage: React.FC = () => {
                     ? 'Global Arena ELO + Closed-Loop Wallet Mode'
                     : 'Institutional Classroom & Task Tab Mode'}
                 </div>
-                <p data-acad-ctx-desc="" className="text-xs text-slate-300 leading-relaxed">
+                <p data-acad-ctx-desc="" className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
                   {contextMode === 'personal'
                     ? 'Scores update 10 Core Arena ELOs, 1v1 Bullet Blitz rankings, Personal AI quotas, and individual World Cup standings.'
                     : 'Scores update Academy Task Tab mastery, Batch Radar mentor heatmaps, Virtual Edu Lab sessions, and official Inter-Academy Clashes.'}
@@ -555,31 +584,31 @@ export const AcademiesPage: React.FC = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
             <SpotlightCard className="rounded-2xl p-4 space-y-1.5">
               <div className="text-cyan-300 font-semibold">01 · KYB Entity Bind</div>
-              <p className="text-slate-400">
+              <p className="ae-prose text-justify text-slate-400">
                 Seats bind strictly to verified school/academy domains and registration IDs.
               </p>
             </SpotlightCard>
             <SpotlightCard className="rounded-2xl p-4 space-y-1.5">
               <div className="text-violet-300 font-semibold">02 · Member Churn Throttle</div>
-              <p className="text-slate-400">Blocks rapid swap/resell rotation of enrolled student handles mid-month.</p>
+              <p className="ae-prose text-justify text-slate-400">Blocks rapid swap/resell rotation of enrolled student handles mid-month.</p>
             </SpotlightCard>
             <SpotlightCard className="rounded-2xl p-4 space-y-1.5">
               <div className="text-emerald-300 font-semibold">03 · Geo-IP Coherence</div>
-              <p className="text-slate-400">
+              <p className="ae-prose text-justify text-slate-400">
                 Flags disparate commercial resale subnets masquerading as one local campus.
               </p>
             </SpotlightCard>
             <SpotlightCard className="rounded-2xl p-4 space-y-1.5">
               <div className="text-amber-300 font-semibold">04 · Guild Token Watermark</div>
-              <p className="text-slate-400">Audits anomalous 24/7 API bot harvesting against Guild AI quotas.</p>
+              <p className="ae-prose text-justify text-slate-400">Audits anomalous 24/7 API bot harvesting against Guild AI quotas.</p>
             </SpotlightCard>
             <SpotlightCard className="rounded-2xl p-4 space-y-1.5">
               <div className="text-rose-300 font-semibold">05 · Contractual Revocation</div>
-              <p className="text-slate-400">Immediate suspension of third-party gray-market seat brokers.</p>
+              <p className="ae-prose text-justify text-slate-400">Immediate suspension of third-party gray-market seat brokers.</p>
             </SpotlightCard>
           </div>
           <div className="mt-6 rounded-2xl border border-rose-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[160px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.acadAntiResell}
                 alt="5-Layer institutional Anti-Reselling covenant protection"
@@ -588,11 +617,16 @@ export const AcademiesPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-rose-300">Verified School Subnet Protection</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Academy seats cannot be brokered on third-party marketplaces—preserving fair founding discounts strictly
                 for accredited schools, universities, and genuine Olympiad math clubs.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Automated churn throttles, Guild token watermarks, and Geo-IP coherence audits detect illicit
+                seat-sharing rings instantaneously without obstructing genuine student roster transfers at semester
+                boundaries.
               </p>
             </div>
           </div>
@@ -644,13 +678,13 @@ export const AcademiesPage: React.FC = () => {
               <div className="grid sm:grid-cols-2 gap-3 pt-2">
                 <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
                   <div className="text-cyan-300 font-semibold text-sm">Academy Score</div>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="ae-prose text-justify text-xs text-slate-400 mt-1">
                     Computed from the Top 50% Roster Average ELO—rewarding deep cohort-wide mastery.
                   </p>
                 </div>
                 <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
                   <div className="text-amber-300 font-semibold text-sm">Academy Prestige</div>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="ae-prose text-justify text-xs text-slate-400 mt-1">
                     Sum of Top 15 Members&apos; ELO + Inter-Academy Clash crowns—spotlighting peak Olympiad talent.
                   </p>
                 </div>
@@ -686,6 +720,10 @@ export const AcademiesPage: React.FC = () => {
             kicker="Verified Institutional Onboarding"
             title="Manual KYB Approval & Inter-Academy Clash Readiness"
             summary="Schools and Olympiad clubs clear Pop-Up KYB verification rapidly to activate subnet anti-smurf safeguards, fee-waived Admin seats, and Clash tickets."
+            details={[
+              'Submitting official school registry IDs and Lead Admin faculty credentials initiates rapid manual Pop-Up KYB verification—opening Founding 25% OFF invoicing immediately upon approval.',
+              'Verified cohorts gain isolated Dual-Handle workspace routing, dedicated campus IP whitelisting under QPRT-4, and direct scheduling access to rated Inter-Academy Clashes across Subsite #13 standings.',
+            ]}
             accentColor="#10B981"
             className="mt-6"
           />

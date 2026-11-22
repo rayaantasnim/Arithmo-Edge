@@ -154,7 +154,7 @@ export const ContestsPage: React.FC = () => {
                 </h1>
               </HeroReveal>
               <HeroReveal delay={0.14}>
-                <p className="ae-prose text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
+                <p className="ae-prose text-justify text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
                   Strictly focused on <span className="text-white font-semibold">Live &amp; Upcoming Contests</span>{' '}
                   (while 1v1 and Bot zones live inside Subsites #1–#5), the Contest Engine operates a{' '}
                   <span className="text-white font-semibold">7-Day Zero-Rest Calendar</span>, Special Warm-Up
@@ -174,7 +174,7 @@ export const ContestsPage: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-[#060913]/45 to-transparent" />
                   <div className="absolute bottom-0 inset-x-0 p-6">
                     <div className="text-xs text-amber-300 font-mono-tabular">Sunday Mega Arena · NO Rest Day</div>
-                    <p className="ae-prose text-sm text-slate-200 mt-1">
+                    <p className="ae-prose text-justify text-sm text-slate-200 mt-1">
                       Core HQ authored · Default Expert Mode only · 100 min · 10 Qs · max 2 subs/Q · 2h Find the Flaw +
                       1h MBTS = T+3h finalization.
                     </p>
@@ -189,39 +189,39 @@ export const ContestsPage: React.FC = () => {
               <SpotlightCard className="rounded-xl p-5 space-y-1.5">
                 <div className="font-mono-tabular text-xs text-[#00F0FF]">Monday</div>
                 <h2 className="font-display text-base font-bold text-white">Number Theory</h2>
-                <p className="text-xs text-slate-300">17:00 UTC Expert (0+ ELO) · 20:00 UTC General</p>
+                <p className="ae-prose text-justify text-xs text-slate-300">17:00 UTC Expert (0+ ELO) · 20:00 UTC General</p>
               </SpotlightCard>
               <SpotlightCard className="rounded-xl p-5 space-y-1.5">
                 <div className="font-mono-tabular text-xs text-[#8B5CF6]">Tuesday</div>
                 <h2 className="font-display text-base font-bold text-white">Algebra</h2>
-                <p className="text-xs text-slate-300">17:00 UTC Expert (0+ ELO) · 20:00 UTC General</p>
+                <p className="ae-prose text-justify text-xs text-slate-300">17:00 UTC Expert (0+ ELO) · 20:00 UTC General</p>
               </SpotlightCard>
               <SpotlightCard className="rounded-xl p-5 space-y-1.5">
                 <div className="font-mono-tabular text-xs text-[#F59E0B]">Wednesday</div>
                 <h2 className="font-display text-base font-bold text-white">Geometry</h2>
-                <p className="text-xs text-slate-300">17:00 UTC Expert (0+ ELO) · 20:00 UTC General</p>
+                <p className="ae-prose text-justify text-xs text-slate-300">17:00 UTC Expert (0+ ELO) · 20:00 UTC General</p>
               </SpotlightCard>
               <SpotlightCard className="rounded-xl p-5 space-y-1.5">
                 <div className="font-mono-tabular text-xs text-[#10B981]">Thursday</div>
                 <h2 className="font-display text-base font-bold text-white">Combinatorics &amp; Permutation</h2>
-                <p className="text-xs text-slate-300">17:00 UTC Expert (0+ ELO) · 20:00 UTC General</p>
+                <p className="ae-prose text-justify text-xs text-slate-300">17:00 UTC Expert (0+ ELO) · 20:00 UTC General</p>
               </SpotlightCard>
               <SpotlightCard className="rounded-xl p-5 space-y-1.5">
                 <div className="font-mono-tabular text-xs text-[#F43F5E]">Friday</div>
                 <h2 className="font-display text-base font-bold text-white">Mixed Mathematical Olympiad</h2>
-                <p className="text-xs text-slate-300">17:00 UTC Expert (0+ ELO) · 20:00 UTC General</p>
+                <p className="ae-prose text-justify text-xs text-slate-300">17:00 UTC Expert (0+ ELO) · 20:00 UTC General</p>
               </SpotlightCard>
               <SpotlightCard className="rounded-xl p-5 space-y-1.5">
                 <div className="font-mono-tabular text-xs text-cyan-300">Saturday · Special Theme Episodes</div>
                 <h2 className="font-display text-base font-bold text-white">Rotating Olympiad Editions</h2>
-                <p className="text-xs text-slate-300">
+                <p className="ae-prose text-justify text-xs text-slate-300">
                   IMO Simulation · Number Theory Contest · Arithmo Special · Olympiad Challenge · Math Query
                 </p>
               </SpotlightCard>
               <SpotlightCard className="rounded-xl p-5 space-y-1.5 border-rose-500/40 bg-rose-500/5 md:col-span-2">
                 <div className="font-mono-tabular text-xs text-rose-400">Sunday · NO Rest Day</div>
                 <h2 className="font-display text-base font-bold text-white">Sunday Mega Arena Contest</h2>
-                <p className="text-xs text-slate-300">
+                <p className="ae-prose text-justify text-xs text-slate-300">
                   Core HQ Authored · Expert Only · Mandatory Module 7 · T+3h Finalization
                 </p>
               </SpotlightCard>
@@ -286,7 +286,7 @@ export const ContestsPage: React.FC = () => {
               </div>
             </div>
             <div className="rounded-xl border border-amber-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch bg-slate-950/60">
-              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[165px] relative media-frame">
+              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
                 <ResilientImage
                   src={MEDIA.contestsBdmo}
                   alt="BdMO Warm-Up Championship academic Olympiad divisions"
@@ -295,13 +295,18 @@ export const ContestsPage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-transparent to-transparent" />
               </div>
-              <div className="lg:col-span-8 p-5 flex flex-col justify-center space-y-1.5">
+              <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                 <div className="text-xs font-mono-tabular text-amber-300">
                   Human-Authored Special Warm-Up Championship
                 </div>
-                <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Tailored to authentic regional and international Olympiad age tiers—preserving strict Expert-Only Rated
-                  discipline across Primary through Higher Secondary cohorts.
+                  discipline across Primary through Higher Secondary cohorts without artificial ELO-band fragmentation.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Every division receives bespoke problem calibration authored jointly under Chief Mathematical Architect
+                  guidelines, combining foundational parity and pigeonhole proofs in younger grades with full projective
+                  and Vieta-jumping challenges in Higher Secondary selection rounds.
                 </p>
               </div>
             </div>
@@ -383,7 +388,7 @@ export const ContestsPage: React.FC = () => {
           </div>
 
           <div className="mt-6 rounded-2xl border border-slate-800 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[165px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.contestsQuorum}
                 alt="Cryptographic 3-competitor quorum seal preserving uncontaminated Golden Vault problems"
@@ -392,11 +397,15 @@ export const ContestsPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-cyan-300">Zero-Leak Contest Problem Preservation</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Any round falling under the 3-competitor quorum never reveals its Golden Vault items to Virtual Gym or
                 Arithmo Database—protecting problemsetters&apos; originality and registered contestants&apos; ratings.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Early registrants incur zero ELO deductions and retain intact daily practice streaks while cryptographic
+                Cloudflare Worker tokens reseal the unplayed round back into Schema v1.2 Vaults for clean rescheduling.
               </p>
             </div>
           </div>
@@ -418,6 +427,10 @@ export const ContestsPage: React.FC = () => {
             kicker="Transparent Authorship Attribution"
             title="Live Footer Credits for Human, Core HQ & Autonomous Rounds"
             summary="Every contest footer renders verified Problemsetter, Auditor, and Tester @handles—preserving attribution clarity across human-authored specials and autonomous daily sprints."
+            details={[
+              'At T-30s prior to contest start, authorship metadata unlocks dynamically across Mode 1 (Human Forge Originals), Mode 2 (Core HQ 5×4 Golden Vaults), and Mode 3 (Autonomous Anti-LLM Synthesis).',
+              'Attribution badges tie directly into HQ Competitor Privilege checks so test-solvers and problem auditors never enter rated stands for rounds they inspected beforehand.',
+            ]}
             accentColor="#00F0FF"
             className="mt-6"
           />
@@ -435,7 +448,7 @@ export const ContestsPage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2">
               <div className="font-mono-tabular text-xs text-cyan-300">Stage 1 · Pre-Registration &amp; Mode Select</div>
               <h3 className="font-display text-lg font-bold text-white">4-Segment Contract Binding</h3>
-              <p className="ae-prose text-sm text-slate-300">
+              <p className="ae-prose text-justify text-sm text-slate-300">
                 Competitors register with a <code className="font-mono-tabular text-cyan-300">@handle</code> (Rated) or
                 enter as Unrated Guests (0 ELO), selecting General Velocity Flow or Expert 4-Segment Proof tracks.
               </p>
@@ -443,7 +456,7 @@ export const ContestsPage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2">
               <div className="font-mono-tabular text-xs text-amber-300">Stage 2 · T-30s Contract Lock</div>
               <h3 className="font-display text-lg font-bold text-white">Names &amp; @handles Attribution</h3>
-              <p className="ae-prose text-sm text-slate-300">
+              <p className="ae-prose text-justify text-sm text-slate-300">
                 Opens 30 seconds before launch displaying round rules + Problemsetters, Auditors, and Testers alongside
                 full-screen lockdown consent.
               </p>
@@ -451,7 +464,7 @@ export const ContestsPage: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-6 space-y-2">
               <div className="font-mono-tabular text-xs text-emerald-300">Stage 3 · T-0 Live Launch</div>
               <h3 className="font-display text-lg font-bold text-white">AI Hard-Lock &amp; App Lockdown</h3>
-              <p className="ae-prose text-sm text-slate-300">
+              <p className="ae-prose text-justify text-sm text-slate-300">
                 Subsite #8 hard-locks automatically; Mandatory Full-Screen &amp; App/Tab Lockdown + IndexedDB offline
                 vault activate across the session.
               </p>
@@ -463,6 +476,10 @@ export const ContestsPage: React.FC = () => {
             kicker="Deterministic Admission Lifecycle"
             title="Pre-Registration → T-30s Contract → T-0 Lockdown"
             summary="Structured transition gates verify handle standing, publish authorship credits 30 seconds before lock, and engage IndexedDB offline resilience at T-0."
+            details={[
+              'At T-0 launch, QPRT-4 edge middleware severs Subsite #8 (Personal AI) and Subsite #9 (Guild AI) while hydrating encrypted IndexedDB scratchpads so brief ISP brownouts never interrupt drafting.',
+              'Contenders entering Sunday Mega Arena or Top 128 World Cup rounds also complete local browser WebRTC checks for Module 7 Adaptive Gaze Guard and 3-Axis Audio containment.',
+            ]}
             accentColor="#8B5CF6"
             reverse
             className="mt-6"
@@ -525,7 +542,7 @@ export const ContestsPage: React.FC = () => {
                   <div className="text-cyan-300 font-semibold">
                     Sample Problem (Enter 2026 on the Touch Numpad):
                   </div>
-                  <p>
+                  <p className="ae-prose text-justify">
                     Find the smallest positive integer <span className="font-mono-tabular text-white">n &gt; 2025</span>{' '}
                     such that <span className="font-mono-tabular text-white">gcd(n, 2026) = 2026</span>.
                   </p>
@@ -647,6 +664,10 @@ export const ContestsPage: React.FC = () => {
             kicker="Dual-Mode Interface Telemetry"
             title="Zero-Latency General Flow & Toph-Style Expert Workspace"
             summary="General runners sweep sequential tasks on touch numpads while Expert contenders draft multi-lemma LaTeX proofs alongside embedded geometry tools."
+            details={[
+              'General Mode isolates distraction via Zen Focus Mode and routes missed computations cleanly into a Second-Chance Overtime Loop without requiring desktop hardware.',
+              'Expert Mode binds three synchronized columns—4-Segment navigation, zero-fragmentation statements with GeoGebra diagrams, and Drag-and-Drop LaTeX blocks capped at 2 submissions per problem.',
+            ]}
             accentColor="#10B981"
             className="mt-6"
           />
@@ -756,7 +777,7 @@ export const ContestsPage: React.FC = () => {
             </div>
 
             <div className="rounded-xl border border-slate-800 overflow-hidden grid md:grid-cols-12 items-stretch bg-slate-950/60">
-              <div className="md:col-span-4 aspect-[16/10] md:aspect-auto min-h-[155px] relative media-frame">
+              <div className="md:col-span-4 aspect-[16/10] md:aspect-auto min-h-[185px] relative media-frame">
                 <ResilientImage
                   src={MEDIA.contestsFlaw}
                   alt="Post-contest Find the Flaw proof audit and SymPy global rejudge window"
@@ -765,11 +786,16 @@ export const ContestsPage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-transparent to-transparent" />
               </div>
-              <div className="md:col-span-8 p-5 flex flex-col justify-center space-y-1">
+              <div className="md:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                 <div className="text-xs font-mono-tabular text-rose-300">Adversarial Proof Peer-Hacking</div>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Unverified proof steps, missing boundary branches, or flawed problem statements face deterministic
-                  verification and transparent T+2h/T+3h standing finalization.
+                  verification and transparent T+2h daily or T+3h Sunday Mega standing finalization.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Valid counterexamples against opponent proofs award +5 to +50 audit points while confirmed problem
+                  statement flaws trigger an automated 2-minute Python/SymPy Global Rejudge (+25 to +100 points)—balanced
+                  by a -10 point false-hack deterrent to keep audit queues surgical.
                 </p>
               </div>
             </div>

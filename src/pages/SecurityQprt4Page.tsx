@@ -438,24 +438,28 @@ export const SecurityQprt4Page: React.FC = () => {
               <h2 className="section-title-fluid font-display font-bold text-white">
                 Mathematical Behavioral Telemetry Signatures
               </h2>
-              <p className="ae-prose text-sm sm:text-base text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                 <span className="text-white font-semibold">MBTS Clustering</span> builds a multidimensional baseline per
                 contestant—measuring LaTeX backtrack cadence, scratchpad solve intervals, keystroke entropy, and mouse
                 hesitation across clean rounds—flagging sudden synthetic bursts without false-positive bans on fast
                 human prodigies.
               </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                All post-contest MBTS telemetry concludes within the T+2h (Daily) or T+3h (Sunday Mega) finalization
+                horizon alongside ChronoVault snapshots before official ratings commit across Subsites #1–#5.
+              </p>
               <div className="grid sm:grid-cols-3 gap-3 text-xs pt-2">
                 <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
                   <div className="text-cyan-300 font-semibold">Solve Cadence</div>
-                  <p className="text-slate-400 mt-1">Compares lemma discovery time against historical solve slopes.</p>
+                  <p className="ae-prose text-justify text-slate-400 mt-1">Compares lemma discovery time against historical solve slopes.</p>
                 </div>
                 <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
                   <div className="text-violet-300 font-semibold">Keystroke Entropy</div>
-                  <p className="text-slate-400 mt-1">Detects mechanical transcription vs. exploratory LaTeX editing.</p>
+                  <p className="ae-prose text-justify text-slate-400 mt-1">Detects mechanical transcription vs. exploratory LaTeX editing.</p>
                 </div>
                 <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
                   <div className="text-emerald-300 font-semibold">Cohort Clustering</div>
-                  <p className="text-slate-400 mt-1">Spots synchronized wrong-step bursts across colluding rooms.</p>
+                  <p className="ae-prose text-justify text-slate-400 mt-1">Spots synchronized wrong-step bursts across colluding rooms.</p>
                 </div>
               </div>
             </div>
@@ -525,7 +529,7 @@ export const SecurityQprt4Page: React.FC = () => {
             </SpotlightCard>
           </div>
           <div className="mt-6 rounded-2xl border border-rose-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[165px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.secBlackhole}
                 alt="11-Flag Blackhole security escalation deterrence system"
@@ -534,11 +538,16 @@ export const SecurityQprt4Page: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-rose-300">Deterministic Escalation &amp; Due Process</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Every sanction strike is cryptographically logged inside ChronoVault and reversible exclusively via
-                Chief Arbiter review and the 5-minute Live Video Skill Audit.
+                750+ Chief Arbiter review and the 5-minute Live Video Skill Audit.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                From Flag 1–2 single-match ELO zeroing to Flag 10 30-day hardware resets and Flag 11 permanent Gmail and
+                device bans, appellants retain a 7-day read-only Subsite #11 Forensic Appeal Portal docket for due-process
+                exoneration.
               </p>
             </div>
           </div>
@@ -556,28 +565,28 @@ export const SecurityQprt4Page: React.FC = () => {
             <SpotlightCard className="rounded-2xl p-5 space-y-2">
               <div className="text-xs font-mono-tabular text-cyan-300">Signal 01</div>
               <h3 className="font-display font-bold text-white">Hardware &amp; WebGL Fingerprint</h3>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 Detects shared GPU/canvas entropy across supposedly independent freshman accounts.
               </p>
             </SpotlightCard>
             <SpotlightCard className="rounded-2xl p-5 space-y-2">
               <div className="text-xs font-mono-tabular text-violet-300">Signal 02</div>
               <h3 className="font-display font-bold text-white">Notation Micro-Style</h3>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 Identifies idiosyncratic LaTeX macros, variable naming habits, and bracket spacing.
               </p>
             </SpotlightCard>
             <SpotlightCard className="rounded-2xl p-5 space-y-2">
               <div className="text-xs font-mono-tabular text-emerald-300">Signal 03</div>
               <h3 className="font-display font-bold text-white">Academy &amp; ISP Co-Location</h3>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 Separates legitimate shared school computer labs (via Academy KYB whitelist) from home smurf farms.
               </p>
             </SpotlightCard>
             <SpotlightCard className="rounded-2xl p-5 space-y-2">
               <div className="text-xs font-mono-tabular text-amber-300">Signal 04</div>
               <h3 className="font-display font-bold text-white">Rapid Rating Velocity</h3>
-              <p className="text-xs text-slate-400">
+              <p className="ae-prose text-justify text-xs text-slate-400">
                 Quarantines &ldquo;new initiates&rdquo; solving 2400+ Archon lemmas in &lt;4 minutes during placement
                 rounds.
               </p>
@@ -589,6 +598,10 @@ export const SecurityQprt4Page: React.FC = () => {
             kicker="Anti-Smurf Defense Grid"
             title="Hardware, Notation, Subnet & Velocity Fusion"
             summary="Cross-correlates WebGL fingerprints, LaTeX macro habits, KYB-whitelisted school labs, and anomaly placement slopes to stop rating manipulation."
+            details={[
+              'Co-location detection distinguishes genuine Academy computer labs whitelisted during manual Pop-Up KYB verification from single-room sockpuppet rating farms.',
+              'Verified accounts that artificially sandbag or farm lower-tier Novice brackets receive automated shadow quarantine prior to ELO commitment across all 10 Core Arena ratings.',
+            ]}
             accentColor="#00F0FF"
             className="mt-6"
           />
@@ -640,6 +653,10 @@ export const SecurityQprt4Page: React.FC = () => {
             kicker="Due Process & Zero-False-Positive Audit"
             title="Encrypted SHA-256 Appeals & 5-Min Live Skill Verification"
             summary="Every appellant inspects full ChronoVault proof logs and presents an unseen whiteboard lemma live before a 750+ Chief Arbiter for instant exoneration."
+            details={[
+              'Built around EU DSA due-process transparency, appellants receive signed IndexedDB proof timelines and MBTS flag summaries prior to scheduling their live walkthrough.',
+              'If a prodigy solves and defends an equivalent unseen problem coherently during the 5-minute video check, all strikes clear permanently with full rating restoration and verified human prodigy clearance.',
+            ]}
             accentColor="#10B981"
             reverse
             className="mt-6"
@@ -716,7 +733,7 @@ export const SecurityQprt4Page: React.FC = () => {
           </div>
 
           <div className="mb-8 rounded-2xl border border-cyan-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[165px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.secLegal}
                 alt="14-Point Global and Bangladesh statutory legal compliance architecture"
@@ -725,13 +742,18 @@ export const SecurityQprt4Page: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-cyan-300">
                 Bangladesh Statutory Governance × EU GDPR-K &amp; DSA
               </div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Engineered so young global mathematicians compete under strict youth privacy, Guardian Financial
                 Custodianship, Zero-NID minimization, and verified Merchant of Record tax handling.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Every cross-border software inflow respects Bangladesh Bank PRC &amp; NBR e-TIN export protocols while
+                Lemon Squeezy VAT settlement, EU GDPR Article 17 24-hour PII scrubbing, and COPPA parental consent safeguards
+                keep institutional schools and solo minors legally shielded worldwide.
               </p>
             </div>
           </div>

@@ -105,7 +105,7 @@ export const ArenasEloPage: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-[#060913]/45 to-transparent" />
                   <div className="absolute bottom-0 inset-x-0 p-6">
                     <div className="text-xs text-rose-300 font-mono-tabular">Subsites #1–#5 Own 1v1 &amp; Bot Zones</div>
-                    <p className="ae-prose text-sm text-slate-200 mt-1">
+                    <p className="ae-prose text-justify text-sm text-slate-200 mt-1.5 leading-relaxed">
                       10 Core Arena ELOs track competitive skill; Contribution ELO and HQ ELO govern publishing and
                       moderation separately.
                     </p>
@@ -132,7 +132,7 @@ export const ArenasEloPage: React.FC = () => {
                 <span>Inside Subsites #1–#5 (Each Core Arena)</span>
               </div>
               <h3 className="font-display text-xl font-bold text-white">3-Button Arena Contest &amp; Bot Play Tab</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Every arena embeds the 3-Button <code className="font-mono-tabular text-cyan-300">Contest</code> Tab
                 exclusively for <strong>Ranked Arena Duels</strong> (60s pool &rarr; Stealth Bot),{' '}
                 <strong>Direct Rival Challenges</strong> (5-min URL), and the <strong>Shadow Bot Gauntlet</strong>{' '}
@@ -145,7 +145,7 @@ export const ArenasEloPage: React.FC = () => {
                 <span>Inside Subsite #6 (Contest Portal)</span>
               </div>
               <h3 className="font-display text-xl font-bold text-white">Live &amp; Upcoming Scheduled Contests Only</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 The dedicated <a href="contests.html" className="text-amber-300 underline">Contest Portal</a> showcases
                 only Daily Scheduled Rounds, Sunday Mega Arena, Custom Human-Authored Warm-Up Championships (like BdMO),
                 and Top 128 World Cup brackets—zero 1v1 spam.
@@ -153,7 +153,7 @@ export const ArenasEloPage: React.FC = () => {
             </SpotlightCard>
           </div>
           <div className="mt-6 rounded-2xl border border-slate-800 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[175px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[210px] relative media-frame">
               <ResilientImage
                 src={MEDIA.arenasMatchmaking}
                 alt="1v1 chess-clock Olympiad matchmaking across isolated arenas"
@@ -162,11 +162,20 @@ export const ArenasEloPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-[#050811]/35 to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
-              <div className="text-xs font-mono-tabular text-violet-300">Clean Domain Partitioning</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Separating fast 1v1 matchmaking &amp; Bot Gauntlets inside Subsites #1–#5 ensures scheduled Daily
-                Contests and Sunday Mega rounds on Subsite #6 remain uncluttered and distraction-free.
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
+              <div className="text-xs font-mono-tabular text-violet-300">Clean Domain Partitioning · Subsites #1–#5 vs #6</div>
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug">
+                Architectural Separation Between Fast 1v1 Matchmaking &amp; Scheduled Tournaments
+              </h3>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Separating rapid 1v1 matchmaking and Bot Gauntlets inside Subsites #1–#5 ensures scheduled Mon–Sat Daily
+                Contests, BdMO Warm-Ups, and Sunday Mega rounds on Subsite #6 remain uncluttered and distraction-free.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
+                Inside each specialized arena, players switch effortlessly between ±100 ELO Ranked Pools (with 60-second
+                Stealth ELO-Mirror backfill at 0.75× K-factor), self-expiring 5-minute Direct Rival URLs that refund
+                quotas cleanly on expiry, and custom-tuned 0–3200+ Shadow Bot Gauntlets without polluting official
+                tournament schedules or global Find the Flaw queues.
               </p>
             </div>
           </div>
@@ -191,7 +200,11 @@ export const ArenasEloPage: React.FC = () => {
               alt="3-Button Arena Contest Tab hosting Ranked Duels, Direct Rivals, and Shadow Bot Gauntlet"
               kicker="Live In-Arena Control Deck"
               title="Three Distinct Matchmaking Engines Inside Subsites #1–#5"
-              summary="Instant 60-second Stealth Bot backfill, zero-deduction 5-minute Rival links, and full 0–3200+ Shadow Bot Gauntlets co-exist inside one clean interface."
+              summary="Instant 60-second Stealth Bot backfill, zero-deduction 5-minute Rival links, and full 0–3200+ Shadow Bot Gauntlets co-exist inside one unified control deck across Number Theory, Algebra, Geometry, Combinatorics, and Mixed Olympiad."
+              details={[
+                'Every ranked 1v1 session dispatches real-time rating deltas into Arithmo-Core-SDK (engine.js) while enforcing the 24-hour 2-match pairwise cap and +ΔR System Expectation Override against 2000+ Sentinels.',
+                'Direct Rival URLs support optional 30-second conversion into the global matchmaking pool if unaccepted, ensuring competitors never lose daily quotas or token allocations on unanswered challenges.',
+              ]}
               accentColor="#00F0FF"
             />
           </div>
@@ -207,7 +220,7 @@ export const ArenasEloPage: React.FC = () => {
             subtitle="From introductory Spark (0–499) up to Vanguard (e.g., 2885 · Vanguard BOT) and Apex (3000+ · Apex BOT)."
           />
           <div className="mb-6 rounded-2xl border border-violet-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[175px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[210px] relative media-frame">
               <ResilientImage
                 src={MEDIA.arenasShadow}
                 alt="12 named Shadow Bot personalities spanning 0 to 3200+ ELO"
@@ -216,18 +229,27 @@ export const ArenasEloPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-[#050811]/35 to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
-              <div className="text-xs font-mono-tabular text-violet-300">Dynamic Sparring Telemetry</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
+              <div className="text-xs font-mono-tabular text-violet-300">Dynamic Sparring Telemetry · 12 Calibrated Personas</div>
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug">
+                Calibrated Behavioral Pacing from Spark (0–499) to Apex (3000+)
+              </h3>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Every Shadow Bot mirrors realistic solve pacing, theorem preferences, and hint hesitation at its assigned
                 rating band—preventing ELO farming below your live rating while pushing ceiling growth above it.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
+                By strict anti-inflation rules, selecting any bot strictly below your current arena rating automatically
+                enforces mandatory Unrated Sparring, whereas targets at or above your live ELO default to 100% Rated play.
+                Monthly quotas scale cleanly across Free (5/mo), Plus (20/mo), Pro (50/mo), and Singularity (150/mo) tiers
+                without ever compromising rating fairness.
               </p>
             </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {SHADOW_BOT_PERSONAS.map((bot) => (
-              <SpotlightCard key={bot.name} className="rounded-xl p-4 space-y-1.5">
+              <SpotlightCard key={bot.name} className="rounded-xl p-5 space-y-2">
                 <div className="flex items-center justify-between text-xs font-mono-tabular">
                   <span style={{color: bot.accentColor}}>Bot #{String(bot.tierNum).padStart(2, '0')}</span>
                   <span className="text-slate-400">
@@ -237,7 +259,7 @@ export const ArenasEloPage: React.FC = () => {
                 <div className="font-display text-base font-bold text-white">
                   {bot.exampleElo} · {bot.name} BOT
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed">{bot.style}</p>
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">{bot.style}</p>
                 <div className="text-[11px] font-mono-tabular text-slate-500 pt-1">{bot.telemetryProfile}</div>
               </SpotlightCard>
             ))}
@@ -254,21 +276,32 @@ export const ArenasEloPage: React.FC = () => {
               <h2 className="section-title-fluid font-display font-bold text-white">
                 Balancing Speed Computation &amp; Olympiad Proof Rigor
               </h2>
-              <p className="ae-prose text-sm sm:text-base text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                 While <code className="font-mono-tabular text-cyan-300">General ELO</code> and{' '}
                 <code className="font-mono-tabular text-violet-300">Expert ELO</code> update independently on separate
                 leaderboards on Subsite #7, your visible{' '}
                 <span className="text-white font-semibold">12-Tier Rank Badge</span> in any arena is dynamically resolved
                 from their exact arithmetic midpoint.
               </p>
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
+                General rounds test numerical velocity via single-problem sequences, a Touch Numpad, and a Second-Chance
+                Overtime Loop, while Expert rounds evaluate formal LaTeX and GeoGebra proofs across Segments 1–4 under
+                ProofGrader AI, SymPy checks, and 2000+ Sentinel Peer Review. Because both ratings weigh equally in the
+                average, speed alone cannot mask weak deduction—and proof-only specialists sharpen tactical fluency.
+              </p>
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
+                Crossing averaged milestone thresholds unlocks permanent ecosystem authorities: 1500+ ELO (plus 6 clean
+                matches) unlocks Arithmo Forge problemsetting, 2000+ Sentinel tier unlocks Grandmaster Peer Review and
+                Expert Q&amp;A privileges, and 3000+ signifies Singularity mastery.
+              </p>
             </div>
-            <div className="lg:col-span-5 glass-panel rounded-2xl p-6 border border-cyan-400/35 text-center space-y-2">
+            <div className="lg:col-span-5 glass-panel rounded-2xl p-6 border border-cyan-400/35 text-center space-y-2.5">
               <div className="text-xs text-slate-400">Canonical Rank Formula</div>
               <div className="font-mono-tabular text-lg sm:text-xl font-bold text-cyan-300">
                 Arena Rank ELO = (General ELO + Expert ELO) / 2
               </div>
               <div className="text-xs text-slate-400">Evaluated identically across all 5 arenas (0–3200 scale)</div>
-              <div className="rounded-xl overflow-hidden aspect-[16/10] max-h-[150px] w-full relative media-frame mt-3">
+              <div className="rounded-xl overflow-hidden aspect-[16/10] max-h-[190px] w-full relative media-frame mt-3">
                 <ResilientImage
                   src={MEDIA.arenasFormula}
                   alt="Mathematical formula balancing General speed and Expert proof ratings"
@@ -428,6 +461,10 @@ export const ArenasEloPage: React.FC = () => {
               kicker="Balanced Speed & Proof Progression"
               title="60 Distinct Titles Synchronized Across 5 Federated Domains"
               summary="Rotating the 3D prism switches domain color coding, live unlock thresholds, and the complete 12-tier badge progression ladder in real time."
+              details={[
+                'Each arena maintains its own locked dark-mode accent palette—Electric Cyan (#00F0FF) for Number Theory, Vibrant Violet (#8B5CF6) for Algebra, Laser Amber (#F59E0B) for Geometry, Mint Emerald (#10B981) for Combinatorics, and Nebula Rose (#F43F5E) for Mixed Olympiad.',
+                'All 60 titles preserve clean domain isolation: reaching Arithmetic Singularity (3000+) in Number Theory awards full Foundry/Peer privileges inside Subsite #1 without artificially elevating starting ranks inside Geometry or Combinatorics.',
+              ]}
               accentColor={arena.color}
               reverse
             />
@@ -444,7 +481,7 @@ export const ArenasEloPage: React.FC = () => {
               <h2 className="section-title-fluid font-display font-bold text-white">
                 Tags Locked in Rated Rounds · Unlocked in Practice
               </h2>
-              <p className="ae-prose text-sm sm:text-base text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                 In authentic Olympiads like the IMO or Putnam, problems never arrive pre-labeled with the theorem
                 required to solve them. Sub-topics such as{' '}
                 <span className="font-mono-tabular text-cyan-300">#Modular-Arithmetic</span>,{' '}
@@ -455,26 +492,38 @@ export const ArenasEloPage: React.FC = () => {
                 exclusively during unrated practice and{' '}
                 <code className="font-mono-tabular text-cyan-300">Arithmo Database</code> review.
               </p>
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
+                Exposing lemma names prematurely collapses genuine problem-solving intuition into mechanical formula
+                recall. By withholding sub-topic metadata at both the UI layer and Cloudflare Worker edge payload via{' '}
+                <code className="font-mono-tabular text-amber-300">TagArchitect</code>, every solver learns to diagnose
+                structural invariants blindly under realistic championship timing.
+              </p>
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
+                Once concluded rounds graduate into the public archive (except suspended{' '}
+                <span className="font-mono-tabular">&lt;3</span> quorum sets), full theorem indexing automatically opens
+                for Subsite #13 filtering and V10.3 Smart Mistake Deck diagnostics via{' '}
+                <code className="font-mono-tabular text-emerald-300">WeaknessTargetedGen AI</code>.
+              </p>
             </div>
             <div className="lg:col-span-6 space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
-                <SpotlightCard className="rounded-xl p-5 border-rose-500/35 space-y-1.5">
+                <SpotlightCard className="rounded-xl p-5 border-rose-500/35 space-y-2">
                   <div className="text-xs font-mono-tabular text-rose-400">Live Rated Mode</div>
                   <div className="font-semibold text-white text-sm">Topic Hints Stripped</div>
-                  <p className="ae-prose text-xs text-slate-400">
+                  <p className="ae-prose text-justify text-xs text-slate-400 leading-relaxed">
                     Only Arena domain and Segment difficulty appear; TagArchitect suppresses sub-topic strings client
                     &amp; edge side.
                   </p>
                 </SpotlightCard>
-                <SpotlightCard className="rounded-xl p-5 border-emerald-500/35 space-y-1.5">
+                <SpotlightCard className="rounded-xl p-5 border-emerald-500/35 space-y-2">
                   <div className="text-xs font-mono-tabular text-emerald-400">Unrated Practice &amp; Database</div>
                   <div className="font-semibold text-white text-sm">Granular Theorem Search</div>
-                  <p className="ae-prose text-xs text-slate-400">
+                  <p className="ae-prose text-justify text-xs text-slate-400 leading-relaxed">
                     Full tag filtering unlocks post-contest so WeaknessTargetedGen AI can target specific lemma gaps.
                   </p>
                 </SpotlightCard>
               </div>
-              <div className="rounded-2xl border border-amber-400/25 overflow-hidden aspect-[16/10] max-h-[195px] w-full relative media-frame">
+              <div className="rounded-2xl border border-amber-400/25 overflow-hidden aspect-[16/10] max-h-[215px] w-full relative media-frame">
                 <ResilientImage
                   src={MEDIA.arenasZeroFrag}
                   alt="Zero-fragmentation Olympiad problem statements without pre-labeled topic hints"
@@ -560,6 +609,10 @@ export const ArenasEloPage: React.FC = () => {
               kicker="Strict No-Mixed ELO Policy"
               title="Complete Isolation Prevents Rating Inflation Across Branches"
               summary="Mastery in Geometry never inflates Number Theory matchmaking, while Overall All-Rounder rewards balanced excellence culminating in the Top 128 World Cup."
+              details={[
+                'Across the 5 Core Arenas, each subsite computes both a General ELO ledger and an Expert ELO ledger—generating 10 Core Arena ELOs per competitor—which resolve into 12 named titles per discipline from Initiate (0–499) through Singularity (3000+).',
+                'Subsite #7 Standings publishes all 10 Core Arena leaderboards side by side with Contribution ELO, HQ ELO, Academy Standings, and All-Rounders so schools and olympiad scouts evaluate genuine breadth.',
+              ]}
               accentColor="#F43F5E"
             />
           </div>
@@ -576,25 +629,25 @@ export const ArenasEloPage: React.FC = () => {
           <div className="grid lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-7 space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
-                <SpotlightCard className="rounded-2xl p-6 space-y-2">
+                <SpotlightCard className="rounded-2xl p-6 space-y-2.5">
                   <div className="font-mono-tabular text-xs text-amber-300">Anti-Collusion Limit</div>
                   <h3 className="font-display text-lg font-bold text-white">24h 2-Match Pairwise Cap</h3>
-                  <p className="ae-prose text-sm text-slate-300">
+                  <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                     Any two <code className="font-mono-tabular text-amber-300">@handles</code> can play at most 2 rated
                     1v1 matches in a rolling 24-hour window, neutralizing ELO win-trading rings.
                   </p>
                 </SpotlightCard>
-                <SpotlightCard className="rounded-2xl p-6 space-y-2">
+                <SpotlightCard className="rounded-2xl p-6 space-y-2.5">
                   <div className="font-mono-tabular text-xs text-emerald-300">System Expectation Override</div>
                   <h3 className="font-display text-lg font-bold text-white">+ΔR Underdog Protection</h3>
-                  <p className="ae-prose text-sm text-slate-300">
+                  <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                     When a lower-rated solver faces a 2000+ Sentinel and outperforms expected score margin, System
                     Expectation Override protects against harsh rating drops.
                   </p>
                 </SpotlightCard>
               </div>
               <SpotlightCard className="rounded-2xl overflow-hidden border-rose-400/30 grid sm:grid-cols-12 items-stretch">
-                <div className="sm:col-span-4 min-h-[150px] relative media-frame">
+                <div className="sm:col-span-4 min-h-[190px] relative media-frame">
                   <ResilientImage
                     src={MEDIA.arenasAllRounder}
                     alt="Overall All-Rounder composite ranking and World Cup qualification track"
@@ -603,17 +656,22 @@ export const ArenasEloPage: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-transparent to-transparent" />
                 </div>
-                <div className="sm:col-span-8 p-6 space-y-2">
+                <div className="sm:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                   <div className="text-xs font-mono-tabular text-rose-300">
                     Overall All-Rounder Composite Rating &amp; World Cup Seeding
                   </div>
-                  <h3 className="font-display text-lg font-bold text-white">
+                  <h3 className="font-display text-lg font-bold text-white leading-snug">
                     Anchored on Subsite #5 (Mixed Olympiad)
                   </h3>
-                  <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+                  <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                     Published publicly on Subsite #7 Standings (<code className="font-mono-tabular">All Rounders</code>),
                     the composite aggregates all 5 arenas with primary weight on Mixed Olympiad &amp; Sunday Mega results
                     to qualify top solvers for the Top 128 Annual World Cup.
+                  </p>
+                  <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
+                    From Round of 128 through the Grand Final Champion crowned with the Golden Crown, only verified
+                    meritocratic play advances—Contribution ELO and HQ governance tiers remain permanently separated from
+                    competitive seeding.
                   </p>
                 </div>
               </SpotlightCard>

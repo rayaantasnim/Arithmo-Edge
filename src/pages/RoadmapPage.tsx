@@ -237,7 +237,7 @@ export const RoadmapPage: React.FC = () => {
                 </h1>
               </HeroReveal>
               <HeroReveal delay={0.14}>
-                <p className="ae-prose text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
+                <p className="ae-prose text-justify text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
                   Trace Arithmo-Edge&apos;s journey from <span className="font-mono-tabular text-cyan-300">Prime-Factor.app</span>{' '}
                   and <span className="font-mono-tabular text-cyan-300">V1.0–V4.0</span> Decimal Rollout waves through
                   our <span className="text-white font-semibold">V10.0–V10.3</span> breakthroughs, the{' '}
@@ -286,7 +286,7 @@ export const RoadmapPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-slate-700/70">
                 <div className="text-xs font-mono-tabular text-slate-400">V3.2 – V6.0 · Foundation</div>
                 <h3 className="font-display font-bold text-white">Single-Repo Prototype</h3>
-                <p className="text-xs text-slate-300">
+                <p className="ae-prose text-justify text-xs text-slate-300">
                   Initial KaTeX contest client, Prime-Factor.app tools, and earliest Number Theory ELO curves.
                 </p>
               </SpotlightCard>
@@ -294,7 +294,7 @@ export const RoadmapPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-violet-400/35">
                 <div className="text-xs font-mono-tabular text-violet-300">V7.0 – V9.5 · Split &amp; AI</div>
                 <h3 className="font-display font-bold text-white">14-Portal Federation</h3>
-                <p className="text-xs text-slate-300">
+                <p className="ae-prose text-justify text-xs text-slate-300">
                   Migrated arenas into 14 isolated GitHub Pages sites linked via Arithmo-Core-SDK and 42 AI engines.
                 </p>
               </SpotlightCard>
@@ -302,7 +302,7 @@ export const RoadmapPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-cyan-400/45">
                 <div className="text-xs font-mono-tabular text-cyan-300">V10.0 – V10.3 · Launch Era</div>
                 <h3 className="font-display font-bold text-white">QPRT-4 &amp; Global Launch</h3>
-                <p className="text-xs text-slate-300">
+                <p className="ae-prose text-justify text-xs text-slate-300">
                   ChronoVault resilience, Module 7 toggle, Zero-Copy Genome, and custom .com launch in 2 months.
                 </p>
               </SpotlightCard>
@@ -310,7 +310,7 @@ export const RoadmapPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-5 space-y-2 border-amber-400/45">
                 <div className="text-xs font-mono-tabular text-amber-300">V11.0+ · Post-Launch</div>
                 <h3 className="font-display font-bold text-white">Arithmo Database &amp; API</h3>
-                <p className="text-xs text-slate-300">
+                <p className="ae-prose text-justify text-xs text-slate-300">
                   Permanent indexed repository of IMO/Putnam/RMM/BMO/BdMO sets, SymPy proofs &amp; AI editorials.
                 </p>
               </SpotlightCard>
@@ -414,7 +414,7 @@ export const RoadmapPage: React.FC = () => {
                           <span className="text-slate-300">{series.dateRange}</span>
                         </div>
                         <h3 className="font-display text-lg sm:text-xl font-bold text-white">{series.title}</h3>
-                        <p className="text-xs sm:text-sm text-slate-400">{series.tagline}</p>
+                        <p className="ae-prose text-justify text-xs sm:text-sm text-slate-400">{series.tagline}</p>
                       </div>
                       <span className="font-mono-tabular text-xs text-slate-400 shrink-0">
                         {series.steps.length === 1 ? '1 Major Gate' : `${series.steps.length} Decimal Releases`}
@@ -445,7 +445,7 @@ export const RoadmapPage: React.FC = () => {
 
                             <h4 className="font-display text-base sm:text-lg font-bold text-white">{step.title}</h4>
 
-                            <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                               {step.summary}
                             </p>
 
@@ -545,7 +545,7 @@ export const RoadmapPage: React.FC = () => {
                     <span className="text-slate-400">Zero-Copy Edge Ready</span>
                   </div>
                   <h3 className="font-display text-2xl font-bold text-white">{m.title}</h3>
-                  <p className="text-sm text-slate-300 leading-relaxed">{m.summary}</p>
+                  <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">{m.summary}</p>
                   <div className="space-y-2.5 pt-2">
                     {m.specs.map((spec) => (
                       <div
@@ -569,7 +569,7 @@ export const RoadmapPage: React.FC = () => {
           </div>
 
           <div className="mt-6 rounded-2xl border border-emerald-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[160px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
               <ResilientImage
                 src={MEDIA.roadPwa}
                 alt="14-Portal Offline Installable PWA and V10.3 Smart Mistake Deck"
@@ -578,11 +578,15 @@ export const RoadmapPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-emerald-300">V10.2 Offline PWA + V10.3 Mistake Deck</div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Installable Service Workers keep IndexedDB contest scratchpads responsive during rural blackouts, while
                 post-contest Mistake Decks convert missed tags into targeted 7-day flashcards.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Together with V10.0 dual-model AI portals and V10.1 Top 128 World Cup half-elimination brackets, every
+                micro-frontend unifies zero-burn reliability with competitive Olympiad rigor.
               </p>
             </div>
           </div>
@@ -600,13 +604,17 @@ export const RoadmapPage: React.FC = () => {
               <h2 className="section-title-fluid font-display font-bold text-white">
                 Arithmo Database (14th Portal · Post Subsites #1–#12)
               </h2>
-              <p className="ae-prose text-sm sm:text-base text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                 Launching as our 14th federated portal right after Subsites #1–#12 go live,{' '}
                 <span className="text-white font-semibold">Arithmo Database</span> indexes{' '}
                 <span className="text-white font-semibold">all completed past Arithmo-Edge contests</span> across the 5
                 Core Arenas alongside international &amp; national Olympiad archives (
                 <span className="font-mono-tabular text-cyan-300">IMO, Putnam, RMM, BMO, BdMO</span>) and{' '}
                 <span className="text-white font-semibold">AI-Generated Step-by-Step Editorials</span>.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Every post-embargo entry links directly into SymPy-verified proof steps and Virtual Gym Ghost Runs,
+                turning completed rated matches into an ever-growing structured Olympiad study library.
               </p>
               <div className="rounded-xl border border-amber-400/35 bg-amber-400/10 p-4 text-xs sm:text-sm text-amber-100 flex items-start gap-2.5">
                 <Lock className="w-4 h-4 text-amber-300 shrink-0 mt-0.5" />
@@ -626,19 +634,19 @@ export const RoadmapPage: React.FC = () => {
               <div className="grid sm:grid-cols-2 gap-3 text-xs">
                 <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-3.5 space-y-1">
                   <div className="text-white font-semibold">5-Arena Contest Archive</div>
-                  <p className="text-slate-400">Complete post-embargo rounds categorized by General &amp; Expert tracks.</p>
+                  <p className="ae-prose text-justify text-slate-400">Complete post-embargo rounds categorized by General &amp; Expert tracks.</p>
                 </div>
                 <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-3.5 space-y-1">
                   <div className="text-white font-semibold">IMO · Putnam · BdMO Corpus</div>
-                  <p className="text-slate-400">Historic national &amp; global Olympiad sets with post-round topic tags.</p>
+                  <p className="ae-prose text-justify text-slate-400">Historic national &amp; global Olympiad sets with post-round topic tags.</p>
                 </div>
                 <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-3.5 space-y-1">
                   <div className="text-white font-semibold">AI Step-by-Step Editorials</div>
-                  <p className="text-slate-400">SymPy-verified walkthroughs attached to every released database item.</p>
+                  <p className="ae-prose text-justify text-slate-400">SymPy-verified walkthroughs attached to every released database item.</p>
                 </div>
                 <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-3.5 space-y-1">
                   <div className="text-white font-semibold">Un-Leaked Sealed Vault</div>
-                  <p className="text-slate-400">Zero accidental exposure of suspended &lt;3 competitor rounds.</p>
+                  <p className="ae-prose text-justify text-slate-400">Zero accidental exposure of suspended &lt;3 competitor rounds.</p>
                 </div>
               </div>
               <div className="rounded-xl overflow-hidden border border-slate-800 aspect-[16/10] max-h-[160px] w-full relative media-frame">
@@ -702,7 +710,7 @@ export const RoadmapPage: React.FC = () => {
                   <span>~$160–$680/mo Net Profit</span>
                 </div>
                 <h3 className="font-display text-2xl font-bold text-white">Bootstrapped Global Foundation</h3>
-                <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                   Generates <span className="font-mono-tabular text-emerald-300 font-semibold">~$160–$680/mo</span> net
                   profit from Day 1 by hosting 14 sites on Free Forever GitHub Pages, reducing Firestore reads by{' '}
                   <span className="font-mono-tabular text-white">98%</span> via Read-Shield snapshots, running BigInt
@@ -732,7 +740,7 @@ export const RoadmapPage: React.FC = () => {
                 <span>$1.5B–$3.0B Valuation Target</span>
               </div>
               <h3 className="font-display text-2xl font-bold text-white">Olympiad Edge Holding Group</h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Scales across 8 specialized verticals to{' '}
                 <span className="font-mono-tabular text-violet-300 font-semibold">$140M–$300M/yr</span> annual revenue and{' '}
                 <span className="font-mono-tabular text-emerald-300 font-semibold">$100M–$225M/yr</span> net profit at{' '}
@@ -758,6 +766,10 @@ export const RoadmapPage: React.FC = () => {
             kicker="Bootstrapped Discipline → 20-Year Scale"
             title="Zero VC Debt Year-1 Unit Economics & 75% Holding Margin"
             summary="Read-Shield 98% Firestore read savings and Free Forever GitHub Pages hosting generate sustainable profit from Day 1 while building toward 8 global spin-offs."
+            details={[
+              'Running client-side Miller-Rabin primality tests and Read-Shield static snapshots eliminates runaway server bills, letting Arithmo-Edge operate profitably with $0 institutional venture debt.',
+              'Over a 20-year holding horizon, Olympiad Edge monetizes enterprise SaaS proctoring, verified quant hiring bridges, institutional LMS infrastructure, and ethical Zero-PII datasets while keeping student arenas Free Forever.',
+            ]}
             accentColor="#10B981"
             className="mt-6"
           />
@@ -791,7 +803,7 @@ export const RoadmapPage: React.FC = () => {
                   >
                     <div className={`text-xs font-mono-tabular ${spinoff.textClass}`}>{spinoff.num}</div>
                     <h3 className="font-display font-bold text-white text-sm sm:text-base">{spinoff.name}</h3>
-                    <p className="text-xs text-slate-400">{spinoff.vertical}</p>
+                    <p className="ae-prose text-justify text-xs text-slate-400">{spinoff.vertical}</p>
                   </button>
                 );
               })}
@@ -810,21 +822,21 @@ export const RoadmapPage: React.FC = () => {
                       <Layers className="w-3.5 h-3.5" />
                       <span>Activation Trigger</span>
                     </div>
-                    <p data-spinoff-trig="" className="text-slate-300 leading-relaxed">{activeSpinOff.trigger}</p>
+                    <p data-spinoff-trig="" className="ae-prose text-justify text-slate-300 leading-relaxed">{activeSpinOff.trigger}</p>
                   </div>
                   <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4 space-y-1">
                     <div className="text-emerald-300 font-semibold flex items-center gap-1.5">
                       <TrendingUp className="w-3.5 h-3.5" />
                       <span>Commercial Engine</span>
                     </div>
-                    <p data-spinoff-rev="" className="text-slate-300 leading-relaxed">{activeSpinOff.revenueModel}</p>
+                    <p data-spinoff-rev="" className="ae-prose text-justify text-slate-300 leading-relaxed">{activeSpinOff.revenueModel}</p>
                   </div>
                   <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4 space-y-1">
                     <div className="text-amber-300 font-semibold flex items-center gap-1.5">
                       <Building2 className="w-3.5 h-3.5" />
                       <span>Federation Synergy</span>
                     </div>
-                    <p data-spinoff-syn="" className="text-slate-300 leading-relaxed">{activeSpinOff.synergy}</p>
+                    <p data-spinoff-syn="" className="ae-prose text-justify text-slate-300 leading-relaxed">{activeSpinOff.synergy}</p>
                   </div>
                 </div>
               </div>
@@ -838,12 +850,17 @@ export const RoadmapPage: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
                 </div>
-                <div className="lg:col-span-8 space-y-1.5">
+                <div className="lg:col-span-8 p-2 sm:p-3 space-y-2.5">
                   <div className="text-xs font-mono-tabular text-violet-300">Alphabet-Style Holding Synergy</div>
-                  <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                     Every spin-off company compounds around verified Arithmo-Edge mathematical rigor—from B2B Module 7
                     exam proctoring and quant hiring bridges to ethical Zero-PII reasoning datasets—while keeping core
                     student arenas 100% Free Forever.
+                  </p>
+                  <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Each subsidiary graduates only upon clearing explicit volume and quality triggers—such as 250k+
+                    verified SymPy trajectories, 1M+ clean QPRT-4 sessions, or 1,000+ onboarded KYB academies—ensuring
+                    long-term compounding value without ever compromising core youth accessibility.
                   </p>
                 </div>
               </div>
@@ -871,7 +888,7 @@ export const RoadmapPage: React.FC = () => {
                 </div>
                 <h3 className="font-display text-lg font-bold text-white">{perk.title}</h3>
                 <div className="text-[11px] font-mono-tabular text-slate-400">{perk.allocation}</div>
-                <p className="text-xs text-slate-300 leading-relaxed pt-1">{perk.detail}</p>
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed pt-1">{perk.detail}</p>
               </SpotlightCard>
             ))}
           </div>
@@ -894,6 +911,10 @@ export const RoadmapPage: React.FC = () => {
             kicker="Genesis Cutover Continuity"
             title="Permanent GitHub Pages Edge + Custom .com Production Domain"
             summary="Every existing federated arithmo-edge.github.io portal stays permanently online as the flagship custom .com production domain rolls out within two months."
+            details={[
+              'All 14 subsite URLs, Firebase Auth sessions, and ELO ledgers synchronize continuously through Arithmo-Core-SDK (engine.js) so competitors experience zero broken bookmarks across the domain upgrade.',
+              'Early-bird incentives—First 50 handles receiving 3 months Singularity, Next 100 receiving Pro, and the First 5 Founding Academies locking 25% OFF—carry forward seamlessly across the cutover.',
+            ]}
             accentColor="#00F0FF"
             reverse
             className="mt-6"
@@ -920,7 +941,7 @@ export const RoadmapPage: React.FC = () => {
               <h3 className="font-display text-2xl font-bold text-white">
                 Partner With Olympiad Edge &amp; Pioneers
               </h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Schools, open-source contributors, problemsetters, and patrons can connect directly via{' '}
                 <span className="font-mono-tabular text-cyan-300">github.com/Arithmo-Edge</span> or{' '}
                 <span className="font-mono-tabular text-cyan-300">rayaantasnim@gmail.com</span>.
@@ -944,6 +965,10 @@ export const RoadmapPage: React.FC = () => {
             kicker="Open Federation Onboarding"
             title="Connect Ahead of Dec 31, 2026 V4.0 Grand Singularity"
             summary="Academies, problemsetters, open-source engineers, and educational patrons collaborate directly through github.com/Arithmo-Edge ahead of full cutover."
+            details={[
+              'Inspect live subsite repositories, test client-side BigInt utilities, or register institutional cohorts prior to Series 4 Midnight activation on December 31, 2026.',
+              'All competitive public arenas, Top 128 World Cup qualifiers, and Arithmo Database indices stay permanently accessible without financial barrier.',
+            ]}
             accentColor="#8B5CF6"
             className="mt-6"
           />

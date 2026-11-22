@@ -289,7 +289,7 @@ export const AiCorePage: React.FC = () => {
               <SpotlightCard className={`rounded-2xl p-5 space-y-2 h-full ${engine.borderClass}`}>
                 <div className={`text-xs font-mono-tabular ${engine.badgeClass}`}>{engine.badge}</div>
                 <h3 className="font-display font-bold text-white">{engine.name}</h3>
-                <p className="ae-prose text-xs text-slate-300">{engine.desc}</p>
+                <p className="ae-prose text-justify text-xs text-slate-300">{engine.desc}</p>
               </SpotlightCard>
             </div>
           ))}
@@ -297,7 +297,7 @@ export const AiCorePage: React.FC = () => {
 
         <ScrollReveal delay={0.05}>
           <div className="mt-8 rounded-2xl border border-cyan-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[175px] relative media-frame">
+            <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[200px] relative media-frame">
               <ResilientImage
                 src={MEDIA.aiDualModel}
                 alt="In-chat dual-model orchestration switching Gemini Flash and Qwen-Math-72B SymPy"
@@ -306,13 +306,18 @@ export const AiCorePage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-[#060913]/35 to-transparent" />
             </div>
-            <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
               <div className="text-xs font-mono-tabular text-cyan-300">
                 Single-Responsibility Micro-Agents · 1× General vs 2× Hybrid
               </div>
-              <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Toggle between Gemini Flash for conversational Socratic coaching and Qwen-Math-72B + Python/SymPy
                 deterministic symbolic execution—never leaking raw keys onto GitHub Pages frontends.
+              </p>
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Every request passes Firebase JWT verification into stateless Cloudflare Worker proxies where single-duty
+                guardians enforce contest embargo locks, semantic token metering, and 24-hour Zero-PII JSONL archiving
+                at sub-second latency.
               </p>
             </div>
           </div>
@@ -354,14 +359,14 @@ export const AiCorePage: React.FC = () => {
                 <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
                   <div className="text-xs font-mono-tabular text-cyan-300">Client Zero-Call Offload</div>
                   <div className="text-sm font-semibold text-white mt-1">Miller-Rabin &amp; Brent-Pollard&apos;s Rho</div>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="ae-prose text-justify text-xs text-slate-400 mt-1">
                     Basic modular primes &amp; factorizations execute at zero server token cost via client BigInt.
                   </p>
                 </div>
                 <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
                   <div className="text-xs font-mono-tabular text-violet-300">Cloudflare Workers + Firebase</div>
                   <div className="text-sm font-semibold text-white mt-1">Zero-Key Edge Proxy</div>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="ae-prose text-justify text-xs text-slate-400 mt-1">
                     All AI credentials live exclusively inside Cloudflare Worker secrets with real-time Firebase rules.
                   </p>
                 </div>
@@ -400,19 +405,32 @@ export const AiCorePage: React.FC = () => {
             </div>
 
             <div className="grid lg:grid-cols-12 gap-6 items-start">
-              <div className="lg:col-span-6 rounded-xl border border-slate-800 bg-slate-950/85 p-5 space-y-3">
-                <div className="flex items-center gap-2 text-xs font-mono-tabular text-emerald-300">
-                  <Cpu className="w-4 h-4" />
-                  <span data-genome-title="">Extracted Abstract Theorem Graph ({genomeSource})</span>
+              <div className="lg:col-span-6 space-y-4">
+                <div className="rounded-xl border border-slate-800 bg-slate-950/85 p-5 space-y-3">
+                  <div className="flex items-center gap-2 text-xs font-mono-tabular text-emerald-300">
+                    <Cpu className="w-4 h-4" />
+                    <span data-genome-title="">Extracted Abstract Theorem Graph ({genomeSource})</span>
+                  </div>
+                  <div data-genome-fullname="" className="font-display text-lg font-bold text-white">{activeGenome.fullName}</div>
+                  <ul data-genome-nodes="" className="space-y-2 text-xs font-mono-tabular text-cyan-200">
+                    {activeGenome.graphNodes.map((node) => (
+                      <li key={node} className="rounded-lg border border-slate-800 bg-slate-900/75 px-3 py-2">
+                        {node}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div data-genome-fullname="" className="font-display text-lg font-bold text-white">{activeGenome.fullName}</div>
-                <ul data-genome-nodes="" className="space-y-2 text-xs font-mono-tabular text-cyan-200">
-                  {activeGenome.graphNodes.map((node) => (
-                    <li key={node} className="rounded-lg border border-slate-800 bg-slate-900/75 px-3 py-2">
-                      {node}
-                    </li>
-                  ))}
-                </ul>
+
+                <div className="rounded-xl border border-slate-800 bg-slate-950/85 p-5 space-y-2">
+                  <div className="text-xs font-mono-tabular text-cyan-300">
+                    PlagioGuard + AdversarialRedTeam Synthesis Gate
+                  </div>
+                  <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
+                    Once structural theorem transitions are extracted, Forge generators synthesize fresh problem prose,
+                    validate unique integer bounds inside SymPy sandboxes, and reject any draft surpassing 75% lexical
+                    overlap against historical AoPS or Olympiad corpora.
+                  </p>
+                </div>
               </div>
 
               <div className="lg:col-span-6 space-y-4">
@@ -421,7 +439,7 @@ export const AiCorePage: React.FC = () => {
                     <BookOpenCheck className="w-4 h-4" />
                     <span>Zero-Copy Synthetic Output</span>
                   </div>
-                  <p data-genome-output="" className="ae-prose text-sm text-slate-200 leading-relaxed">{activeGenome.syntheticOutput}</p>
+                  <p data-genome-output="" className="ae-prose text-justify text-sm text-slate-200 leading-relaxed">{activeGenome.syntheticOutput}</p>
                 </div>
                 <div className="rounded-xl border border-emerald-400/35 bg-emerald-500/10 p-4 text-xs text-emerald-200 flex items-start gap-2.5">
                   <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
@@ -478,10 +496,20 @@ export const AiCorePage: React.FC = () => {
                   >
                     <div className={`text-xs font-mono-tabular ${payload.tagClass}`}>{payload.tag}</div>
                     <div className="font-display font-bold text-white mt-1">{payload.title}</div>
-                    <p className="text-xs text-slate-400 mt-1">{payload.desc}</p>
+                    <p className="ae-prose text-justify text-xs text-slate-400 mt-1">{payload.desc}</p>
                   </button>
                 );
               })}
+
+              <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-5 space-y-2">
+                <div className="text-xs font-mono-tabular text-amber-300">
+                  AES-256-GCM Blinded Telemetry Protocol
+                </div>
+                <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
+                  Advisory Soft-Pinch notices coach healthy contest habits without disclosing exact detection heuristics
+                  or penalizing rating trajectories prematurely ahead of mandatory Sunday Mega Module 7 sessions.
+                </p>
+              </div>
             </div>
             <div className="lg:col-span-7 glass-panel rounded-2xl p-6 sm:p-8 flex flex-col justify-between gap-5">
               <div>
@@ -626,6 +654,10 @@ export const AiCorePage: React.FC = () => {
             kicker="Edge Isolation & Hard-Lock Shield"
             title="Zero-Leak Contest Cutoff & Cloudflare Workers Proxy"
             summary="QPRT-4 severs AI tutoring Subsites #8 and #9 the instant a rated clock starts while running zero-secret edge inference exclusively via Cloudflare Workers."
+            details={[
+              'Short-lived Firebase JWT claims verify whether a contestant holds an active T-0 contest lock; any unauthorized tutoring call from Subsite #8 or Subsite #9 is rejected at the Cloudflare Worker perimeter.',
+              'Zero raw Gemini or Qwen API keys ever compile into static GitHub Pages assets, and GitHub Actions never run live inference—guaranteeing sub-second response times alongside deterministic Python/SymPy sandboxing.',
+            ]}
             accentColor="#F43F5E"
             className="mt-6"
           />
@@ -646,7 +678,7 @@ export const AiCorePage: React.FC = () => {
               <h3 className="font-display text-xl font-bold text-white">
                 Read-Only Schema v1.2 Vaults &amp; Sovereign Overlord AI
               </h3>
-              <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 <span className="text-white font-semibold">GoldenVault Miner</span> ingests Co-Founders&apos; private
                 5&times;4 JSON vaults via Read-Only GitHub PAT + Cloudflare Worker Proxy under{' '}
                 <span className="font-mono-tabular text-amber-300">Schema v1.2</span>. Above operational teams, the 1
@@ -674,6 +706,10 @@ export const AiCorePage: React.FC = () => {
             kicker="Schema v1.2 Vault & Sovereign Command"
             title="GoldenVault Miner & Subsite #12 Headquarters AI"
             summary="Read-only Cloudflare proxies ingest Co-Founders' private 5×4 Schema v1.2 Golden Vaults while Supreme Headquarters AI serves Chief Arbiters and Prime Sovereigns."
+            details={[
+              'Unplayed problem banks stay strictly isolated from public repository builds and are hydrated exclusively via Read-Only GitHub PAT tokens inside Worker memory during verified match windows.',
+              'At the apex of the 42-engine hierarchy, Supreme Headquarters AI cross-examines 4-Step Forensic Appeals, MBTS anomaly clusters, and QPRT-4 ChronoVault logs alongside 750+ Chief Arbiters and Top 3 Prime Sovereigns.',
+            ]}
             accentColor="#F59E0B"
             reverse
             className="mt-6"

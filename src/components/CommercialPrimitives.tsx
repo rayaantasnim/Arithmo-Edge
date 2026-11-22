@@ -34,7 +34,11 @@ export const SectionHeader: React.FC<{
       <div className="space-y-1.5 max-w-3xl">
         <p className={`text-xs font-mono-tabular font-semibold tracking-wide ${accentClass}`}>{kicker}</p>
         <h2 className="section-title-fluid font-display font-bold ae-title-gradient">{title}</h2>
-        {subtitle && <p className="ae-prose text-sm sm:text-base text-slate-300 prose-measure pt-1">{subtitle}</p>}
+        {subtitle && (
+          <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 prose-measure pt-1">
+            {subtitle}
+          </p>
+        )}
       </div>
       {action && <div className="shrink-0">{action}</div>}
     </div>
@@ -80,7 +84,7 @@ export const FaqAccordion: React.FC<{items: FaqItem[]; accentClass?: string}> = 
               />
             </button>
             <div data-faq-panel="" className={`overflow-hidden ${isOpen ? '' : 'hidden'}`}>
-              <div className="px-5 pb-4 pt-1 border-t border-slate-800/70 ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <div className="px-5 pb-4 pt-1 border-t border-slate-800/70 ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 {item.a}
               </div>
             </div>
@@ -397,7 +401,7 @@ export const GuestDuelWidget: React.FC = () => {
           </div>
 
           <div className="rounded-xl bg-slate-950/85 border border-slate-800 p-5 space-y-3">
-            <p data-gd-statement="" className="text-sm sm:text-base text-white font-medium leading-relaxed">{problem.statement}</p>
+            <p data-gd-statement="" className="ae-prose text-justify text-sm sm:text-base text-white font-medium leading-relaxed">{problem.statement}</p>
             <div
               data-gd-hint-box=""
               className={`rounded-lg border border-amber-400/30 bg-amber-400/10 p-3.5 text-xs text-amber-200 leading-relaxed ${
@@ -493,7 +497,7 @@ export const GuestDuelWidget: React.FC = () => {
                 </button>
               </div>
             </div>
-            <p data-gd-timeout-explain="" className="text-slate-200 leading-relaxed">{problem.explanation}</p>
+            <p data-gd-timeout-explain="" className="ae-prose text-justify text-slate-200 leading-relaxed">{problem.explanation}</p>
           </div>
 
           <div
@@ -506,7 +510,7 @@ export const GuestDuelWidget: React.FC = () => {
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
               <span data-gd-solved-time="">Verified Accepted in {60 - secondsLeft}s!</span>
             </div>
-            <p data-gd-solved-explain="" className="text-slate-200 leading-relaxed">{problem.explanation}</p>
+            <p data-gd-solved-explain="" className="ae-prose text-justify text-slate-200 leading-relaxed">{problem.explanation}</p>
           </div>
         </div>
 
@@ -814,19 +818,19 @@ export const ShadowBotGauntletWidget: React.FC = () => {
               {poolState === 'searching' && `Searching ±100 ELO Pool (${poolTimer}s left)`}
               {poolState === 'stealth' && 'Matched: @tasnim_nt_04 (Stealth Mirror)'}
             </div>
-            <p className="text-slate-400">Silent seamless handoff at T=60s eliminates infinite empty lobby waits.</p>
+            <p className="ae-prose text-justify text-slate-400">Silent seamless handoff at T=60s eliminates infinite empty lobby waits.</p>
           </div>
           <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 space-y-1">
             <div className="text-slate-400">Opponent ELO Mirror</div>
             <div data-sbg-pool-elo="" className="font-mono-tabular text-base font-bold text-cyan-300">
               {poolState === 'stealth' ? `${userElo} ELO (Exact Live Mirror)` : `${userElo - 100} – ${userElo + 100} ELO`}
             </div>
-            <p className="text-slate-400">Realistic human-like @handle &amp; authentic solve cadence envelope.</p>
+            <p className="ae-prose text-justify text-slate-400">Realistic human-like @handle &amp; authentic solve cadence envelope.</p>
           </div>
           <div className="rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-4 space-y-1">
             <div className="text-emerald-300">Rating &amp; Anti-Inflation Guard</div>
             <div className="font-mono-tabular text-base font-bold text-white">100% Rated · 0.75× K-Factor</div>
-            <p className="text-slate-300">Counts as full official rated match while capping bot-farming variance.</p>
+            <p className="ae-prose text-justify text-slate-300">Counts as full official rated match while capping bot-farming variance.</p>
           </div>
         </div>
       </div>
@@ -1030,7 +1034,7 @@ export const ShadowBotGauntletWidget: React.FC = () => {
                   <div data-sbg-bot-tele="" className="text-xs text-slate-400 font-mono-tabular">{matchedPersona.telemetryProfile}</div>
                 </div>
               </div>
-              <p data-sbg-bot-style="" className="text-xs sm:text-sm text-slate-300 leading-relaxed">{matchedPersona.style}</p>
+              <p data-sbg-bot-style="" className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">{matchedPersona.style}</p>
             </div>
 
             <div>
@@ -1159,7 +1163,7 @@ export const DynamicCreditsPreview: React.FC = () => {
         <div className="font-display text-lg sm:text-xl font-bold text-white">
           &quot;All Credit goes to the respective HQ Core team&quot;
         </div>
-        <p className="text-xs text-slate-300">
+        <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
           Used whenever contest sets originate from internal Golden Vault curation and multi-reviewer HQ Core teams
           to safeguard uniform impartiality.
         </p>
@@ -1177,7 +1181,7 @@ export const DynamicCreditsPreview: React.FC = () => {
         <div className="font-display text-lg sm:text-xl font-bold text-white">
           &quot;Autonomous Creation by Arithmo Back End AI Engines&quot;
         </div>
-        <p className="text-xs text-slate-300">
+        <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
           Displayed when Question-Forge &amp; Anti-LLM Agents synthesize, verify via Python/SymPy, and calibrate
           standard daily rounds with zero human leak surface.
         </p>
@@ -1330,7 +1334,7 @@ export const WalletCheckoutSimulator: React.FC = () => {
         {/* Top-Up Column */}
         <div className="lg:col-span-5 rounded-xl border border-slate-800 bg-slate-950/85 p-5 space-y-4">
           <div className="text-xs font-mono-tabular text-cyan-300">Step 1 · Fund Arithmo Wallet (+10% Bonus)</div>
-          <p className="text-xs text-slate-300 leading-relaxed">
+          <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">
             <strong>Lemon Squeezy</strong> and <strong>bKash / Nagad</strong> exclusively top up your closed-loop{' '}
             <em>Arithmo Wallet</em>. All plans and packs are checked out strictly using internal Wallet Credits.
           </p>
@@ -1431,7 +1435,7 @@ export const WalletCheckoutSimulator: React.FC = () => {
               <AlertTriangle className="w-4 h-4 shrink-0" />
               <span>Insufficient Balance in Arithmo Wallet</span>
             </div>
-            <p className="text-slate-200">
+            <p className="ae-prose text-justify text-slate-200 leading-relaxed">
               Required: <strong data-ws-req-price="">${selectedItem.price.toFixed(2)}</strong> · Available:{' '}
               <strong data-ws-avail-bal="">${walletBalance.toFixed(2)}</strong>. Direct card payments are disabled at item checkout—top up
               your Arithmo Wallet on the left via Lemon Squeezy or bKash/Nagad (+10% Bonus) first.
@@ -1477,7 +1481,7 @@ export const WalletCheckoutSimulator: React.FC = () => {
               </div>
               <span data-ws-grace-sec="" className="font-mono-tabular text-2xl font-bold text-white">{graceSeconds}s</span>
             </div>
-            <p className="text-xs text-slate-200 leading-relaxed">
+            <p className="ae-prose text-justify text-xs text-slate-200 leading-relaxed">
               Credits are held pending finalization. Cancel before <strong>0s</strong> for an automatic $0 penalty abort,
               or allow the timer to complete to provision <strong data-ws-sel-name="">{selectedItem.name}</strong>.
             </p>

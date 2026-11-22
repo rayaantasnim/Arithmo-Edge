@@ -103,7 +103,7 @@ export const PioneersPage: React.FC = () => {
                 <h1 className="hero-title-fluid font-display font-bold text-white">Pioneer Contributors</h1>
               </HeroReveal>
               <HeroReveal delay={0.14}>
-                <p className="ae-prose text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
+                <p className="ae-prose text-justify text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
                   Arithmo-Edge was built from scratch by two young Olympiad architects determined to democratize
                   real-time ELO mathematics globally without Venture Capital corruption or pay-to-win shortcuts—hosted
                   on Free Forever GitHub Pages under{' '}
@@ -148,12 +148,12 @@ export const PioneersPage: React.FC = () => {
                 <div key={stage.name} className="rounded-xl border border-slate-800 bg-slate-950/80 p-4 space-y-1.5">
                   <div className={`text-xs font-mono-tabular ${stage.color}`}>{stage.era}</div>
                   <div className="font-display text-base font-bold text-white">{stage.name}</div>
-                  <p className="text-xs text-slate-400 leading-relaxed">{stage.desc}</p>
+                  <p className="ae-prose text-justify text-xs text-slate-400 leading-relaxed">{stage.desc}</p>
                 </div>
               ))}
             </div>
             <div className="rounded-2xl border border-cyan-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[150px] relative media-frame">
+              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
                 <ResilientImage
                   src={MEDIA.pionPrimeFactor}
                   alt="Prime-Factor.app pre-era evolution into 14-portal Arithmo-Edge"
@@ -162,11 +162,15 @@ export const PioneersPage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
               </div>
-              <div className="lg:col-span-8 p-5 flex flex-col justify-center space-y-1">
+              <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                 <div className="text-xs font-mono-tabular text-cyan-300">Prime-Factor.app Pre-Era &rarr; Arithmo-Edge</div>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   From single-page browser primality checks to 14 synchronized competitive math portals backed by
                   Cloudflare Workers and Firebase.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Those earliest browser BigInt factorization tools established the core zero-server-burn philosophy
+                  that today keeps Daily Mon–Sat rated arenas, Sunday Mega, and World Cup qualifiers 100% Free Forever.
                 </p>
               </div>
             </div>
@@ -223,7 +227,7 @@ export const PioneersPage: React.FC = () => {
               </div>
 
               <div className="lg:col-span-7 space-y-4">
-                <p className="ae-prose text-sm sm:text-base text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                   Rayaan Tasnim conceived Olympiad Edge and designed the entire{' '}
                   <span className="text-white font-semibold">14-Website Federated Micro-Frontend Architecture</span>,{' '}
                   <span className="font-mono-tabular text-cyan-300">Arithmo-Core-SDK (engine.js)</span>, the{' '}
@@ -235,22 +239,27 @@ export const PioneersPage: React.FC = () => {
                   </span>
                   .
                 </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Through Read-Shield 98% snapshot caching, client-side BigInt primality and factorization verification,
+                  and Guardian Financial Custodianship ledgers, the architecture scales sustainably from Day 1 with $0
+                  VC debt ahead of custom .com production deployment.
+                </p>
                 <div className="grid sm:grid-cols-3 gap-3 text-xs pt-2">
                   <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3.5">
                     <div className="text-cyan-300 font-semibold">Infrastructure</div>
-                    <p className="text-slate-400 mt-1">
+                    <p className="ae-prose text-justify text-slate-400 mt-1">
                       14 isolated GitHub Pages sites + Cloudflare Worker Edge Proxies.
                     </p>
                   </div>
                   <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3.5">
                     <div className="text-cyan-300 font-semibold">Security &amp; Law</div>
-                    <p className="text-slate-400 mt-1">
+                    <p className="ae-prose text-justify text-slate-400 mt-1">
                       QPRT-4 ChronoVault, 11-Flag Ladder, COPPA/GDPR-K &amp; DSA compliance.
                     </p>
                   </div>
                   <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3.5">
                     <div className="text-cyan-300 font-semibold">Client Compute</div>
-                    <p className="text-slate-400 mt-1">
+                    <p className="ae-prose text-justify text-slate-400 mt-1">
                       Zero-call BigInt Miller-Rabin &amp; Brent-Pollard&apos;s Rho factorization.
                     </p>
                   </div>
@@ -297,7 +306,7 @@ export const PioneersPage: React.FC = () => {
               </div>
 
               <div className="lg:col-span-7 space-y-4">
-                <p className="ae-prose text-sm sm:text-base text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                   Jalees Habib co-engineered the mathematical core of Arithmo-Edge: calibrating the{' '}
                   <span className="text-white font-semibold">5 Core Arenas</span> and{' '}
                   <span className="text-white font-semibold">60 progressive ELO titles</span>, eliminating topic
@@ -305,20 +314,25 @@ export const PioneersPage: React.FC = () => {
                   rubrics, and co-authoring the uncontaminated{' '}
                   <span className="font-mono-tabular text-violet-300">5×4 Private Golden Vault</span> problem sets.
                 </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  His competition design guarantees authentic IMO and BdMO proof standards across Expert Segments 1–4,
+                  clean post-contest Find the Flaw hacking rules, and unbiased Overall All-Rounder averaging across all
+                  five fundamental mathematical disciplines.
+                </p>
                 <div className="grid sm:grid-cols-3 gap-3 text-xs pt-2">
                   <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3.5">
                     <div className="text-violet-300 font-semibold">ELO Calibrations</div>
-                    <p className="text-slate-400 mt-1">
+                    <p className="ae-prose text-justify text-slate-400 mt-1">
                       General/Expert split rating + Overall All-Rounder weighted aggregate.
                     </p>
                   </div>
                   <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3.5">
                     <div className="text-violet-300 font-semibold">Proof Standards</div>
-                    <p className="text-slate-400 mt-1">0–7 Olympiad proof rubric &amp; Find-the-Flaw adversarial rules.</p>
+                    <p className="ae-prose text-justify text-slate-400 mt-1">0–7 Olympiad proof rubric &amp; Find-the-Flaw adversarial rules.</p>
                   </div>
                   <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3.5">
                     <div className="text-violet-300 font-semibold">Golden Vault IP</div>
-                    <p className="text-slate-400 mt-1">
+                    <p className="ae-prose text-justify text-slate-400 mt-1">
                       Original curated Schema v1.2 problem sets suppressed during live rounds.
                     </p>
                   </div>
@@ -407,7 +421,7 @@ export const PioneersPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-6 space-y-2 border-cyan-400/35">
                 <div className="text-xs font-mono-tabular text-cyan-300">40% Personal Stake · Rayaan Tasnim</div>
                 <h3 className="font-display text-lg font-bold text-white">Core System Architect</h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Equal personal founder stake recognizing full-stack systems engineering, 14-portal infrastructure,{' '}
                   <span className="font-mono-tabular text-cyan-300">QPRT-4</span> security, and AI pipeline orchestration.
                 </p>
@@ -418,7 +432,7 @@ export const PioneersPage: React.FC = () => {
                   20% Treasury · Under Rayaan&apos;s Executive Mandate
                 </div>
                 <h3 className="font-display text-lg font-bold text-white">System Operations &amp; Upgrade Reserve</h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Specifically ring-fenced to cover ongoing system costs, AI API tokens, domain/edge infrastructure, and
                   future platform upgrades while enabling rapid, decisive executive execution without operational
                   bottlenecks.
@@ -428,7 +442,7 @@ export const PioneersPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-6 space-y-2 border-violet-400/35">
                 <div className="text-xs font-mono-tabular text-violet-300">40% Personal Stake · Jalees Habib</div>
                 <h3 className="font-display text-lg font-bold text-white">Chief Mathematical Architect</h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Equal personal co-founder stake recognizing Olympiad mathematical synthesis,{' '}
                   <span className="font-mono-tabular text-violet-300">5 × 4</span> Golden Question Bank authorship,
                   proof-based grading standards, and anti-LLM verification.
@@ -441,7 +455,7 @@ export const PioneersPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-6 space-y-2 border-cyan-400/30">
                 <div className="text-xs font-mono-tabular text-cyan-300">24-Month Equal-Cadence Vesting</div>
                 <h3 className="font-display text-lg font-bold text-white">Unified Launch Alignment</h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Both 40% personal stakes vest smoothly across 24 months, aligning Rayaan Tasnim &amp; Jalees Habib
                   through V4.0 Grand Singularity, custom .com cutover, Arithmo Database, and holding spin-offs.
                 </p>
@@ -450,7 +464,7 @@ export const PioneersPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-6 space-y-2 border-violet-400/30">
                 <div className="text-xs font-mono-tabular text-violet-300">Guardian Financial Custodianship</div>
                 <h3 className="font-display text-lg font-bold text-white">Verified Legal Fiduciary Shield</h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   All subscription revenue, Academy settlements, and Wall of Patrons contributions sit inside transparent
                   Parent/Guardian fiduciary custody until statutory adulthood.
                 </p>
@@ -459,7 +473,7 @@ export const PioneersPage: React.FC = () => {
               <SpotlightCard className="rounded-2xl p-6 space-y-2 border-emerald-400/30">
                 <div className="text-xs font-mono-tabular text-emerald-300">Dual IP Boundary</div>
                 <h3 className="font-display text-lg font-bold text-white">Public Showcase vs. Secret Vaults</h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   14 frontend portals showcase open UI/UX architecture publicly, while Private Golden Vaults, anti-cheat
                   thresholds, and Worker keys remain proprietary Olympiad Edge IP.
                 </p>
@@ -467,7 +481,7 @@ export const PioneersPage: React.FC = () => {
             </div>
 
             <div className="rounded-2xl border border-slate-800 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[155px] relative media-frame">
+              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
                 <ResilientImage
                   src={MEDIA.pionEquity}
                   alt="40% + 20% + 40% Equity and 24-month vesting charter"
@@ -476,11 +490,15 @@ export const PioneersPage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
               </div>
-              <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+              <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                 <div className="text-xs font-mono-tabular text-cyan-300">20% System Reserve + Guardian Custodianship</div>
-                <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Balancing 40% personal Rayaan &amp; 40% personal Jalees stakes with a dedicated 20% operations reserve
                   ensures server tokens, custom .com infrastructure, and future upgrades never stall.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Combined with linear 24-month vesting and Parent/Guardian fiduciary custody, the founding charter aligns
+                  long-term architectural discipline with transparent youth-first legal compliance.
                 </p>
               </div>
             </div>
@@ -513,7 +531,7 @@ export const PioneersPage: React.FC = () => {
           <div className="space-y-6">
             <GoldenVaultInspector pathPrefix="Vault Object Path:" />
             <div className="rounded-2xl border border-amber-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch glass-panel">
-              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[155px] relative media-frame">
+              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
                 <ResilientImage
                   src={MEDIA.pionVault}
                   alt="JSON-Converter Schema v1.2 Private 5x4 Golden Vault archive"
@@ -522,13 +540,18 @@ export const PioneersPage: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent" />
               </div>
-              <div className="lg:col-span-8 p-6 flex flex-col justify-center space-y-1.5">
+              <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
                 <div className="text-xs font-mono-tabular text-amber-300">
                   Sealed 5×4 Golden Vault · Proprietary Olympiad Edge IP
                 </div>
-                <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Problem payloads stay cryptographically isolated inside private Schema v1.2 stores and are fetched
                   strictly on-demand during verified match windows.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Authored and normalized with the JSON-Converter utility across all 5 Core Arenas and 4 difficulty
+                  segments, every set checks PlagioGuard similarity bounds and SymPyVeritas determinism before vault
+                  seal.
                 </p>
               </div>
             </div>
@@ -585,6 +608,10 @@ export const PioneersPage: React.FC = () => {
             kicker="Hall of Sovereign Distinction"
             title="Founding Stewards & Open-2026 Merit Nominations"
             summary="Permanent ledger honoring Core System Architect @rayaantasnim, Chief Mathematical Architect @jaleeshabib, and incoming 1000+ HQ ELO Sovereign fellows."
+            details={[
+              'Strict Positional Chronology guarantees that advancement up the 5-tier Headquarters ladder follows audited merit and dual Sovereign Certification rather than popularity or financial payments.',
+              'Top 3 Prime Sovereigns protect Constitutional Quorum standards, ratify Golden Vault audits, and endorse incoming Core Sentinels upon clearing +200 Contribution ELO and 6 clean rated rounds.',
+            ]}
             accentColor="#F59E0B"
             className="mt-6"
           />
@@ -622,7 +649,7 @@ export const PioneersPage: React.FC = () => {
                       <span className="text-amber-300 font-bold">{opt.label}</span>
                       <span className="text-emerald-300">0 ELO Boost</span>
                     </div>
-                    <p className="text-xs text-slate-300 leading-relaxed">{opt.detail}</p>
+                    <p className="ae-prose text-justify text-xs text-slate-300 leading-relaxed">{opt.detail}</p>
                   </button>
                 );
               })}
@@ -634,7 +661,7 @@ export const PioneersPage: React.FC = () => {
                   <Coffee className="w-4 h-4" />
                   <span data-pion-patron-label="">Selected Support Impact: {activePatronOption.label}</span>
                 </div>
-                <p className="ae-prose text-sm text-slate-300 leading-relaxed">
+                <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                   <span data-pion-patron-detail="">{activePatronOption.detail}</span> By constitutional charter, every dollar stays segregated inside Guardian
                   Financial Custodianship and grants <strong className="text-emerald-300">0 ELO advantage</strong>.
                 </p>
@@ -666,6 +693,10 @@ export const PioneersPage: React.FC = () => {
             kicker="Wall of Patrons Firewall"
             title="Pure Infrastructure Support · Zero Match or Rating Leverage"
             summary="Patrons directly fund custom .com domains, SymPy verification sandboxes, and free community guidebooks while ratings remain strictly meritocratic."
+            details={[
+              'Every contribution receipt explicitly binds 0 ELO boost, 0 moderation power, and 0 private contest hints—separating philanthropy cleanly from competitive standing across all 14 portals.',
+              'Infrastructure funds prioritize stateless Python/SymPy proof sandboxes, Cloudflare Worker edge security, and custom .com readiness ahead of full production launch.',
+            ]}
             accentColor="#10B981"
             reverse
             className="mt-6"
@@ -689,7 +720,7 @@ export const PioneersPage: React.FC = () => {
             <SpotlightCard className="lg:col-span-4 rounded-2xl p-6 space-y-4 border-violet-400/30">
               <Users className="w-6 h-6 text-violet-300" />
               <h3 className="font-display text-lg font-bold text-white">Open Federation &amp; Audits</h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Explore the full 14-website architecture, 5-tier HQ governance ladder, or institutional academy
                 onboarding before our Dec 31, 2026 Midnight launch.
               </p>
@@ -709,6 +740,10 @@ export const PioneersPage: React.FC = () => {
             kicker="Custodianship & Open Audit FAQ"
             title="Guardian Financial Oversight & 14-Repo Architecture Transparency"
             summary="Explore how Guardian Financial Custodianship, vesting schedules, and schema standards protect students, contributors, and institutional partners globally."
+            details={[
+              'Our Dual IP Boundary keeps all 14 GitHub Pages micro-frontends open for architectural inspection under github.com/Arithmo-Edge while isolating Worker API secrets and Private 5×4 Golden Vaults.',
+              'All revenues sit under Parent/Guardian fiduciary custody compliant with Bangladesh Bank FX/PRC, NBR e-TIN, Lemon Squeezy MoR, and EU COPPA/GDPR-K standards.',
+            ]}
             accentColor="#00F0FF"
             className="mt-6"
           />
