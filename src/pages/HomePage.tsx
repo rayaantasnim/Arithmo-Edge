@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import {ArrowRight, Award, CheckCircle2, Lock, ShieldCheck, Sparkles, Terminal, Trophy} from 'lucide-react';
 import {MEDIA} from '../assets/media';
+import heroMonumentImg from '../assets/images/hero_olympiad_monument_1795365454544.jpg';
 import {Arena3DStage} from '../components/Arena3DStage';
 import {FaqAccordion, GuestDuelWidget, SectionHeader} from '../components/CommercialPrimitives';
 import {
+  CountUpStat,
   CyberMediaFrame,
   HeroReveal,
   ResilientImage,
@@ -51,8 +53,122 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
+      {/* Primary Entry Hero: Institutional Olympiad Scale Showcase */}
+      <section
+        id="flagship-entry-hero"
+        className="relative overflow-hidden border-b border-slate-800/80 bg-[#03050c]"
+      >
+        <WebGLHeroCanvas accentHex="#00F0FF" secondaryHex="#F59E0B" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_60%_at_22%_18%,rgba(0,240,255,0.12),transparent_62%),radial-gradient(ellipse_65%_55%_at_82%_24%,rgba(245,158,11,0.10),transparent_58%),linear-gradient(to_bottom,rgba(3,5,12,0.22),#03050c_92%)]"
+        />
+
+        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 pt-7 pb-10 sm:pt-10 sm:pb-12 lg:pt-12 lg:pb-14 relative z-10 space-y-8 lg:space-y-10">
+          <div className="grid lg:grid-cols-12 gap-7 lg:gap-9 items-stretch">
+            <div className="lg:col-span-6 flex flex-col justify-center space-y-4 sm:space-y-5">
+              <HeroReveal delay={0.02}>
+                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs sm:text-sm font-medium tracking-wide text-slate-300">
+                  <span className="text-cyan-300">Arithmo-Edge Ecosystem</span>
+                  <span aria-hidden="true" className="text-slate-600">·</span>
+                  <span>14 Federated Domains</span>
+                  <span aria-hidden="true" className="text-slate-600">·</span>
+                  <span className="text-amber-300">Olympiad Edge Global Standard</span>
+                </div>
+              </HeroReveal>
+
+              <HeroReveal delay={0.08}>
+                <h1 className="hero-title-fluid font-display font-bold text-white">
+                  Real-Time ELO-Rated Competitive Mathematics at Global Olympiad Scale
+                </h1>
+              </HeroReveal>
+
+              <HeroReveal delay={0.14}>
+                <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 prose-measure leading-relaxed">
+                  Unifying 5 Core Mathematical Arenas, 60 meritocratic progression tiers, 1v1 Bullet Blitz duels,
+                  post-contest proof auditing, and 42 specialized AI engines inside a zero pay-to-win global competition
+                  infrastructure engineered for the next century of Olympiad sport.
+                </p>
+              </HeroReveal>
+
+              <HeroReveal delay={0.2}>
+                <div className="ae-hero-cta flex flex-wrap items-center gap-4 pt-1">
+                  <a href="#guest-duel" className="btn-cyber px-6 py-3 text-sm font-semibold whitespace-nowrap shrink-0">
+                    <span>Play 60s Guest Math Duel</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                  <a href="#genesis-command" className="btn-glass px-5 py-3 text-sm whitespace-nowrap shrink-0">
+                    Inspect Command Deck
+                  </a>
+                </div>
+              </HeroReveal>
+            </div>
+
+            <div className="lg:col-span-6 flex flex-col">
+              <HeroReveal delay={0.12} className="h-full flex flex-col">
+                <div className="relative h-full min-h-[240px] sm:min-h-[310px] lg:min-h-[380px] aspect-[16/10] lg:aspect-auto rounded-2xl border border-slate-700/70 overflow-hidden bg-gradient-to-br from-[#070b16] via-[#0d152a] to-[#03050c] shadow-[0_28px_80px_-16px_rgba(0,0,0,0.85)] media-frame group">
+                  <img
+                    src={heroMonumentImg}
+                    alt="Monumental dark obsidian mathematical amphitheater with suspended translucent geometric icosahedron and orbital golden rings"
+                    loading="eager"
+                    referrerPolicy="no-referrer"
+                    className="h-full w-full object-cover"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#03050c] via-[#03050c]/25 to-transparent"
+                  />
+                  <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 flex flex-wrap items-end justify-between gap-2 sm:gap-3">
+                    <div className="space-y-1 min-w-0">
+                      <div className="text-xs font-mono-tabular text-amber-300/95">
+                        Architectural Olympiad Headquarters · V1.0 – V4.0 Sovereign Grid
+                      </div>
+                      <div className="font-display text-sm sm:text-lg font-semibold text-white">
+                        Sub-Second Global Matchmaking · Proof-Verified Standings
+                      </div>
+                    </div>
+                    <span className="font-mono-tabular text-xs text-cyan-300">
+                      Zero Pay-to-Win Guarantee
+                    </span>
+                  </div>
+                </div>
+              </HeroReveal>
+            </div>
+          </div>
+
+          <HeroReveal delay={0.24}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-slate-800/90 rounded-2xl bg-[#070b16]/80 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 overflow-hidden">
+              <div className="p-5 sm:p-6 space-y-1">
+                <div className="font-mono-tabular text-xl sm:text-2xl font-bold text-white">
+                  <CountUpStat value={14} suffix=" Federated Portals" delayMs={0} durationMs={900} />
+                </div>
+                <div className="text-xs text-slate-400">1 Core Hub + 13 Live Subsites on Arithmo-Core-SDK</div>
+              </div>
+              <div className="p-5 sm:p-6 space-y-1">
+                <div className="font-mono-tabular text-xl sm:text-2xl font-bold text-cyan-300">
+                  <CountUpStat value={60} suffix=" ELO Rank Tiers" delayMs={240} durationMs={950} />
+                </div>
+                <div className="text-xs text-slate-400">10 Core Ratings · Spark through Singularity Apex</div>
+              </div>
+              <div className="p-5 sm:p-6 space-y-1">
+                <div className="font-mono-tabular text-xl sm:text-2xl font-bold text-amber-300">
+                  <CountUpStat value={42} suffix=" Hybrid AI Engines" delayMs={480} durationMs={950} />
+                </div>
+                <div className="text-xs text-slate-400">Gemini + Qwen-Math + SymPy Symbolic Verification</div>
+              </div>
+              <div className="p-5 sm:p-6 space-y-1">
+                <div className="font-mono-tabular text-xl sm:text-2xl font-bold text-emerald-300">
+                  <CountUpStat value={128} prefix="Top " suffix=" World Cup" delayMs={720} durationMs={1000} />
+                </div>
+                <div className="text-xs text-slate-400">Annual Knockout Championship · $0 Entry Forever</div>
+              </div>
+            </div>
+          </HeroReveal>
+        </div>
+      </section>
+
       {/* Section 1: Flagship Cyber-Constellation Hero + Dec 31, 2026 Countdown + Genesis Legacy */}
-      <section className="relative overflow-hidden border-b border-slate-800/70">
+      <section id="genesis-command" className="relative overflow-hidden border-b border-slate-800/70">
         <WebGLHeroCanvas accentHex="#00F0FF" secondaryHex="#8B5CF6" />
         <div
           aria-hidden="true"
@@ -71,9 +187,9 @@ export const HomePage: React.FC = () => {
                 </HeroReveal>
 
                 <HeroReveal delay={0.08}>
-                  <h1 className="hero-title-fluid font-display font-bold tracking-tight text-white">
+                  <h2 className="hero-title-fluid font-display font-bold tracking-tight text-white">
                     Real-Time ELO-Rated Competitive Mathematics at Global Olympiad Scale.
-                  </h1>
+                  </h2>
                 </HeroReveal>
 
                 <HeroReveal delay={0.14}>
@@ -498,28 +614,30 @@ export const HomePage: React.FC = () => {
 
           <div className="ae-kpi-grid grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             <SpotlightCard className="rounded-xl p-5">
-              <div className="font-mono-tabular text-2xl sm:text-3xl font-bold text-cyan-400" data-count="14">
-                14
+              <div className="font-mono-tabular text-2xl sm:text-3xl font-bold text-cyan-400">
+                <CountUpStat value={14} delayMs={0} />
               </div>
               <div className="text-sm font-semibold text-white mt-1">Federated Websites</div>
               <div className="text-xs text-slate-400 mt-1">1 Core Portal + 13 Subsites on arithmo-edge.github.io</div>
             </SpotlightCard>
             <SpotlightCard className="rounded-xl p-5">
-              <div className="font-mono-tabular text-2xl sm:text-3xl font-bold text-violet-400" data-count="60">
-                60
+              <div className="font-mono-tabular text-2xl sm:text-3xl font-bold text-violet-400">
+                <CountUpStat value={60} delayMs={220} />
               </div>
               <div className="text-sm font-semibold text-white mt-1">ELO Rank Titles</div>
               <div className="text-xs text-slate-400 mt-1">5 Core Arenas · 12 Tiers Each · (General + Expert) / 2</div>
             </SpotlightCard>
             <SpotlightCard className="rounded-xl p-5">
-              <div className="font-mono-tabular text-2xl sm:text-3xl font-bold text-amber-400" data-count="42">
-                42
+              <div className="font-mono-tabular text-2xl sm:text-3xl font-bold text-amber-400">
+                <CountUpStat value={42} delayMs={440} />
               </div>
               <div className="text-sm font-semibold text-white mt-1">Specialized AI Engines</div>
               <div className="text-xs text-slate-400 mt-1">Gemini + Qwen-Math + SymPy + 24 QPRT-4 + 12 Forge</div>
             </SpotlightCard>
             <SpotlightCard className="rounded-xl p-5">
-              <div className="font-mono-tabular text-2xl sm:text-3xl font-bold text-emerald-400">0 ELO</div>
+              <div className="font-mono-tabular text-2xl sm:text-3xl font-bold text-emerald-400">
+                <CountUpStat value={0} suffix=" ELO" delayMs={660} />
+              </div>
               <div className="text-sm font-semibold text-white mt-1">Sold or Gifted Ever</div>
               <div className="text-xs text-slate-400 mt-1">Subscriptions fund AI &amp; Labs; Patrons earn 0 ELO</div>
             </SpotlightCard>

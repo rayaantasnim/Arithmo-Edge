@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import {MEDIA} from '../assets/media';
 import {FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
-import {CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
+import {CountUpStat, CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
 import {WebGLHeroCanvas} from '../components/WebGLHeroCanvas';
 
 type HqTierKey = 'sentinel' | 'architect' | 'coordinator' | 'arbiter' | 'sovereign';
@@ -244,8 +244,8 @@ export const GovernancePage: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#050811]/35 to-[#050811]"
         />
-        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-10">
+        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-8">
             <div className="lg:col-span-7 space-y-5 flex flex-col justify-center">
               <HeroReveal delay={0.02}>
                 <div className="text-xs text-cyan-300 font-medium">
@@ -299,25 +299,37 @@ export const GovernancePage: React.FC = () => {
           </div>
 
           <HeroReveal delay={0.24}>
-            <div className="grid md:grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
-                <div className="text-xs font-mono-tabular text-cyan-300">5 Monotonic Tiers</div>
-                <div className="font-display text-lg font-bold text-white mt-1">100 → 1000+ HQ ELO</div>
+                <div className="text-xs font-mono-tabular text-cyan-300">
+                  <CountUpStat value={5} suffix=" Monotonic Tiers" delayMs={0} />
+                </div>
+                <div className="font-display text-lg font-bold text-white mt-1">
+                  <CountUpStat value={100} delayMs={60} /> → <CountUpStat value={1000} suffix="+ HQ ELO" delayMs={180} useGrouping={false} />
+                </div>
                 <div className="text-xs text-slate-400 mt-1">Earn Plus, Pro &amp; Singularity free via merit</div>
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
-                <div className="text-xs font-mono-tabular text-violet-300">3-Gate Induction</div>
-                <div className="font-display text-lg font-bold text-white mt-1">+200 Contrib + 6 Clean</div>
+                <div className="text-xs font-mono-tabular text-violet-300">
+                  <CountUpStat value={3} suffix="-Gate Induction" delayMs={220} />
+                </div>
+                <div className="font-display text-lg font-bold text-white mt-1">
+                  <CountUpStat value={200} prefix="+" suffix=" Contrib" delayMs={260} /> + <CountUpStat value={6} suffix=" Clean" delayMs={380} />
+                </div>
                 <div className="text-xs text-slate-400 mt-1">100% trust score + Sovereign Certificate</div>
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
                 <div className="text-xs font-mono-tabular text-emerald-300">Conflict-Free Privilege</div>
-                <div className="font-display text-lg font-bold text-white mt-1">Full Rated Competing</div>
+                <div className="font-display text-lg font-bold text-white mt-1">
+                  <CountUpStat value={100} suffix="% Rated Competing" delayMs={440} />
+                </div>
                 <div className="text-xs text-slate-400 mt-1">Blocked only on authored/audited rounds</div>
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
                 <div className="text-xs font-mono-tabular text-amber-300">Patronage Firewall</div>
-                <div className="font-display text-lg font-bold text-white mt-1">0 ELO · 0 Authority</div>
+                <div className="font-display text-lg font-bold text-white mt-1">
+                  <CountUpStat value={0} suffix=" ELO · 0 Authority" delayMs={660} />
+                </div>
                 <div className="text-xs text-slate-400 mt-1">Cryptographic separation of wallet &amp; rank</div>
               </div>
             </div>

@@ -104,15 +104,15 @@ export const SiteShell: React.FC<{
       <div className="min-h-screen flex flex-col">
         {/* Shared Fixed Glassmorphism Navbar */}
         <header className="fixed top-0 left-0 right-0 w-full z-[1000] glass-nav">
-          <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 min-h-16 py-2 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3 min-w-0">
+          <div className="ae-container mx-auto px-3 sm:px-6 lg:px-8 min-h-16 py-2 flex items-center justify-between gap-2 sm:gap-4">
+            <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
               <a href="index.html" className="nav-brand-link shrink-0" aria-label="Arithmo Edge Home">
                 <img src="favicon.jpg" alt="Arithmo Edge Logo" className="nav-brand-logo" />
               </a>
               <div className="flex flex-col min-w-0">
                 <a
                   href="index.html"
-                  className="font-display text-lg sm:text-xl font-bold tracking-tight brand-gradient leading-tight whitespace-nowrap w-fit"
+                  className="font-display text-base sm:text-xl font-bold tracking-tight brand-gradient leading-tight whitespace-nowrap w-fit"
                 >
                   Arithmo Edge
                 </a>
@@ -121,13 +121,13 @@ export const SiteShell: React.FC<{
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-2.5 shrink-0">
+            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               <a
                 href="https://github.com/Arithmo-Edge"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Arithmo-Edge GitHub Organization"
-                className="btn-glass px-3.5 py-2 text-xs sm:text-sm whitespace-nowrap shrink-0"
+                className="btn-glass px-3 sm:px-3.5 py-2 text-xs sm:text-sm whitespace-nowrap shrink-0"
               >
                 <svg className="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path

@@ -18,6 +18,7 @@ import {
 import {MEDIA} from '../assets/media';
 import {DynamicCreditsPreview, SectionHeader} from '../components/CommercialPrimitives';
 import {
+  CountUpStat,
   CyberMediaFrame,
   HeroReveal,
   ResilientImage,
@@ -225,8 +226,8 @@ export const WhyArithmoPage: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#050811]/35 to-[#050811]"
         />
-        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-10">
+        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-8">
             <div className="lg:col-span-7 space-y-5 flex flex-col justify-center">
               <HeroReveal delay={0.02}>
                 <div className="text-xs text-cyan-300 font-medium">
@@ -310,10 +311,38 @@ export const WhyArithmoPage: React.FC = () => {
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
                 <div className="text-xs font-mono-tabular text-emerald-300">Access Policy</div>
-                <div className="font-display text-lg font-bold text-white mt-1">100% Free Forever</div>
+                <div className="font-display text-lg font-bold text-white mt-1">
+                  <CountUpStat value={100} suffix="% Free Forever" delayMs={0} />
+                </div>
                 <p className="ae-prose text-justify text-xs text-slate-400 mt-1">
                   Compete across all 5 Arenas &amp; World Cup with $0 barriers
                 </p>
+              </div>
+            </div>
+            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-slate-800/90 rounded-2xl bg-[#070b16]/80 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 overflow-hidden">
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-white">
+                  <CountUpStat value={10} suffix=" Matrix Dimensions" delayMs={0} />
+                </div>
+                <div className="text-xs text-slate-400">Audited Legacy vs. Arithmo-Edge Benchmarks</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-cyan-300">
+                  <CountUpStat value={60} suffix=" ELO Rank Titles" delayMs={220} />
+                </div>
+                <div className="text-xs text-slate-400">10 Core Arena ELOs · (General + Expert) / 2</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-violet-300">
+                  <CountUpStat value={12} suffix=" Shadow Bots" delayMs={440} />
+                </div>
+                <div className="text-xs text-slate-400">0–3200+ Spark through Apex Sparring</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-emerald-300">
+                  <CountUpStat value={42} suffix=" Hybrid AI Engines" delayMs={660} />
+                </div>
+                <div className="text-xs text-slate-400">Strict Live Contest Hard-Lock Isolation</div>
               </div>
             </div>
           </HeroReveal>
@@ -466,7 +495,7 @@ export const WhyArithmoPage: React.FC = () => {
                   Each of the 5 Core Arenas (<span className="text-white font-medium">Number Theory, Algebra, Geometry, Combinatorics &amp; Permutation, Mixed Mathematical Olympiad</span>) maintains separate General (velocity) &amp; Expert (proof) tracks, combining via{' '}
                   <code className="font-mono-tabular text-cyan-300">(General + Expert) / 2</code> for 12 titles per arena (60 total).
                 </p>
-                <div className="grid grid-cols-5 gap-1.5 pt-2 text-[11px] font-mono-tabular text-center">
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5 pt-2 text-[11px] font-mono-tabular text-center">
                   {Object.values(ARENA_CATALOG).map((arena) => (
                     <div
                       key={arena.key}
@@ -514,7 +543,7 @@ export const WhyArithmoPage: React.FC = () => {
                 <span className="font-mono-tabular text-xs text-slate-400">Spark → 2885 · Vanguard → 3000+ · Apex BOT</span>
               </div>
 
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {SHADOW_BOT_PERSONAS.map((bot) => {
                   const active = bot.name === activeBot.name;
                   return (

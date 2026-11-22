@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import {MEDIA} from '../assets/media';
 import {FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
-import {CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
+import {CountUpStat, CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
 import {WebGLHeroCanvas} from '../components/WebGLHeroCanvas';
 import {
   DECIMAL_ROLLOUT_SERIES,
@@ -223,8 +223,8 @@ export const RoadmapPage: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#050811]/35 to-[#050811]"
         />
-        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-10">
+        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-8">
             <div className="lg:col-span-7 space-y-5 flex flex-col justify-center">
               <HeroReveal delay={0.02}>
                 <div className="text-xs text-cyan-300 font-medium">
@@ -314,6 +314,33 @@ export const RoadmapPage: React.FC = () => {
                   Permanent indexed repository of IMO/Putnam/RMM/BMO/BdMO sets, SymPy proofs &amp; AI editorials.
                 </p>
               </SpotlightCard>
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-slate-800/90 rounded-2xl bg-[#070b16]/80 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 overflow-hidden">
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-cyan-300">
+                  <CountUpStat value={26} suffix=" Days Release" delayMs={0} />
+                </div>
+                <div className="text-xs text-slate-400">V1.0–V4.0 Grand Singularity Rollout</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-amber-300">
+                  <CountUpStat value={8} suffix=" Spin-Off Firms" delayMs={220} />
+                </div>
+                <div className="text-xs text-slate-400">Autonomous Holding Group Verticals</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-violet-300">
+                  <CountUpStat value={75} prefix="~" suffix="% Margin" delayMs={440} />
+                </div>
+                <div className="text-xs text-slate-400">20-Year Holding Operating Efficiency</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-emerald-300">
+                  <CountUpStat value={98} suffix="% Read Shield" delayMs={660} />
+                </div>
+                <div className="text-xs text-slate-400">Firestore Edge Snapshot Savings</div>
+              </div>
             </div>
           </HeroReveal>
         </div>
@@ -718,8 +745,10 @@ export const RoadmapPage: React.FC = () => {
                 </p>
                 <div className="grid grid-cols-2 gap-3 pt-2 text-xs font-mono-tabular">
                   <div className="rounded-lg border border-slate-800 bg-slate-950/75 p-3">
-                    <div className="text-slate-400">Infra Cost Floor</div>
-                    <div className="text-white font-bold mt-0.5">$0/mo GitHub Pages</div>
+                    <div className="text-slate-400">Read-Shield Savings</div>
+                    <div className="text-white font-bold mt-0.5">
+                      <CountUpStat value={98} suffix="% Edge Cached" delayMs={0} />
+                    </div>
                   </div>
                   <div className="rounded-lg border border-slate-800 bg-slate-950/75 p-3">
                     <div className="text-slate-400">Burn Rate</div>
@@ -750,11 +779,15 @@ export const RoadmapPage: React.FC = () => {
               <div className="grid grid-cols-2 gap-3 pt-2 text-xs font-mono-tabular">
                 <div className="rounded-lg border border-slate-800 bg-slate-950/75 p-3">
                   <div className="text-slate-400">Projected Operating Margin</div>
-                  <div className="text-white font-bold mt-0.5">~75% Net Efficiency</div>
+                  <div className="text-white font-bold mt-0.5">
+                    <CountUpStat value={75} prefix="~" suffix="% Net Efficiency" delayMs={180} />
+                  </div>
                 </div>
                 <div className="rounded-lg border border-slate-800 bg-slate-950/75 p-3">
                   <div className="text-slate-400">Holding Architecture</div>
-                  <div className="text-amber-300 font-bold mt-0.5">8 Autonomous Spin-Offs</div>
+                  <div className="text-amber-300 font-bold mt-0.5">
+                    <CountUpStat value={8} suffix=" Autonomous Spin-Offs" delayMs={360} />
+                  </div>
                 </div>
               </div>
             </SpotlightCard>

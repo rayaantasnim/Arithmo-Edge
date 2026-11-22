@@ -3,7 +3,14 @@ import {AnimatePresence, motion} from 'motion/react';
 import {BookOpenCheck, Cpu, ShieldCheck} from 'lucide-react';
 import {MEDIA} from '../assets/media';
 import {FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
-import {CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
+import {
+  CountUpStat,
+  CyberMediaFrame,
+  HeroReveal,
+  ResilientImage,
+  ScrollReveal,
+  SpotlightCard,
+} from '../components/MotionPrimitives';
 import {WebGLHeroCanvas} from '../components/WebGLHeroCanvas';
 import {AI_ENGINES_42, AiEngineEntry} from '../data/ecosystem';
 
@@ -156,7 +163,7 @@ export const AiCorePage: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#050811]/35 to-[#050811]"
         />
-        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
+        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
           <div className="grid lg:grid-cols-12 gap-8 items-stretch">
             <div className="lg:col-span-7 space-y-5 flex flex-col justify-center">
               <HeroReveal delay={0.02}>
@@ -184,27 +191,39 @@ export const AiCorePage: React.FC = () => {
               <HeroReveal delay={0.2}>
                 <div className="ae-kpi-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 pt-2">
                   <div className="rounded-xl border border-violet-400/30 bg-slate-950/75 p-3 text-center">
-                    <div className="font-mono-tabular text-xl font-bold text-violet-300">2</div>
+                    <div className="font-mono-tabular text-xl font-bold text-violet-300">
+                      <CountUpStat value={2} delayMs={0} durationMs={700} />
+                    </div>
                     <div className="text-[11px] text-slate-400">Personal &amp; Guild</div>
                   </div>
                   <div className="rounded-xl border border-sky-400/30 bg-slate-950/75 p-3 text-center">
-                    <div className="font-mono-tabular text-xl font-bold text-sky-300">2</div>
+                    <div className="font-mono-tabular text-xl font-bold text-sky-300">
+                      <CountUpStat value={2} delayMs={160} durationMs={700} />
+                    </div>
                     <div className="text-[11px] text-slate-400">Foundation</div>
                   </div>
                   <div className="rounded-xl border border-cyan-400/30 bg-slate-950/75 p-3 text-center">
-                    <div className="font-mono-tabular text-xl font-bold text-cyan-300">24</div>
+                    <div className="font-mono-tabular text-xl font-bold text-cyan-300">
+                      <CountUpStat value={24} delayMs={320} durationMs={900} />
+                    </div>
                     <div className="text-[11px] text-slate-400">QPRT-4 Guardians</div>
                   </div>
                   <div className="rounded-xl border border-emerald-400/30 bg-slate-950/75 p-3 text-center">
-                    <div className="font-mono-tabular text-xl font-bold text-emerald-300">12</div>
+                    <div className="font-mono-tabular text-xl font-bold text-emerald-300">
+                      <CountUpStat value={12} delayMs={480} durationMs={850} />
+                    </div>
                     <div className="text-[11px] text-slate-400">Forge &amp; Anti-LLM</div>
                   </div>
                   <div className="rounded-xl border border-amber-400/30 bg-slate-950/75 p-3 text-center">
-                    <div className="font-mono-tabular text-xl font-bold text-amber-300">1</div>
+                    <div className="font-mono-tabular text-xl font-bold text-amber-300">
+                      <CountUpStat value={1} delayMs={640} durationMs={650} />
+                    </div>
                     <div className="text-[11px] text-slate-400">Alert AI</div>
                   </div>
                   <div className="rounded-xl border border-rose-400/30 bg-slate-950/75 p-3 text-center">
-                    <div className="font-mono-tabular text-xl font-bold text-rose-300">1</div>
+                    <div className="font-mono-tabular text-xl font-bold text-rose-300">
+                      <CountUpStat value={1} delayMs={800} durationMs={650} />
+                    </div>
                     <div className="text-[11px] text-slate-400">Headquarters AI</div>
                   </div>
                 </div>

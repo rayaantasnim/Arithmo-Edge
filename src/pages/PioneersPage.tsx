@@ -8,7 +8,7 @@ import {
 import {MEDIA} from '../assets/media';
 import {FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
 import {GoldenVaultInspector} from '../components/GoldenVaultInspector';
-import {CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
+import {CountUpStat, CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
 import {WebGLHeroCanvas} from '../components/WebGLHeroCanvas';
 
 const GENESIS_EVOLUTION = [
@@ -91,8 +91,8 @@ export const PioneersPage: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#050811]/35 to-[#050811]"
         />
-        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-10">
+        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-8">
             <div className="lg:col-span-7 space-y-5 flex flex-col justify-center">
               <HeroReveal delay={0.02}>
                 <div className="text-xs text-cyan-300 font-medium">
@@ -143,6 +143,34 @@ export const PioneersPage: React.FC = () => {
           </div>
 
           <HeroReveal delay={0.24}>
+            <div className="mb-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-slate-800/90 rounded-2xl bg-[#070b16]/80 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 overflow-hidden">
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-cyan-300">
+                  <CountUpStat value={60} suffix="% / " delayMs={0} />
+                  <CountUpStat value={40} suffix="% Split" delayMs={120} />
+                </div>
+                <div className="text-xs text-slate-400">40% + 20% Reserve + 40% Charter</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-violet-300">
+                  <CountUpStat value={24} suffix=" Months" delayMs={220} />
+                </div>
+                <div className="text-xs text-slate-400">Equal-Cadence Founder Vesting</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-emerald-300">
+                  <CountUpStat value={14} suffix=" Portals" delayMs={440} />
+                </div>
+                <div className="text-xs text-slate-400">Open Federation Micro-Frontends</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-amber-300">
+                  <CountUpStat value={20} suffix=" Vault Sets" delayMs={660} />
+                </div>
+                <div className="text-xs text-slate-400">Private 5×4 Golden Vault IP</div>
+              </div>
+            </div>
+
             <div className="grid md:grid-cols-3 gap-4 mb-5">
               {GENESIS_EVOLUTION.map((stage) => (
                 <div key={stage.name} className="rounded-xl border border-slate-800 bg-slate-950/80 p-4 space-y-1.5">

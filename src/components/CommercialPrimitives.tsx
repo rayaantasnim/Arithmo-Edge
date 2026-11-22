@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   ChevronDown,
   Clock,
+  Lightbulb,
   Link2,
   RefreshCw,
   ShieldCheck,
@@ -350,27 +351,36 @@ export const GuestDuelWidget: React.FC = () => {
   const bracketTitle = estimatedElo ? resolveArenaBracketTitle(problem.arenaKey, estimatedElo) : null;
 
   return (
-    <div data-guest-duel-root="" className="glass-panel rounded-2xl p-6 sm:p-8 border border-cyan-400/30 space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
-        <div className="space-y-1">
+    <div
+      data-guest-duel-root=""
+      data-gd-phase={phase}
+      className="glass-panel rounded-2xl p-4 sm:p-6 lg:p-7 border border-cyan-400/30 space-y-5"
+    >
+      {/* Top Header Bar: Title + Live Clock + Switch Problem */}
+      <div className="gd-header-bar flex flex-wrap items-center justify-between gap-3 sm:gap-4 border-b border-slate-800/80 pb-4">
+        <div className="space-y-1 min-w-0">
           <div data-gd-meta="" className="text-xs font-mono-tabular text-cyan-300">
             Guest Duel Sandbox · Problem {problemIdx + 1} of {GUEST_PROBLEMS.length} · Deterministic Client Grading
           </div>
-          <h3 className="font-display text-xl sm:text-2xl font-bold text-white">
+          <h3 className="font-display text-lg sm:text-2xl font-bold text-white leading-tight">
             60-Second Guest Math Duel &amp; Instant ELO Estimator
           </h3>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="gd-header-controls flex flex-wrap items-center gap-2.5 sm:gap-3 shrink-0">
           <div
             data-gd-clock-wrap=""
-            className={`rounded-xl bg-slate-950/90 border px-4 py-2 text-center min-w-[104px] transition-colors ${
-              secondsLeft < 10 && phase === 'running' ? 'border-rose-500/70' : 'border-slate-800'
+            className={`rounded-xl bg-slate-950/90 border px-3.5 py-2 text-center min-w-[96px] transition-all duration-300 ${
+              secondsLeft < 10 && phase === 'running'
+                ? 'border-rose-500/75 shadow-[0_0_20px_rgba(244,63,94,0.28)]'
+                : phase === 'running'
+                ? 'border-cyan-400/55 shadow-[0_0_20px_rgba(0,240,255,0.18)]'
+                : 'border-slate-800'
             }`}
           >
-            <div className="text-[10px] text-slate-400 font-mono-tabular">CLOCK</div>
+            <div className="text-[10px] text-slate-400 font-mono-tabular tracking-wider">CLOCK</div>
             <div
               data-gd-clock=""
-              className={`font-mono-tabular text-xl font-bold ${
+              className={`font-mono-tabular text-lg sm:text-xl font-bold leading-tight ${
                 secondsLeft < 10 && phase === 'running'
                   ? 'text-rose-400 animate-pulse'
                   : phase === 'solved'
@@ -385,44 +395,69 @@ export const GuestDuelWidget: React.FC = () => {
             type="button"
             data-gd-switch=""
             onClick={switchProblem}
-            className="btn-glass px-3.5 py-2.5 text-xs whitespace-nowrap shrink-0"
+            className="gd-btn gd-btn-switch px-3.5 py-2.5 text-xs shrink-0"
           >
-            <RefreshCw className="w-3.5 h-3.5" />
+            <RefreshCw className="w-3.5 h-3.5 gd-switch-icon shrink-0" />
             <span>Switch Problem</span>
           </button>
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-12 gap-6 items-start">
-        <div className="lg:col-span-7 space-y-4">
+      {/* Main Balanced Two-Column Arena & Telemetry Grid */}
+      <div className="gd-main-grid grid lg:grid-cols-12 gap-5 items-stretch">
+        {/* Left Panel: Problem Chamber + Action Bar */}
+        <div className="lg:col-span-7 flex flex-col justify-between gap-3.5 rounded-2xl border border-slate-800/90 bg-slate-950/55 p-4 sm:p-5">
           <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono-tabular">
             <span data-gd-arena="" className="text-violet-300">{problem.arenaLabel}</span>
             <span data-gd-elo="" className="text-slate-400">Baseline Calibration: {problem.baseElo} ELO</span>
           </div>
 
-          <div className="rounded-xl bg-slate-950/85 border border-slate-800 p-5 space-y-3">
-            <p data-gd-statement="" className="ae-prose text-justify text-sm sm:text-base text-white font-medium leading-relaxed">{problem.statement}</p>
+          <div className="flex-1 flex flex-col justify-between rounded-xl bg-slate-950/85 border border-slate-800 p-4 sm:p-5 space-y-3">
+            <p data-gd-statement="" className="ae-prose text-justify text-sm sm:text-base text-white font-medium leading-relaxed">
+              {problem.statement}
+            </p>
+
             <div
               data-gd-hint-box=""
-              className={`rounded-lg border border-amber-400/30 bg-amber-400/10 p-3.5 text-xs text-amber-200 leading-relaxed ${
+              className={`rounded-lg border border-amber-400/35 bg-amber-400/10 p-3 text-xs text-amber-200 leading-relaxed ${
                 showHint ? '' : 'hidden'
               }`}
             >
               <span className="font-semibold text-amber-300">Strategic Hint (-60 speed weight): </span>
               <span data-gd-hint-text="">{problem.hint}</span>
             </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 border-t border-slate-800/75 text-[11px] font-mono-tabular text-slate-400">
+              <span>Scoring: Base {problem.baseElo} + Speed Bonus (up to +87)</span>
+              <span className={phase === 'running' ? 'text-cyan-300 font-semibold' : 'text-slate-400'}>
+                {phase === 'running'
+                  ? `Active Clock · +${Math.max(0, Math.round(secondsLeft * 1.45))} live bonus`
+                  : phase === 'solved'
+                  ? 'Round Accepted · Instant Estimate Locked'
+                  : phase === 'timeout'
+                  ? 'Round Expired · Press Start or Next'
+                  : 'Ready · Deterministic Client Check'}
+              </span>
+            </div>
           </div>
 
-          <form data-gd-form="" onSubmit={submitAnswer} className="flex flex-wrap sm:flex-nowrap gap-3 items-center">
-            <button
-              type="button"
-              data-gd-start=""
-              onClick={startDuel}
-              className={`btn-cyber px-5 py-3 text-sm whitespace-nowrap shrink-0 ${phase === 'ready' ? '' : 'hidden'}`}
-            >
-              <Swords className="w-4 h-4" />
-              <span>Start 60s Guest Duel</span>
-            </button>
+          {/* Interactive Action Row: Start hides completely while active, Input & Verify expand smoothly */}
+          <form
+            data-gd-form=""
+            onSubmit={submitAnswer}
+            className={`gd-action-form ${phase === 'running' ? 'is-running' : 'is-idle'}`}
+          >
+            {phase !== 'running' && (
+              <button
+                type="button"
+                data-gd-start=""
+                onClick={startDuel}
+                className="gd-btn gd-btn-primary gd-start-btn px-4 sm:px-5 py-2.5 text-xs sm:text-sm shrink-0"
+              >
+                <Swords className="w-4 h-4 shrink-0" />
+                <span>Start 60s Guest Duel</span>
+              </button>
+            )}
 
             <input
               ref={answerInputRef}
@@ -430,133 +465,150 @@ export const GuestDuelWidget: React.FC = () => {
               type="text"
               inputMode="numeric"
               aria-label="Enter numeric Olympiad answer"
-              placeholder={phase === 'ready' ? 'Click Start 60s Guest Duel...' : 'Enter exact integer...'}
+              placeholder={
+                phase === 'running'
+                  ? 'Type your exact integer answer & press Verify...'
+                  : 'Click Start 60s Guest Duel...'
+              }
               value={inputVal}
               onChange={(e) => {
                 setInputVal(e.target.value);
                 if (wrongMsg) setWrongMsg(null);
               }}
               disabled={phase === 'ready' || phase === 'solved' || phase === 'timeout'}
-              className={`flex-1 min-w-[160px] rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 font-mono-tabular text-sm text-white focus:border-cyan-400 focus:outline-none disabled:opacity-50 transition-all ${
+              className={`gd-answer-input rounded-xl bg-slate-950/95 border border-slate-700/90 px-4 py-2.5 font-mono-tabular text-sm text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none disabled:opacity-50 ${
                 shakeError ? 'ae-shake-rose' : ''
               }`}
             />
+
             <button
               type="submit"
               data-gd-submit=""
               disabled={phase !== 'running'}
-              className="btn-cyber px-5 py-3 text-sm whitespace-nowrap shrink-0 disabled:opacity-45 disabled:cursor-not-allowed"
+              className="gd-btn gd-btn-primary gd-verify-btn px-4 sm:px-5 py-2.5 text-xs sm:text-sm disabled:opacity-45 disabled:cursor-not-allowed"
             >
-              Verify Answer
+              <span>Verify Answer</span>
             </button>
+
             <button
               type="button"
               data-gd-hint-btn=""
               onClick={() => setShowHint((prev) => !prev)}
-              className="btn-glass px-3.5 py-3 text-xs whitespace-nowrap shrink-0"
+              aria-pressed={showHint}
+              className={`gd-btn gd-btn-hint px-3.5 py-2.5 text-xs shrink-0 ${showHint ? 'is-active' : ''}`}
             >
-              {showHint ? 'Hide Hint' : 'Hint'}
+              <Lightbulb className="w-3.5 h-3.5 shrink-0" />
+              <span>{showHint ? 'Hide Hint' : 'Hint'}</span>
             </button>
           </form>
 
-          <div
-            data-gd-wrong=""
-            className={`rounded-xl border border-rose-500/45 bg-rose-500/10 p-4 text-xs text-rose-200 flex items-center justify-between gap-3 ${
-              wrongMsg && phase === 'running' ? '' : 'hidden'
-            }`}
-          >
-            <span data-gd-wrong-text="">{wrongMsg ?? ''}</span>
-          </div>
+          {wrongMsg && phase === 'running' && (
+            <div
+              data-gd-wrong=""
+              className="rounded-xl border border-rose-500/45 bg-rose-500/10 p-3.5 text-xs text-rose-200 flex items-center justify-between gap-3"
+            >
+              <span data-gd-wrong-text="">{wrongMsg}</span>
+            </div>
+          )}
 
-          <div
-            data-gd-timeout=""
-            className={`rounded-xl border border-rose-400/35 bg-rose-500/10 p-4 text-xs sm:text-sm text-rose-200 space-y-2 ${
-              phase === 'timeout' ? '' : 'hidden'
-            }`}
-          >
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <strong id="gd-timeout-title" className="text-white">
-                00:00 Timeout Reached — Official Ground Truth: {problem.answer}
-              </strong>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  data-gd-retry=""
-                  onClick={startDuel}
-                  className="btn-glass px-3 py-1.5 text-xs whitespace-nowrap shrink-0"
-                >
-                  Retry Same Problem
-                </button>
-                <button
-                  type="button"
-                  data-gd-next=""
-                  onClick={switchProblem}
-                  className="btn-cyber px-3 py-1.5 text-xs whitespace-nowrap shrink-0"
-                >
-                  Next Problem &rarr;
-                </button>
+          {phase === 'timeout' && (
+            <div
+              data-gd-timeout=""
+              className="rounded-xl border border-rose-400/35 bg-rose-500/10 p-3.5 text-xs sm:text-sm text-rose-200 space-y-2"
+            >
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <strong id="gd-timeout-title" className="text-white">
+                  00:00 Timeout Reached — Official Ground Truth: {problem.answer}
+                </strong>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    data-gd-retry=""
+                    onClick={startDuel}
+                    className="gd-btn gd-btn-switch px-3 py-1.5 text-xs shrink-0"
+                  >
+                    Retry Same Problem
+                  </button>
+                  <button
+                    type="button"
+                    data-gd-next=""
+                    onClick={switchProblem}
+                    className="gd-btn gd-btn-primary px-3 py-1.5 text-xs shrink-0"
+                  >
+                    Next Problem &rarr;
+                  </button>
+                </div>
               </div>
+              <p data-gd-timeout-explain="" className="ae-prose text-justify text-slate-200 leading-relaxed">
+                {problem.explanation}
+              </p>
             </div>
-            <p data-gd-timeout-explain="" className="ae-prose text-justify text-slate-200 leading-relaxed">{problem.explanation}</p>
-          </div>
+          )}
 
-          <div
-            data-gd-solved=""
-            className={`rounded-xl border border-emerald-400/40 bg-emerald-500/10 p-4 text-xs sm:text-sm text-emerald-200 space-y-1.5 ${
-              phase === 'solved' ? '' : 'hidden'
-            }`}
-          >
-            <div className="font-semibold flex items-center gap-2 text-emerald-300">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <span data-gd-solved-time="">Verified Accepted in {60 - secondsLeft}s!</span>
+          {phase === 'solved' && (
+            <div
+              data-gd-solved=""
+              className="rounded-xl border border-emerald-400/40 bg-emerald-500/10 p-3.5 text-xs sm:text-sm text-emerald-200 space-y-1.5"
+            >
+              <div className="font-semibold flex items-center gap-2 text-emerald-300">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span data-gd-solved-time="">Verified Accepted in {60 - secondsLeft}s!</span>
+              </div>
+              <p data-gd-solved-explain="" className="ae-prose text-justify text-slate-200 leading-relaxed">
+                {problem.explanation}
+              </p>
             </div>
-            <p data-gd-solved-explain="" className="ae-prose text-justify text-slate-200 leading-relaxed">{problem.explanation}</p>
-          </div>
+          )}
         </div>
 
-        <div className="lg:col-span-5 rounded-2xl border border-slate-800 bg-slate-950/85 p-5 space-y-4">
-          <div className="flex items-center justify-between text-xs">
-            <span className="font-mono-tabular text-cyan-300">Instant Telemetry Estimate</span>
-            <span className="font-mono-tabular text-slate-400">Guest Sandbox (Unrated)</span>
-          </div>
-
-          <div
-            data-gd-elo-card=""
-            className={`rounded-xl border p-4 text-center space-y-1 transition-all ${
-              estimatedElo
-                ? 'border-emerald-400/45 bg-emerald-500/10'
-                : 'border-slate-800 bg-slate-900/70'
-            }`}
-          >
-            <div className="text-xs text-slate-400">Estimated Arena Readiness</div>
-            <div data-gd-elo-val="" className="font-mono-tabular text-2xl sm:text-3xl font-bold text-white">
-              {estimatedElo ? `${estimatedElo} ELO` : phase === 'timeout' ? '00:00 · Retry' : '— — —'}
+        {/* Right Panel: Telemetry Estimate & @handle Format Preview */}
+        <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-slate-800/90 bg-slate-950/85 p-4 sm:p-5 gap-3.5">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between gap-2 text-xs">
+              <span className="font-mono-tabular text-cyan-300">Instant Telemetry Estimate</span>
+              <span className="font-mono-tabular text-slate-400">Guest Sandbox (Unrated)</span>
             </div>
-            <div data-gd-elo-sub="" className="text-xs font-mono-tabular text-violet-300">
-              {estimatedElo
-                ? `${estimatedElo} ELO · ${bracketTitle} (${resolveShadowBotPersona(estimatedElo).name} Bot Tier)`
-                : 'Press Start 60s Guest Duel & solve before 00:00'}
+
+            <div
+              data-gd-elo-card=""
+              className={`rounded-xl border px-4 py-3 text-center space-y-1 transition-all ${
+                estimatedElo
+                  ? 'border-emerald-400/45 bg-emerald-500/10 shadow-[0_0_24px_rgba(16,185,129,0.16)]'
+                  : 'border-slate-800 bg-slate-900/70'
+              }`}
+            >
+              <div className="text-[11px] text-slate-400">Estimated Arena Readiness</div>
+              <div data-gd-elo-val="" className="font-mono-tabular text-2xl sm:text-3xl font-bold text-white leading-tight">
+                {estimatedElo ? `${estimatedElo} ELO` : phase === 'timeout' ? '00:00 · Retry' : '— — —'}
+              </div>
+              <div data-gd-elo-sub="" className="text-xs font-mono-tabular text-violet-300">
+                {estimatedElo
+                  ? `${estimatedElo} ELO · ${bracketTitle} (${resolveShadowBotPersona(estimatedElo).name} Bot Tier)`
+                  : phase === 'running'
+                  ? 'Clock Active — Solve & Verify before 00:00'
+                  : 'Press Start 60s Guest Duel & solve before 00:00'}
+              </div>
             </div>
           </div>
 
           <form
             data-gd-handle-form=""
             onSubmit={previewHandleFormat}
-            className={`space-y-3 pt-3 border-t border-slate-800/80 rounded-xl transition-all ${
+            className={`space-y-2.5 pt-3 border-t border-slate-800/80 rounded-xl transition-all ${
               phase === 'solved' ? 'p-3 border border-emerald-400/35 bg-emerald-500/5' : ''
             }`}
           >
-            <div className="space-y-1">
+            <div className="space-y-1.5">
               <label htmlFor="guest-handle-claim" className="block text-xs text-white font-semibold">
                 Preview Your Future <span className="font-mono-tabular text-cyan-300">@handle</span> (Sandbox Only)
               </label>
-              <div className="rounded-lg border border-amber-400/35 bg-amber-400/10 px-3 py-2 text-[11px] text-amber-200 leading-snug">
+              <div className="rounded-lg border border-amber-400/35 bg-amber-400/10 px-3 py-1.5 text-[11px] text-amber-200 leading-snug">
                 ⚠️ Platform Under Construction — Live @handle claiming &amp; First-50 Singularity spots open on Dec 16,
                 2026 (V1.0 Launch)
               </div>
             </div>
 
-            <div className="flex gap-2">
+            <div className="gd-handle-row flex gap-2">
               <input
                 id="guest-handle-claim"
                 type="text"
@@ -568,14 +620,18 @@ export const GuestDuelWidget: React.FC = () => {
                 }}
                 className="flex-1 min-w-0 rounded-xl bg-slate-900 border border-slate-700 px-3.5 py-2.5 font-mono-tabular text-xs text-white focus:border-cyan-400 focus:outline-none"
               />
-              <button type="submit" data-gd-handle-btn="" className="btn-cyber px-3.5 py-2.5 text-xs whitespace-nowrap shrink-0">
-                Notify / Preview Format
+              <button
+                type="submit"
+                data-gd-handle-btn=""
+                className="gd-btn gd-btn-primary px-3.5 py-2.5 text-xs shrink-0"
+              >
+                <span>Notify / Preview Format</span>
               </button>
             </div>
 
             <div
               data-gd-handle-status=""
-              className={`text-[11px] leading-relaxed ${
+              className={`text-[11px] leading-snug ${
                 !rawCleanedHandle
                   ? 'text-slate-400'
                   : handleSyntaxValid
@@ -586,19 +642,19 @@ export const GuestDuelWidget: React.FC = () => {
               {handleValidationStatus}
             </div>
 
-            <div
-              role="status"
-              data-gd-handle-notice=""
-              className={`rounded-lg border p-3 text-xs leading-relaxed ${
-                !handleNotice
-                  ? 'hidden '
-                  : handleNotice.valid
-                  ? 'border-cyan-400/40 bg-cyan-400/10 text-cyan-100'
-                  : 'border-rose-400/40 bg-rose-500/10 text-rose-200'
-              }`}
-            >
-              {handleNotice?.message ?? ''}
-            </div>
+            {handleNotice && (
+              <div
+                role="status"
+                data-gd-handle-notice=""
+                className={`rounded-lg border p-2.5 text-xs leading-relaxed ${
+                  handleNotice.valid
+                    ? 'border-cyan-400/40 bg-cyan-400/10 text-cyan-100'
+                    : 'border-rose-400/40 bg-rose-500/10 text-rose-200'
+                }`}
+              >
+                {handleNotice.message}
+              </div>
+            )}
           </form>
         </div>
       </div>
@@ -1041,7 +1097,7 @@ export const ShadowBotGauntletWidget: React.FC = () => {
               <div className="text-xs font-mono-tabular text-slate-400 mb-2">
                 Click Any of the 12 Canonical Shadow Bot Personas:
               </div>
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {SHADOW_BOT_PERSONAS.map((persona) => {
                   const active = persona.name === matchedPersona.name;
                   return (
@@ -1339,12 +1395,12 @@ export const WalletCheckoutSimulator: React.FC = () => {
             <em>Arithmo Wallet</em>. All plans and packs are checked out strictly using internal Wallet Credits.
           </p>
 
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <button
               type="button"
               data-ws-rail="lemonsqueezy"
               onClick={() => setRail('lemonsqueezy')}
-              className={`px-3 py-2 rounded-lg border text-xs whitespace-nowrap ${
+              className={`px-3 py-2 rounded-lg border text-xs sm:whitespace-nowrap ${
                 rail === 'lemonsqueezy'
                   ? 'border-cyan-400 bg-cyan-400/15 text-white font-semibold'
                   : 'border-slate-800 bg-slate-900/60 text-slate-400'
@@ -1356,7 +1412,7 @@ export const WalletCheckoutSimulator: React.FC = () => {
               type="button"
               data-ws-rail="bkash"
               onClick={() => setRail('bkash')}
-              className={`px-3 py-2 rounded-lg border text-xs whitespace-nowrap ${
+              className={`px-3 py-2 rounded-lg border text-xs sm:whitespace-nowrap ${
                 rail === 'bkash'
                   ? 'border-rose-400 bg-rose-500/15 text-white font-semibold'
                   : 'border-slate-800 bg-slate-900/60 text-slate-400'

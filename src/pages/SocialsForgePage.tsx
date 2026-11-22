@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {MEDIA} from '../assets/media';
 import {FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
 import {GoldenVaultInspector} from '../components/GoldenVaultInspector';
-import {CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
+import {CountUpStat, CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
 import {WebGLHeroCanvas} from '../components/WebGLHeroCanvas';
 
 const COMMUNITY_FAQS = [
@@ -45,7 +45,7 @@ export const SocialsForgePage: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#050811]/35 to-[#050811]"
         />
-        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
+        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
           <div className="grid lg:grid-cols-12 gap-8 items-stretch">
             <div className="lg:col-span-7 space-y-5 flex flex-col justify-center">
               <HeroReveal delay={0.02}>
@@ -88,6 +88,35 @@ export const SocialsForgePage: React.FC = () => {
               </HeroReveal>
             </div>
           </div>
+
+          <HeroReveal delay={0.24}>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-slate-800/90 rounded-2xl bg-[#070b16]/80 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 overflow-hidden">
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-emerald-300">
+                  <CountUpStat value={5} prefix="+" suffix=" Contrib ELO" delayMs={0} />
+                </div>
+                <div className="text-xs text-slate-400">Per Blog-to-Lab Promotion</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-cyan-300">
+                  <CountUpStat value={2} prefix="+" suffix=" Guidebook ELO" delayMs={220} />
+                </div>
+                <div className="text-xs text-slate-400">Per Verified Theorem Chapter</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-violet-300">
+                  <CountUpStat value={2000} suffix="+ ELO Gate" delayMs={440} useGrouping={false} />
+                </div>
+                <div className="text-xs text-slate-400">Sentinel Verified Q&amp;A Write Access</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-amber-300">
+                  <CountUpStat value={20} suffix=" Vault Sets" delayMs={660} />
+                </div>
+                <div className="text-xs text-slate-400">5×4 Private Golden Vault Schema v1.2</div>
+              </div>
+            </div>
+          </HeroReveal>
         </div>
       </section>
 

@@ -3,7 +3,14 @@ import {AnimatePresence, motion} from 'motion/react';
 import {AlertOctagon, Lock, MonitorX, ShieldAlert, ShieldCheck} from 'lucide-react';
 import {MEDIA} from '../assets/media';
 import {FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
-import {CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
+import {
+  CountUpStat,
+  CyberMediaFrame,
+  HeroReveal,
+  ResilientImage,
+  ScrollReveal,
+  SpotlightCard,
+} from '../components/MotionPrimitives';
 import {WebGLHeroCanvas} from '../components/WebGLHeroCanvas';
 
 type QprtPhase = 'p1' | 'p2' | 'p3' | 'p4';
@@ -94,8 +101,8 @@ export const SecurityQprt4Page: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#050811]/35 to-[#050811]"
         />
-        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-10">
+        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-8">
             <div className="lg:col-span-7 space-y-5 flex flex-col justify-center">
               <HeroReveal delay={0.02}>
                 <div className="text-xs text-cyan-300 font-medium">
@@ -141,6 +148,35 @@ export const SecurityQprt4Page: React.FC = () => {
             </div>
           </div>
 
+          <HeroReveal delay={0.22}>
+            <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-slate-800/90 rounded-2xl bg-[#070b16]/80 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 overflow-hidden">
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-white">
+                  <CountUpStat value={4} suffix=" Resilience Phases" delayMs={0} />
+                </div>
+                <div className="text-xs text-slate-400">Preventive · Live · Forensic · Evolutionary</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-cyan-300">
+                  <CountUpStat value={24} suffix=" Guardian AI Agents" delayMs={220} />
+                </div>
+                <div className="text-xs text-slate-400">PlagioGuard · AxiomCheck · GridShield · MBTS</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-rose-300">
+                  <CountUpStat value={11} suffix="-Flag Escalation" delayMs={440} />
+                </div>
+                <div className="text-xs text-slate-400">4-Step Forensic Appeals · 7-Day Review</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-emerald-300">
+                  <CountUpStat value={30} suffix="s Hot-Swap Shield" delayMs={660} />
+                </div>
+                <div className="text-xs text-slate-400">Reserve Vault Failover + ISP Outage Freeze</div>
+              </div>
+            </div>
+          </HeroReveal>
+
           <ScrollReveal>
             <div className="glass-panel rounded-2xl p-6 sm:p-8">
               <div className="flex flex-wrap gap-2 bg-slate-950/80 border border-slate-800 p-1.5 rounded-xl mb-6">
@@ -175,7 +211,9 @@ export const SecurityQprt4Page: React.FC = () => {
               >
                 <div className="rounded-xl border border-cyan-400/25 bg-slate-950/70 p-5 space-y-2">
                   <div className="text-xs font-mono-tabular text-cyan-300">PlagioGuard AI</div>
-                  <div className="font-display text-xl font-bold text-white">&gt;75% Similarity Block</div>
+                  <div className="font-display text-xl font-bold text-white">
+                    <CountUpStat value={75} prefix=">" suffix="% Similarity Block" delayMs={0} />
+                  </div>
                   <p className="ae-prose text-xs text-slate-400">
                     <code className="text-slate-200">PlagioGuard AI</code> blocks any draft problem exceeding{' '}
                     <code className="text-cyan-300">&gt;75%</code> AoPS or historical corpus similarity before round
@@ -184,7 +222,9 @@ export const SecurityQprt4Page: React.FC = () => {
                 </div>
                 <div className="rounded-xl border border-cyan-400/25 bg-slate-950/70 p-5 space-y-2">
                   <div className="text-xs font-mono-tabular text-cyan-300">AxiomCheck AI</div>
-                  <div className="font-display text-xl font-bold text-white">100% Python/SymPy Proof Check</div>
+                  <div className="font-display text-xl font-bold text-white">
+                    <CountUpStat value={100} suffix="% Python/SymPy Proof Check" delayMs={200} />
+                  </div>
                   <p className="ae-prose text-xs text-slate-400">
                     <code className="text-slate-200">AxiomCheck AI</code> runs{' '}
                     <code className="text-cyan-300">100% Python/SymPy</code> deterministic proof and
@@ -193,7 +233,9 @@ export const SecurityQprt4Page: React.FC = () => {
                 </div>
                 <div className="rounded-xl border border-cyan-400/25 bg-slate-950/70 p-5 space-y-2">
                   <div className="text-xs font-mono-tabular text-cyan-300">QuantumShuffler AI</div>
-                  <div className="font-display text-xl font-bold text-white">2 Standby Reserves / Segment</div>
+                  <div className="font-display text-xl font-bold text-white">
+                    <CountUpStat value={2} suffix=" Standby Reserves / Segment" delayMs={400} />
+                  </div>
                   <p className="ae-prose text-xs text-slate-400">
                     <code className="text-slate-200">QuantumShuffler AI</code> locks{' '}
                     <span className="text-white font-semibold">2 standby reserve problems per segment</span> in

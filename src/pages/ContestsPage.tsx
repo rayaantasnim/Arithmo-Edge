@@ -3,7 +3,14 @@ import {AnimatePresence, motion} from 'motion/react';
 import {Award, CalendarClock, Lock, ShieldAlert, Trophy} from 'lucide-react';
 import {MEDIA} from '../assets/media';
 import {DynamicCreditsPreview, FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
-import {CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
+import {
+  CountUpStat,
+  CyberMediaFrame,
+  HeroReveal,
+  ResilientImage,
+  ScrollReveal,
+  SpotlightCard,
+} from '../components/MotionPrimitives';
 import {WebGLHeroCanvas} from '../components/WebGLHeroCanvas';
 
 type ContestTab = 'general' | 'expert' | 'contract';
@@ -140,8 +147,8 @@ export const ContestsPage: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#050811]/35 to-[#050811]"
         />
-        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-12">
+        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-8">
             <div className="lg:col-span-7 space-y-5 flex flex-col justify-center">
               <HeroReveal delay={0.02}>
                 <div className="text-xs text-amber-300 font-medium">
@@ -183,6 +190,35 @@ export const ContestsPage: React.FC = () => {
               </HeroReveal>
             </div>
           </div>
+
+          <HeroReveal delay={0.24}>
+            <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-slate-800/90 rounded-2xl bg-[#070b16]/80 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 overflow-hidden">
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-white">
+                  <CountUpStat value={7} suffix=" Days / Week" delayMs={0} />
+                </div>
+                <div className="text-xs text-slate-400">Zero-Rest Daily &amp; Sunday Mega Schedule</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-amber-300">
+                  <CountUpStat value={100} suffix=" Min Sunday Mega" delayMs={220} />
+                </div>
+                <div className="text-xs text-slate-400">10 Problems · Max 2 Submissions/Q · T+3h</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-cyan-300">
+                  <CountUpStat value={3} suffix="-User Quorum" delayMs={440} />
+                </div>
+                <div className="text-xs text-slate-400">Unplayed Vaults Stay Sealed &lt;3 Entrants</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-emerald-300">
+                  <CountUpStat value={128} prefix="Top " suffix=" World Cup" delayMs={660} />
+                </div>
+                <div className="text-xs text-slate-400">6-Round Knockout Championship Bracket</div>
+              </div>
+            </div>
+          </HeroReveal>
 
           <ScrollReveal>
             <div className="ae-bento-grid grid md:grid-cols-2 gap-5">

@@ -40,6 +40,120 @@ export const ScrollReveal: React.FC<{
   );
 };
 
+export interface CountUpStatProps {
+  value: number;
+  startValue?: number;
+  decimals?: number;
+  prefix?: string;
+  suffix?: string;
+  durationMs?: number;
+  delayMs?: number;
+  useGrouping?: boolean;
+  className?: string;
+}
+
+export const CountUpStat: React.FC<CountUpStatProps> = ({
+  value,
+  startValue = 0,
+  decimals = 0,
+  prefix = '',
+  suffix = '',
+  durationMs = 950,
+  delayMs = 0,
+  useGrouping = true,
+  className = '',
+}) => {
+  const elRef = useRef<HTMLSpanElement | null>(null);
+  const [displayValue, setDisplayValue] = useState<number>(startValue);
+  const startedRef = useRef(false);
+
+  useEffect(() => {
+    const node = elRef.current;
+    if (!node) return;
+
+    const reducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion || typeof IntersectionObserver === 'undefined') {
+      startedRef.current = true;
+      setDisplayValue(value);
+      return;
+    }
+
+    if (startedRef.current) {
+      setDisplayValue(value);
+      return;
+    }
+
+    let delayTimer: number | undefined;
+    let rafId: number | undefined;
+
+    const runAnimation = () => {
+      if (startedRef.current) return;
+      startedRef.current = true;
+
+      if (value === startValue) {
+        setDisplayValue(value);
+        return;
+      }
+
+      delayTimer = window.setTimeout(() => {
+        const startTime = performance.now();
+        const delta = value - startValue;
+
+        const tick = (now: number) => {
+          const elapsed = now - startTime;
+          const progress = Math.min(1, elapsed / durationMs);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const next = startValue + delta * eased;
+          setDisplayValue(progress >= 1 ? value : next);
+          if (progress < 1) {
+            rafId = window.requestAnimationFrame(tick);
+          }
+        };
+
+        rafId = window.requestAnimationFrame(tick);
+      }, delayMs);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          runAnimation();
+          observer.disconnect();
+        }
+      },
+      {threshold: 0.06},
+    );
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+      if (delayTimer !== undefined) window.clearTimeout(delayTimer);
+      if (rafId !== undefined) window.cancelAnimationFrame(rafId);
+    };
+  }, [value, startValue, durationMs, delayMs]);
+
+  const formatNum = (num: number): string => {
+    if (decimals > 0) {
+      return num.toFixed(decimals);
+    }
+    const rounded = Math.round(num);
+    return useGrouping ? rounded.toLocaleString('en-US') : String(rounded);
+  };
+
+  return (
+    <span ref={elRef} className={`font-mono-tabular ${className}`}>
+      {prefix}
+      {formatNum(displayValue)}
+      {suffix}
+    </span>
+  );
+};
+
 export const SpotlightCard: React.FC<{
   children: React.ReactNode;
   className?: string;

@@ -2,7 +2,14 @@ import React, {useState} from 'react';
 import {Building2, CheckCircle2, FileCheck2, ShieldAlert} from 'lucide-react';
 import {MEDIA} from '../assets/media';
 import {FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
-import {CyberMediaFrame, HeroReveal, ResilientImage, ScrollReveal, SpotlightCard} from '../components/MotionPrimitives';
+import {
+  CountUpStat,
+  CyberMediaFrame,
+  HeroReveal,
+  ResilientImage,
+  ScrollReveal,
+  SpotlightCard,
+} from '../components/MotionPrimitives';
 import {WebGLHeroCanvas} from '../components/WebGLHeroCanvas';
 
 type AcademyTierKey = 'general' | 'premium' | 'supreme' | 'enterprise';
@@ -118,7 +125,7 @@ export const AcademiesPage: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#050811]/35 to-[#050811]"
         />
-        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
+        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
           <div className="grid lg:grid-cols-12 gap-8 items-stretch">
             <div className="lg:col-span-7 space-y-5 flex flex-col justify-center">
               <HeroReveal delay={0.02}>
@@ -158,6 +165,35 @@ export const AcademiesPage: React.FC = () => {
               </HeroReveal>
             </div>
           </div>
+
+          <HeroReveal delay={0.24}>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-slate-800/90 rounded-2xl bg-[#070b16]/80 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 overflow-hidden">
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-white">
+                  <CountUpStat value={4} suffix=" Institutional Tiers" delayMs={0} />
+                </div>
+                <div className="text-xs text-slate-400">General, Premium, Supreme &amp; Enterprise</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-amber-300">
+                  <CountUpStat value={25} suffix="% Founding Discount" delayMs={220} />
+                </div>
+                <div className="text-xs text-slate-400">First 5 KYB Academies · Initial 3 Months</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-cyan-300">
+                  <CountUpStat value={10} suffix=" Waived Admin Seats" delayMs={440} />
+                </div>
+                <div className="text-xs text-slate-400">$0 Monthly Faculty Seat Dues + 15 Mentors</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-emerald-300">
+                  <CountUpStat value={2000} suffix="+ Member Scale" delayMs={660} />
+                </div>
+                <div className="text-xs text-slate-400">Dual-Handle Context + 5-Layer Shield</div>
+              </div>
+            </div>
+          </HeroReveal>
         </div>
       </section>
 
@@ -296,7 +332,8 @@ export const AcademiesPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-slate-400">Tier 01 · Starter Club</div>
               <h3 className="font-display text-xl font-bold text-white">Academy General</h3>
               <div className="font-mono-tabular text-2xl font-bold text-cyan-300">
-                $29.99<span className="text-xs text-slate-400 font-normal">/mo</span>
+                <CountUpStat value={29.99} decimals={2} prefix="$" delayMs={0} />
+                <span className="text-xs text-slate-400 font-normal">/mo</span>
               </div>
               <ul className="text-xs text-slate-300 space-y-1.5 pt-2">
                 <li>· Max 100 Members ($0.99/member due)</li>
@@ -309,7 +346,8 @@ export const AcademiesPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-violet-300">Tier 02 · Growing School</div>
               <h3 className="font-display text-xl font-bold text-white">Academy Premium</h3>
               <div className="font-mono-tabular text-2xl font-bold text-violet-300">
-                $49.99<span className="text-xs text-slate-400 font-normal">/mo</span>
+                <CountUpStat value={49.99} decimals={2} prefix="$" delayMs={200} />
+                <span className="text-xs text-slate-400 font-normal">/mo</span>
               </div>
               <ul className="text-xs text-slate-300 space-y-1.5 pt-2">
                 <li>· Max 500 Members ($2.99/member due)</li>
@@ -322,7 +360,8 @@ export const AcademiesPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-cyan-300">Tier 03 · All-Inclusive</div>
               <h3 className="font-display text-xl font-bold text-white">Academy Supreme</h3>
               <div className="font-mono-tabular text-2xl font-bold text-cyan-300">
-                $79.99<span className="text-xs text-slate-400 font-normal">/mo</span>
+                <CountUpStat value={79.99} decimals={2} prefix="$" delayMs={400} />
+                <span className="text-xs text-slate-400 font-normal">/mo</span>
               </div>
               <ul className="text-xs text-slate-300 space-y-1.5 pt-2">
                 <li>· Max 1,000 Members ($6.99/member due)</li>
@@ -338,7 +377,8 @@ export const AcademiesPage: React.FC = () => {
               <div className="text-xs font-mono-tabular text-amber-300">Tier 04 · National / University</div>
               <h3 className="font-display text-xl font-bold text-white">Academy Enterprise</h3>
               <div className="font-mono-tabular text-xl font-bold text-amber-300">
-                $149.99 <span className="text-xs text-slate-400 font-normal">1st mo / $79.99 base</span>
+                <CountUpStat value={149.99} decimals={2} prefix="$" delayMs={600} />{' '}
+                <span className="text-xs text-slate-400 font-normal">1st mo / $79.99 base</span>
               </div>
               <ul className="text-xs text-slate-300 space-y-1.5 pt-1">
                 <li>· Unlimited Members ($5.99 &lt;1,000 / $7.99 &gt;1,000)</li>
@@ -647,21 +687,21 @@ export const AcademiesPage: React.FC = () => {
               </div>
               <h3 className="font-display text-2xl font-bold text-white">Institutional Add-On Modules</h3>
               <div className="space-y-2.5 text-xs sm:text-sm">
-                <div className="flex justify-between gap-3 border-b border-slate-800 pb-2">
-                  <span className="text-white">Inter-Academy Clash Ticket</span>
-                  <span className="font-mono-tabular text-cyan-300 whitespace-nowrap">$4.99 / clash</span>
+                <div className="flex flex-wrap sm:flex-nowrap items-baseline justify-between gap-x-3 gap-y-1 border-b border-slate-800 pb-2">
+                  <span className="text-white min-w-0">Inter-Academy Clash Ticket</span>
+                  <span className="font-mono-tabular text-cyan-300 whitespace-nowrap shrink-0">$4.99 / clash</span>
                 </div>
-                <div className="flex justify-between gap-3 border-b border-slate-800 pb-2">
-                  <span className="text-white">HQ-Authored Academy Guidebook ($14.99/mo · +2 Personal ELO)</span>
-                  <span className="font-mono-tabular text-cyan-300 whitespace-nowrap">$14.99 / mo</span>
+                <div className="flex flex-wrap sm:flex-nowrap items-baseline justify-between gap-x-3 gap-y-1 border-b border-slate-800 pb-2">
+                  <span className="text-white min-w-0">HQ-Authored Academy Guidebook ($14.99/mo · +2 Personal ELO)</span>
+                  <span className="font-mono-tabular text-cyan-300 whitespace-nowrap shrink-0">$14.99 / mo</span>
                 </div>
-                <div className="flex justify-between gap-3 border-b border-slate-800 pb-2">
-                  <span className="text-white">Virtual Edu Lab (Collaborative Board)</span>
-                  <span className="font-mono-tabular text-cyan-300 whitespace-nowrap">$2.99 / 24h</span>
+                <div className="flex flex-wrap sm:flex-nowrap items-baseline justify-between gap-x-3 gap-y-1 border-b border-slate-800 pb-2">
+                  <span className="text-white min-w-0">Virtual Edu Lab (Collaborative Board)</span>
+                  <span className="font-mono-tabular text-cyan-300 whitespace-nowrap shrink-0">$2.99 / 24h</span>
                 </div>
-                <div className="flex justify-between gap-3">
-                  <span className="text-white">Supreme &amp; Enterprise Tiers</span>
-                  <span className="font-mono-tabular text-emerald-400 font-semibold whitespace-nowrap">
+                <div className="flex flex-wrap sm:flex-nowrap items-baseline justify-between gap-x-3 gap-y-1">
+                  <span className="text-white min-w-0">Supreme &amp; Enterprise Tiers</span>
+                  <span className="font-mono-tabular text-emerald-400 font-semibold whitespace-nowrap shrink-0">
                     ALL INCLUDED FREE
                   </span>
                 </div>

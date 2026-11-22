@@ -4,6 +4,7 @@ import {MEDIA} from '../assets/media';
 import {Arena3DStage} from '../components/Arena3DStage';
 import {FaqAccordion, SectionHeader, ShadowBotGauntletWidget} from '../components/CommercialPrimitives';
 import {
+  CountUpStat,
   CyberMediaFrame,
   HeroReveal,
   ResilientImage,
@@ -60,7 +61,7 @@ export const ArenasEloPage: React.FC = () => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#050811]/35 to-[#050811]"
         />
-        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
+        <div className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
           <div className="grid lg:grid-cols-12 gap-8 items-stretch">
             <div className="lg:col-span-7 space-y-5 flex flex-col justify-center">
               <HeroReveal delay={0.02}>
@@ -114,6 +115,35 @@ export const ArenasEloPage: React.FC = () => {
               </HeroReveal>
             </div>
           </div>
+
+          <HeroReveal delay={0.24}>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-slate-800/90 rounded-2xl bg-[#070b16]/80 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 overflow-hidden">
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-white">
+                  <CountUpStat value={5} suffix=" Core Arenas" delayMs={0} />
+                </div>
+                <div className="text-xs text-slate-400">Number Theory · Algebra · Geometry · Comb · Mixed</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-violet-300">
+                  <CountUpStat value={10} suffix=" Core Arena ELOs" delayMs={220} />
+                </div>
+                <div className="text-xs text-slate-400">Strict General &amp; Expert Split Rating</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-cyan-300">
+                  <CountUpStat value={60} suffix=" Rank Titles" delayMs={440} />
+                </div>
+                <div className="text-xs text-slate-400">12 Progression Tiers · Spark through Singularity</div>
+              </div>
+              <div className="p-4 sm:p-5 space-y-1">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-rose-300">
+                  <CountUpStat value={12} suffix=" Shadow Bots" delayMs={660} />
+                </div>
+                <div className="text-xs text-slate-400">0–3200+ ELO Calibrated Sparring Personas</div>
+              </div>
+            </div>
+          </HeroReveal>
         </div>
       </section>
 
