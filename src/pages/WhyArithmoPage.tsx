@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {AnimatePresence, motion} from 'motion/react';
 import {
   ArrowRight,
   Bot,
@@ -214,8 +213,6 @@ export const WhyArithmoPage: React.FC = () => {
     COMPARISON_MATRIX.find((r) => r.id === selectedRowId) || visibleRows[0] || COMPARISON_MATRIX[0];
   const activeBot =
     SHADOW_BOT_PERSONAS.find((b) => b.name === selectedBotName) || SHADOW_BOT_PERSONAS[10];
-  const activeStakeholder =
-    STAKEHOLDERS.find((s) => s.id === stakeholderId) || STAKEHOLDERS[0];
 
   return (
     <>

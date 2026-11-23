@@ -1,27 +1,47 @@
 import fs from 'fs';
 import Module from 'module';
 import path from 'path';
+import {fileURLToPath} from 'url';
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 
-// Register asset hook so ESM/CJS imports of local .jpg assets resolve to clean relative paths
-const originalResolveFilename = (Module as unknown as {
-  _resolveFilename: (request: string, parent: unknown, isMain: boolean, options: unknown) => string;
-})._resolveFilename;
+const ASSET_EXT_RE = /\.(jpg|jpeg|png|webp|svg)$/i;
 
-const ASSET_STUB_PREFIX = '__AE_IMG__::';
-(Module as unknown as Record<string, Record<string, (mod: NodeModule, filename: string) => void>>)._extensions['.jpg'] =
-  function (mod: NodeModule, filename: string) {
+const registerHooks = (Module as unknown as {
+  registerHooks?: (hooks: {
+    load?: (
+      url: string,
+      context: unknown,
+      nextLoad: (url: string, context?: unknown) => {format?: string; source?: unknown; shortCircuit?: boolean},
+    ) => {format?: string; source?: unknown; shortCircuit?: boolean};
+  }) => void;
+}).registerHooks;
+
+if (typeof registerHooks === 'function') {
+  registerHooks({
+    load(url, context, nextLoad) {
+      if (url.startsWith('file://') && ASSET_EXT_RE.test(url.split('?')[0] ?? '')) {
+        const filename = fileURLToPath(url.split('?')[0] ?? url);
+        const rel = path.relative(process.cwd(), filename).replace(/\\/g, '/');
+        return {
+          format: 'module',
+          shortCircuit: true,
+          source: `export default ${JSON.stringify(rel)};`,
+        };
+      }
+      return nextLoad(url, context);
+    },
+  });
+}
+
+// Also keep CJS extension hooks for CommonJS bundle compatibility
+const moduleExtensions = (Module as unknown as Record<string, Record<string, (mod: NodeModule, filename: string) => void>>)._extensions;
+for (const ext of ['.jpg', '.jpeg', '.png', '.webp']) {
+  moduleExtensions[ext] = function (mod: NodeModule, filename: string) {
     const rel = path.relative(process.cwd(), filename).replace(/\\/g, '/');
     mod.exports = rel;
   };
-(Module as unknown as Record<string, Record<string, (mod: NodeModule, filename: string) => void>>)._extensions['.png'] =
-  function (mod: NodeModule, filename: string) {
-    const rel = path.relative(process.cwd(), filename).replace(/\\/g, '/');
-    mod.exports = rel;
-  };
-void originalResolveFilename;
-void ASSET_STUB_PREFIX;
+}
 
 async function main() {
   const {SiteShell} = await import('../src/components/SiteShell');
@@ -112,7 +132,7 @@ async function main() {
     bodyMarkup = bodyMarkup
       .replace(/opacity:0;transform:translateY\([^;"]*\);?/g, '')
       .replace(/opacity:0;transform:none;?/g, '')
-      .replace(/(<div[^>]*id="nav-drawer-backdrop"[^>]*>)|opacity:0;?/g, (m, backdrop) => backdrop || '');
+      .replace(/(<div[^>]*id="nav-drawer-backdrop"[^>]*>)|opacity:0;?/g, (_m, backdrop: string | undefined) => backdrop || '');
 
     const finalHtml = `${headSection}\n${CDN_HEAD_BLOCK}\n  </head>\n  <body class="selection:bg-cyan-400/30 selection:text-cyan-100">\n    <div id="root" data-page="${fileName}">${bodyMarkup}</div>\n    <script src="assets/js/main.js" defer></script>\n  </body>\n</html>\n`;
 

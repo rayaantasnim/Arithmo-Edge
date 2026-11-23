@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ArrowRight, Award, CheckCircle2, Lock, ShieldCheck, Sparkles, Terminal, Trophy} from 'lucide-react';
+import {ArrowRight, Lock, ShieldCheck} from 'lucide-react';
 import {MEDIA} from '../assets/media';
 import heroMonumentImg from '../assets/images/hero_olympiad_monument_1795365454544.jpg';
 import {Arena3DStage} from '../components/Arena3DStage';
@@ -13,6 +13,7 @@ import {
   SpotlightCard,
 } from '../components/MotionPrimitives';
 import {useCountdown} from '../components/SiteShell';
+import {TechTooltip} from '../components/TechTooltip';
 import {WebGLHeroCanvas} from '../components/WebGLHeroCanvas';
 import {
   ARENA_CATALOG,
@@ -47,8 +48,6 @@ export const HomePage: React.FC = () => {
   const [portalCategory, setPortalCategory] = useState<'all' | PortalCategoryKey>('all');
   const [activeArenaKey, setActiveArenaKey] = useState<ArenaKey>('nt');
 
-  const visiblePortals =
-    portalCategory === 'all' ? PORTALS_14 : PORTALS_14.filter((p) => p.category === portalCategory);
   const activeArena = ARENA_CATALOG[activeArenaKey];
 
   return (
@@ -87,7 +86,7 @@ export const HomePage: React.FC = () => {
                 <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 prose-measure leading-relaxed">
                   Unifying 5 Core Mathematical Arenas, 60 meritocratic progression tiers, 1v1 Bullet Blitz duels,
                   post-contest proof auditing, and 42 specialized AI engines inside a zero pay-to-win global competition
-                  infrastructure engineered for the next century of Olympiad sport.
+                  infrastructure calibrated by real-time ELO and QPRT-4 integrity guards.
                 </p>
               </HeroReveal>
 
@@ -195,17 +194,19 @@ export const HomePage: React.FC = () => {
                 <HeroReveal delay={0.14}>
                   <div className="space-y-3.5 ae-prose text-justify text-base sm:text-lg text-slate-300 prose-measure leading-relaxed">
                     <p className="text-justify">
-                      Competitive programming has thrived for decades on real-time ELO rating systems, live global
-                      rounds, and post-match peer hacking through platforms like Codeforces. Meanwhile, competitive
-                      mathematics remains trapped between static, 1990s-era asynchronous forums (such as AoPS) and
-                      gatekept, $300-$500+ preparatory courses.
+                      Competitive programming has thrived for decades on real-time <TechTooltip term="ELO">ELO</TechTooltip>{' '}
+                      rating systems, live global rounds, and post-match peer hacking through platforms like Codeforces.
+                      Meanwhile, competitive mathematics remains trapped between static, 1990s-era asynchronous forums
+                      (such as AoPS) and gatekept, $300-$500+ preparatory courses.
                     </p>
                     <p className="text-justify">
                       Arithmo Edge eliminates that asymmetry. Engineered as a federated, zero-to-low-cost global
                       infrastructure, Arithmo Edge brings sub-second latency, real-time ELO matchmaking, 1v1 Bullet
-                      Blitz duels, live Codeforces-style rated contests, peer-hacking phases, and deterministic
-                      symbolic verification to pure Olympiad mathematics—making elite mathematical training and
-                      verifiable competitive credentials accessible to every student on Earth.
+                      Blitz duels, live Codeforces-style rated contests,{' '}
+                      <TechTooltip term="Find the Flaw">peer-hacking phases</TechTooltip>, and deterministic{' '}
+                      <TechTooltip term="SymPy">symbolic verification</TechTooltip> to pure Olympiad mathematics—making
+                      elite mathematical training and verifiable competitive credentials accessible to every student on
+                      Earth.
                     </p>
                   </div>
                 </HeroReveal>
@@ -493,7 +494,14 @@ export const HomePage: React.FC = () => {
           <SectionHeader
             kicker="05 · Color-Coded Mathematical Domains"
             title="5 Core Arenas: Interactive Track & Syllabus Explorer"
-            subtitle="1v1 Rated Duels, 5-Minute Direct Rival Challenges, and Shadow Bot Gauntlets live strictly inside these 5 Core Arenas (Subsites #1–#5), keeping 10 Core Arena ELOs completely isolated."
+            subtitle={
+              <>
+                1v1 Rated Duels, 5-Minute Direct Rival Challenges, and{' '}
+                <TechTooltip term="Shadow Bot Gauntlet">Shadow Bot Gauntlets</TechTooltip> live strictly inside these 5
+                Core Arenas (Subsites #1–#5), keeping 10 Core Arena{' '}
+                <TechTooltip term="Strict No-Mixed ELO Policy">ELOs completely isolated</TechTooltip>.
+              </>
+            }
             action={
               <a href="arenas-elo.html" className="btn-cyber px-4 py-2 text-xs whitespace-nowrap">
                 Open 60-Tier &amp; Bot Gauntlet Simulator &rarr;
@@ -609,7 +617,13 @@ export const HomePage: React.FC = () => {
           <SectionHeader
             kicker="06 · Zero Pay-to-Win Constitutional Guarantee & Telemetry Scale"
             title="Verified Meritocracy Backed by QPRT-4 & 14-Point Legal Shield"
-            subtitle="Every ELO point is earned exclusively through deterministic problem solutions, blind proof grading, and Find the Flaw audits."
+            subtitle={
+              <>
+                Every <TechTooltip term="ELO">ELO</TechTooltip> point is earned exclusively through deterministic
+                problem solutions, blind proof grading, <TechTooltip term="QPRT-4">QPRT-4</TechTooltip> integrity
+                defenses, and <TechTooltip term="Find the Flaw">Find the Flaw</TechTooltip> audits.
+              </>
+            }
           />
 
           <div className="ae-kpi-grid grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -662,10 +676,12 @@ export const HomePage: React.FC = () => {
                   Unrated Guest Access &amp; Verified @handle Security
                 </h3>
                 <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
-                  Guests browse all 14 live standings freely and audit Find the Flaw. Registered{' '}
+                  Guests browse all 14 live standings freely and audit{' '}
+                  <TechTooltip term="Find the Flaw">Find the Flaw</TechTooltip>. Registered{' '}
                   <code className="font-mono-tabular text-cyan-300">@handles</code> unlock rated competitions guarded by
-                  mandatory Live Contest Full-Screen &amp; App/Tab Lockdown, optional Mon–Sat Module 7, and Sunday Mega
-                  proctoring.
+                  mandatory Live Contest Full-Screen &amp; App/Tab Lockdown, optional Mon–Sat{' '}
+                  <TechTooltip term="Module 7">Module 7</TechTooltip>, and Sunday Mega proctoring under{' '}
+                  <TechTooltip term="QPRT-4">QPRT-4</TechTooltip>.
                 </p>
               </div>
             </SpotlightCard>
@@ -725,9 +741,10 @@ export const HomePage: React.FC = () => {
               <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                 Architect of the <code className="font-mono-tabular text-cyan-300">Prime-Factor.app</code> pre-era into
                 the 14-portal Arithmo-Edge network,{' '}
-                <code className="font-mono-tabular text-cyan-300">Arithmo-Core-SDK (engine.js)</code>,{' '}
-                <code className="font-mono-tabular text-cyan-300">QPRT-4</code> Quad-Phase Resilience Theory, Module 7
-                biometrics, 42-engine AI routing, and Cloudflare Workers + Firebase edge orchestration.
+                <TechTooltip term="Arithmo-Core-SDK">Arithmo-Core-SDK (engine.js)</TechTooltip>,{' '}
+                <TechTooltip term="QPRT-4">QPRT-4</TechTooltip> Quad-Phase Resilience Theory,{' '}
+                <TechTooltip term="Module 7">Module 7</TechTooltip> biometrics, 42-engine AI routing, and Cloudflare
+                Workers + Firebase edge orchestration.
               </p>
             </SpotlightCard>
 

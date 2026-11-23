@@ -12,6 +12,7 @@ import {
   SpotlightCard,
 } from '../components/MotionPrimitives';
 import {WebGLHeroCanvas} from '../components/WebGLHeroCanvas';
+import {TechTooltip} from '../components/TechTooltip';
 import {ARENA_CATALOG, ArenaKey, SHADOW_BOT_PERSONAS} from '../data/ecosystem';
 
 const ARENA_KEYS: ArenaKey[] = ['nt', 'alg', 'geo', 'comb', 'mixed'];
@@ -77,10 +78,13 @@ export const ArenasEloPage: React.FC = () => {
               <HeroReveal delay={0.14}>
                 <p className="ae-prose text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
                   Arithmo-Edge prohibits single-bucket rating inflation through its{' '}
-                  <span className="text-white font-semibold">Strict No-Mixed ELO Policy</span>: every competitor
-                  maintains <span className="text-white font-semibold">10 isolated Core Arena ELOs</span> (separate
-                  General &amp; Expert ratings across all 5 arenas) alongside direct in-arena{' '}
-                  <span className="text-white font-semibold">1v1 &amp; Shadow Bot Gauntlet</span> matchmaking.
+                  <TechTooltip term="Strict No-Mixed ELO Policy">Strict No-Mixed ELO Policy</TechTooltip>: every
+                  competitor maintains <span className="text-white font-semibold">10 isolated Core Arena ELOs</span>{' '}
+                  (separate <TechTooltip term="General ELO">General</TechTooltip> &amp;{' '}
+                  <TechTooltip term="Expert ELO">Expert</TechTooltip> <TechTooltip term="ELO">ELO</TechTooltip>{' '}
+                  ratings across all 5 arenas) alongside direct in-arena{' '}
+                  <TechTooltip term="Shadow Bot Gauntlet">1v1 &amp; Shadow Bot Gauntlet</TechTooltip> matchmaking,
+                  protected by <TechTooltip term="QPRT-4">QPRT-4</TechTooltip> anti-cheat telemetry.
                 </p>
               </HeroReveal>
               <HeroReveal delay={0.2}>
@@ -202,10 +206,12 @@ export const ArenasEloPage: React.FC = () => {
                 Contests, BdMO Warm-Ups, and Sunday Mega rounds on Subsite #6 remain uncluttered and distraction-free.
               </p>
               <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
-                Inside each specialized arena, players switch effortlessly between ±100 ELO Ranked Pools (with 60-second
-                Stealth ELO-Mirror backfill at 0.75× K-factor), self-expiring 5-minute Direct Rival URLs that refund
-                quotas cleanly on expiry, and custom-tuned 0–3200+ Shadow Bot Gauntlets without polluting official
-                tournament schedules or global Find the Flaw queues.
+                Inside each specialized arena, players switch effortlessly between ±100 ELO Ranked Pools (with 60-second{' '}
+                <TechTooltip term="Stealth ELO-Mirror">Stealth ELO-Mirror</TechTooltip> backfill at{' '}
+                <TechTooltip term="K-Factor">0.75× K-factor</TechTooltip>), self-expiring 5-minute Direct Rival URLs
+                that refund quotas cleanly on expiry, and custom-tuned 0–3200+{' '}
+                <TechTooltip term="Shadow Bot Gauntlet">Shadow Bot Gauntlets</TechTooltip> without polluting official
+                tournament schedules or global <TechTooltip term="Find the Flaw">Find the Flaw</TechTooltip> queues.
               </p>
             </div>
           </div>
@@ -307,17 +313,18 @@ export const ArenasEloPage: React.FC = () => {
                 Balancing Speed Computation &amp; Olympiad Proof Rigor
               </h2>
               <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
-                While <code className="font-mono-tabular text-cyan-300">General ELO</code> and{' '}
-                <code className="font-mono-tabular text-violet-300">Expert ELO</code> update independently on separate
-                leaderboards on Subsite #7, your visible{' '}
-                <span className="text-white font-semibold">12-Tier Rank Badge</span> in any arena is dynamically resolved
-                from their exact arithmetic midpoint.
+                While <TechTooltip term="General ELO">General ELO</TechTooltip> and{' '}
+                <TechTooltip term="Expert ELO">Expert ELO</TechTooltip> update independently on separate leaderboards on
+                Subsite #7, your visible <span className="text-white font-semibold">12-Tier Rank Badge</span> in any
+                arena is dynamically resolved from their exact arithmetic midpoint.
               </p>
               <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                 General rounds test numerical velocity via single-problem sequences, a Touch Numpad, and a Second-Chance
-                Overtime Loop, while Expert rounds evaluate formal LaTeX and GeoGebra proofs across Segments 1–4 under
-                ProofGrader AI, SymPy checks, and 2000+ Sentinel Peer Review. Because both ratings weigh equally in the
-                average, speed alone cannot mask weak deduction—and proof-only specialists sharpen tactical fluency.
+                Overtime Loop, while Expert rounds evaluate formal LaTeX and GeoGebra proofs across Segments 1–4 under{' '}
+                <TechTooltip term="ProofGrader AI">ProofGrader AI</TechTooltip>,{' '}
+                <TechTooltip term="SymPy">SymPy</TechTooltip> checks, and 2000+ Sentinel Peer Review. Because both
+                ratings weigh equally in the average, speed alone cannot mask weak deduction—and proof-only specialists
+                sharpen tactical fluency.
               </p>
               <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                 Crossing averaged milestone thresholds unlocks permanent ecosystem authorities: 1500+ ELO (plus 6 clean
@@ -525,8 +532,8 @@ export const ArenasEloPage: React.FC = () => {
               <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                 Exposing lemma names prematurely collapses genuine problem-solving intuition into mechanical formula
                 recall. By withholding sub-topic metadata at both the UI layer and Cloudflare Worker edge payload via{' '}
-                <code className="font-mono-tabular text-amber-300">TagArchitect</code>, every solver learns to diagnose
-                structural invariants blindly under realistic championship timing.
+                <TechTooltip term="TagArchitect">TagArchitect</TechTooltip>, every solver learns to diagnose structural
+                invariants blindly under realistic championship timing.
               </p>
               <p className="ae-prose text-justify text-sm sm:text-base text-slate-300 leading-relaxed">
                 Once concluded rounds graduate into the public archive (except suspended{' '}
@@ -660,19 +667,22 @@ export const ArenasEloPage: React.FC = () => {
             <div className="lg:col-span-7 space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
                 <SpotlightCard className="rounded-2xl p-6 space-y-2.5">
-                  <div className="font-mono-tabular text-xs text-amber-300">Anti-Collusion Limit</div>
+                  <div className="font-mono-tabular text-xs text-amber-300">Anti-Collusion Limit · QPRT-4</div>
                   <h3 className="font-display text-lg font-bold text-white">24h 2-Match Pairwise Cap</h3>
                   <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                     Any two <code className="font-mono-tabular text-amber-300">@handles</code> can play at most 2 rated
-                    1v1 matches in a rolling 24-hour window, neutralizing ELO win-trading rings.
+                    1v1 matches in a rolling 24-hour window, neutralizing <TechTooltip term="ELO">ELO</TechTooltip>{' '}
+                    win-trading rings under <TechTooltip term="QPRT-4">QPRT-4</TechTooltip> and{' '}
+                    <TechTooltip term="MBTS">MBTS</TechTooltip> behavioral monitoring.
                   </p>
                 </SpotlightCard>
                 <SpotlightCard className="rounded-2xl p-6 space-y-2.5">
                   <div className="font-mono-tabular text-xs text-emerald-300">System Expectation Override</div>
                   <h3 className="font-display text-lg font-bold text-white">+ΔR Underdog Protection</h3>
                   <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
-                    When a lower-rated solver faces a 2000+ Sentinel and outperforms expected score margin, System
-                    Expectation Override protects against harsh rating drops.
+                    When a lower-rated solver faces a 2000+ Sentinel and outperforms expected score margin,{' '}
+                    <TechTooltip term="System Expectation Override">System Expectation Override</TechTooltip> protects
+                    against harsh rating drops.
                   </p>
                 </SpotlightCard>
               </div>
@@ -695,8 +705,9 @@ export const ArenasEloPage: React.FC = () => {
                   </h3>
                   <p className="ae-prose text-justify text-sm text-slate-300 leading-relaxed">
                     Published publicly on Subsite #7 Standings (<code className="font-mono-tabular">All Rounders</code>),
-                    the composite aggregates all 5 arenas with primary weight on Mixed Olympiad &amp; Sunday Mega results
-                    to qualify top solvers for the Top 128 Annual World Cup.
+                    the <TechTooltip term="Overall All-Rounder">Overall All-Rounder</TechTooltip> composite aggregates all
+                    5 arenas with primary weight on Mixed Olympiad &amp; Sunday Mega results to qualify top solvers for
+                    the Top 128 Annual World Cup.
                   </p>
                   <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300/95 leading-relaxed">
                     From Round of 128 through the Grand Final Champion crowned with the Golden Crown, only verified

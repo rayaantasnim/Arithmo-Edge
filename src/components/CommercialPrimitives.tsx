@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {AnimatePresence, motion} from 'motion/react';
 import {
   AlertTriangle,
   Bot,
@@ -12,7 +11,6 @@ import {
   ShieldCheck,
   Sparkles,
   Swords,
-  UserCheck,
   Wallet,
 } from 'lucide-react';
 import {
@@ -26,7 +24,7 @@ import {
 export const SectionHeader: React.FC<{
   kicker: string;
   title: string;
-  subtitle?: string;
+  subtitle?: React.ReactNode;
   accentClass?: string;
   action?: React.ReactNode;
 }> = ({kicker, title, subtitle, accentClass = 'text-cyan-300', action}) => {

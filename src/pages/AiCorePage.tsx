@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {AnimatePresence, motion} from 'motion/react';
 import {BookOpenCheck, Cpu, ShieldCheck} from 'lucide-react';
 import {MEDIA} from '../assets/media';
 import {FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
@@ -37,7 +36,7 @@ const GENOME_DISTILLATIONS: Record<
   IMO: {
     fullName: 'International Mathematical Olympiad Shortlist/Archive',
     graphNodes: ['Vieta Jumping Root Flip', 'Semi-Perimeter Homothety Composition', 'Turán Graph Extremal Coloring'],
-    syntheticOutput: 'Distills multi-lemma transitions into original Segment 3 & 4 Grandmaster challenges vetted by SymPy.',
+    syntheticOutput: 'Distills multi-lemma transitions into original Segment 3 (Vanguard) & Segment 4 (Apex) challenges vetted by SymPy.',
     copyrightNote: 'PlagioGuard enforces <25% lexical overlap (>75% similarity blocked pre-publication).',
   },
   APMO: {
@@ -127,9 +126,6 @@ export const AiCorePage: React.FC = () => {
   const [tokenScenario, setTokenScenario] = useState<TokenScenario>('duplicate');
   const [multiN, setMultiN] = useState<number>(3);
   const [genomeSource, setGenomeSource] = useState<GenomeSource>('BdMO');
-
-  const visibleEngines =
-    aiFilter === 'all' ? AI_ENGINES_42 : AI_ENGINES_42.filter((engine) => engine.group === aiFilter);
 
   const tokenCostDisplay =
     tokenScenario === 'greeting'

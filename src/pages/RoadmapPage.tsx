@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {AnimatePresence, motion} from 'motion/react';
 import {
   Building2,
   Calendar,
@@ -211,7 +210,6 @@ export const RoadmapPage: React.FC = () => {
     seriesFilter === 'all'
       ? DECIMAL_ROLLOUT_SERIES
       : DECIMAL_ROLLOUT_SERIES.filter((s) => s.id === seriesFilter);
-  const activeMilestone = V10_MILESTONES.find((m) => m.id === selectedMilestoneId) || V10_MILESTONES[0];
   const activeSpinOff = SPIN_OFF_COMPANIES.find((s) => s.num === selectedSpinOffNum) || SPIN_OFF_COMPANIES[0];
 
   return (

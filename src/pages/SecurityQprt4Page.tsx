@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {AnimatePresence, motion} from 'motion/react';
-import {AlertOctagon, Lock, MonitorX, ShieldAlert, ShieldCheck} from 'lucide-react';
+import {AlertOctagon, MonitorX} from 'lucide-react';
 import {MEDIA} from '../assets/media';
 import {FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
 import {

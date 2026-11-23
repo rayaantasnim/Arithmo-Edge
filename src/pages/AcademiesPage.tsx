@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Building2, CheckCircle2, FileCheck2, ShieldAlert} from 'lucide-react';
+import {Building2, CheckCircle2, FileCheck2} from 'lucide-react';
 import {MEDIA} from '../assets/media';
 import {FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
 import {

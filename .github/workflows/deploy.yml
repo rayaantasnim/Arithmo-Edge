@@ -29,11 +29,23 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps --no-audit --no-fund
 
-      - name: Type-check & validate JS
+      - name: Strict TypeScript check
+        run: npm run typecheck
+
+      - name: Lint & validate client JS
         run: npm run lint
 
       - name: Build production bundle
         run: npm run build
+
+      - name: Verify static dist bundle integrity
+        run: |
+          node --check dist/assets/js/main.js
+          test -f dist/.nojekyll
+          test -f dist/assets/css/style.css
+          for page in index why-arithmo architecture arenas-elo contests ai-core security-qprt4 academies pricing socials-forge governance roadmap pioneers; do
+            test -f "dist/${page}.html" || { echo "Missing dist/${page}.html"; exit 1; }
+          done
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -52,4 +64,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {AnimatePresence, motion} from 'motion/react';
 import {
   CheckCircle2,
   Coffee,

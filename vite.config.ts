@@ -24,7 +24,7 @@ const htmlPages = [
 export default defineConfig(() => {
   const input: Record<string, string> = {};
   for (const page of htmlPages) {
-    input[page.replace('.html', '')] = path.resolve(__dirname, page);
+    input[page.replace('.html', '')] = path.resolve(import.meta.dirname, page);
   }
 
   return {
@@ -37,7 +37,7 @@ export default defineConfig(() => {
         apply: 'build' as const,
         closeBundle(error?: Error): void {
           if (error) return;
-          const distDir = path.resolve(__dirname, 'dist');
+          const distDir = path.resolve(import.meta.dirname, 'dist');
           for (const file of [
             'favicon.jpg',
             '.nojekyll',
@@ -45,7 +45,7 @@ export default defineConfig(() => {
             'googlef88d19b67a8f9099.html',
             'assets/css/style.css',
           ]) {
-            const src = path.resolve(__dirname, file);
+            const src = path.resolve(import.meta.dirname, file);
             const dest = path.resolve(distDir, file);
             if (fs.existsSync(distDir) && fs.existsSync(src)) {
               fs.mkdirSync(path.dirname(dest), {recursive: true});
@@ -54,7 +54,7 @@ export default defineConfig(() => {
           }
 
           // Transpile and minify classic Vanilla JS runtime so ES6+ syntax works reliably across browsers
-          const mainJsSrc = path.resolve(__dirname, 'assets/js/main.js');
+          const mainJsSrc = path.resolve(import.meta.dirname, 'assets/js/main.js');
           const mainJsDest = path.resolve(distDir, 'assets/js/main.js');
           if (fs.existsSync(distDir) && fs.existsSync(mainJsSrc)) {
             const rawJs = fs.readFileSync(mainJsSrc, 'utf8');

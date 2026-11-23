@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {AnimatePresence, motion} from 'motion/react';
-import {Award, CalendarClock, Lock, ShieldAlert, Trophy} from 'lucide-react';
+import {CalendarClock, Clock3, Layers, Lock, ShieldAlert, Zap} from 'lucide-react';
 import {MEDIA} from '../assets/media';
 import {DynamicCreditsPreview, FaqAccordion, SectionHeader} from '../components/CommercialPrimitives';
 import {
@@ -16,6 +15,145 @@ import {WebGLHeroCanvas} from '../components/WebGLHeroCanvas';
 type ContestTab = 'general' | 'expert' | 'contract';
 type FlawOption = 'valid-gap' | 'problem-flaw' | 'invalid-hack';
 type BdmoCat = 'Primary' | 'Junior' | 'Secondary' | 'Higher Secondary';
+
+interface SegmentSpec {
+  segmentNum: string;
+  name: string;
+  count: string;
+  duration: string;
+  eloCap: string;
+  accentHex: string;
+  scopeNote: string;
+}
+
+const GENERAL_MODE_MECHANICS = [
+  {
+    label: 'Flow Discipline',
+    title: 'One-by-One Sequential Flow',
+    detail: 'Locked single-question viewport with native Touch Numpad & Zen Focus Mode.',
+  },
+  {
+    label: 'Hindsight Lock',
+    title: 'Strict No Back-Review',
+    detail: 'Submitted or skipped items lock immediately so velocity reflects real-time fluency.',
+  },
+  {
+    label: 'Recovery Loop',
+    title: 'Second-Chance Overtime Loop',
+    detail: 'Missed calculations queue into a brief end-of-round overtime loop for partial credit.',
+  },
+  {
+    label: 'Settlement Speed',
+    title: 'T+30m ELO Update',
+    detail: 'Deterministic numeric answers finalize isolated General ELO within 30 minutes.',
+  },
+] as const;
+
+const GENERAL_SEGMENTS: SegmentSpec[] = [
+  {
+    segmentNum: 'Segment 1',
+    name: 'Initiate',
+    count: '25 Questions',
+    duration: '30 Minutes',
+    eloCap: 'Max Cap: 1199 ELO',
+    accentHex: '#00F0FF',
+    scopeNote: 'Rapid foundational arithmetic, modular residues & single-step Olympiad fluency.',
+  },
+  {
+    segmentNum: 'Segment 2',
+    name: 'Contender',
+    count: '20 Questions',
+    duration: '35 Minutes',
+    eloCap: 'Max Cap: 1799 ELO',
+    accentHex: '#22D3EE',
+    scopeNote: 'Intermediate Diophantine counting, algebraic identities & geometric angle chasing.',
+  },
+  {
+    segmentNum: 'Segment 3',
+    name: 'Advanced',
+    count: '18 Questions',
+    duration: '45 Minutes',
+    eloCap: 'Max Cap: 2399 ELO',
+    accentHex: '#38BDF8',
+    scopeNote: 'Multi-invariant computation, root-of-unity filters & extremal bounds under time pressure.',
+  },
+  {
+    segmentNum: 'Segment 4',
+    name: 'Finalist',
+    count: '15 Questions',
+    duration: '60 Minutes',
+    eloCap: 'Unlimited ELO',
+    accentHex: '#10B981',
+    scopeNote: 'Uncapped global speed gauntlet targeting Sentinel & Singularity computational parity.',
+  },
+];
+
+const EXPERT_MODE_MECHANICS = [
+  {
+    label: 'Workspace Layout',
+    title: '3-Column Toph-Style Dashboard',
+    detail: 'Problem list, zero-tag statement & proof composer synchronized side by side.',
+  },
+  {
+    label: 'Problem Order',
+    title: 'Free A–Z Navigation',
+    detail: 'Switch seamlessly between all assigned proof problems at any point on the clock.',
+  },
+  {
+    label: 'Submission Cap',
+    title: 'Strict Max 2 Submissions / Problem',
+    detail: 'Eliminates trial-and-error spam and enforces scratchpad rigor before lock.',
+  },
+  {
+    label: 'Native Authoring',
+    title: 'GeoGebra + Drag-and-Drop LaTeX',
+    detail: 'Interactive construction canvas & modular proof block composer built in-browser.',
+  },
+  {
+    label: 'Verification Window',
+    title: 'Peer Review & T+7h ELO Update',
+    detail: 'ProofGrader AI + 2000+ Sentinel Peer Review & 6h Find the Flaw finalize Expert ELO at T+7h.',
+  },
+] as const;
+
+const EXPERT_SEGMENTS: SegmentSpec[] = [
+  {
+    segmentNum: 'Segment 1',
+    name: 'Apprentice',
+    count: '15 Problems',
+    duration: '75 Minutes',
+    eloCap: 'Max Cap: 1199 ELO',
+    accentHex: '#8B5CF6',
+    scopeNote: 'Introductory deductive proofs in parity, modular congruence & Euclidean triangle geometry.',
+  },
+  {
+    segmentNum: 'Segment 2',
+    name: 'Intermediate',
+    count: '12 Problems',
+    duration: '90 Minutes',
+    eloCap: 'Max Cap: 1799 ELO',
+    accentHex: '#A78BFA',
+    scopeNote: 'Complete functional equations, Cauchy-Schwarz bounds, cyclic quadrilaterals & induction.',
+  },
+  {
+    segmentNum: 'Segment 3',
+    name: 'Vanguard',
+    count: '10 Problems',
+    duration: '120 Minutes',
+    eloCap: 'Max Cap: 2399 ELO',
+    accentHex: '#F59E0B',
+    scopeNote: 'National Olympiad caliber LTE valuations, circle inversions, Turán graphs & Peer Review.',
+  },
+  {
+    segmentNum: 'Segment 4',
+    name: 'Apex',
+    count: '8 Problems',
+    duration: '150 Minutes',
+    eloCap: 'Unlimited ELO',
+    accentHex: '#F43F5E',
+    scopeNote: 'Uncapped IMO Shortlist & Putnam frontier proof rounds graded for absolute logical airtightness.',
+  },
+];
 
 const BDMO_CATS: Record<
   BdmoCat,
@@ -59,7 +197,7 @@ const CONTEST_FAQS = [
   },
   {
     q: 'Why are Special Warm-Up Championships divided by Primary, Junior, Secondary, and Higher Secondary?',
-    a: 'National preparation rounds like the BdMO Warm-Up Championship mirror authentic school Olympiad divisions rather than arbitrary ELO bands, defaulting to Expert-Only Rated proof competition across each age division.',
+    a: 'Periodic special events like the BdMO Warm-Up Championship mirror authentic school Olympiad age divisions alongside the core daily 4-segment General and Expert arenas, defaulting to Expert-Only Rated proof competition.',
   },
   {
     q: 'What is enforced during Mandatory Live Rated Contest Full-Screen & App/Tab Lockdown?',
@@ -157,15 +295,17 @@ export const ContestsPage: React.FC = () => {
               </HeroReveal>
               <HeroReveal delay={0.08}>
                 <h1 className="hero-title-fluid font-display font-bold text-white">
-                  Contest Engine, Warm-Ups &amp; Find the Flaw
+                  Contest Engine, 4-Segment Modes &amp; Find the Flaw
                 </h1>
               </HeroReveal>
               <HeroReveal delay={0.14}>
                 <p className="ae-prose text-justify text-base sm:text-lg text-slate-300 leading-relaxed prose-measure">
                   Strictly focused on <span className="text-white font-semibold">Live &amp; Upcoming Contests</span>{' '}
                   (while 1v1 and Bot zones live inside Subsites #1–#5), the Contest Engine operates a{' '}
-                  <span className="text-white font-semibold">7-Day Zero-Rest Calendar</span>, Special Warm-Up
-                  Championships, 3-Competitor Quorum seals, and Top 128 Annual World Cup brackets.
+                  <span className="text-white font-semibold">7-Day Zero-Rest Calendar</span> driven by dedicated{' '}
+                  <span className="text-cyan-300 font-semibold">General Mode (Initiate → Finalist)</span> and{' '}
+                  <span className="text-violet-300 font-semibold">Expert Mode (Apprentice → Apex)</span> tracks,
+                  alongside 3-Competitor Quorum seals and Top 128 Annual World Cup brackets.
                 </p>
               </HeroReveal>
             </div>
@@ -200,13 +340,13 @@ export const ContestsPage: React.FC = () => {
                 <div className="text-xs text-slate-400">Zero-Rest Daily &amp; Sunday Mega Schedule</div>
               </div>
               <div className="p-4 sm:p-5 space-y-1">
-                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-amber-300">
-                  <CountUpStat value={100} suffix=" Min Sunday Mega" delayMs={220} />
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-cyan-300">
+                  <CountUpStat value={4} suffix=" Segments / Mode" delayMs={220} />
                 </div>
-                <div className="text-xs text-slate-400">10 Problems · Max 2 Submissions/Q · T+3h</div>
+                <div className="text-xs text-slate-400">Initiate–Finalist (Gen) · Apprentice–Apex (Exp)</div>
               </div>
               <div className="p-4 sm:p-5 space-y-1">
-                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-cyan-300">
+                <div className="font-mono-tabular text-lg sm:text-xl font-bold text-amber-300">
                   <CountUpStat value={3} suffix="-User Quorum" delayMs={440} />
                 </div>
                 <div className="text-xs text-slate-400">Unplayed Vaults Stay Sealed &lt;3 Entrants</div>
@@ -266,95 +406,197 @@ export const ContestsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Section 2: Custom-Scheduled Special & Warm-Up Contests (BdMO Warm-Up Championship) */}
-      <section className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-slate-800/60">
+      {/* Section 2 (Section A): General Mode — Velocity & Sequential Arena (4 Segments) */}
+      <section
+        id="general-mode-arena"
+        className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-slate-800/60"
+      >
         <ScrollReveal>
           <SectionHeader
-            kicker="02 · Custom-Scheduled Human-Authored Special & Warm-Up Contests"
-            title="BdMO Warm-Up Championship & Real Academic Divisions"
-            subtitle="Beyond the 7-day calendar, Arithmo-Edge runs human-authored Warm-Up Championships segmented by real Olympiad school divisions (Primary, Junior, Secondary, Higher Secondary) instead of ELO bands—defaulting to Expert-Only Rated proof rounds."
+            kicker="02 · Primary Daily Mode A · 20:00 UTC Velocity Competition"
+            title="General Mode — Velocity & Sequential Arena (4 Segments)"
+            subtitle="Engineered for high-speed numerical accuracy without hindsight editing. Competitors advance through a one-by-one sequential flow with strict no back-review, a Second-Chance Overtime Loop on missed prompts, and rapid T+30m General ELO updates."
           />
 
-          <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-amber-400/30 space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <div className="flex items-center gap-2 text-xs font-mono-tabular text-amber-300">
-                  <CalendarClock className="w-4 h-4" />
-                  <span>Featured Series · Default Expert-Only Rated</span>
+          <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-cyan-400/30 space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-5">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-400/35 bg-cyan-400/10 text-cyan-300 shrink-0">
+                  <Zap className="w-5 h-5" />
+                </span>
+                <div>
+                  <div className="text-xs font-mono-tabular text-cyan-300">
+                    Core Daily Format · Isolated General ELO Track
+                  </div>
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-white">
+                    Sequential Computational Mechanics &amp; 4 Rated Segments
+                  </h3>
                 </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold text-white mt-1">
-                  BdMO Warm-Up Championship Division Explorer
-                </h3>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {(['Primary', 'Junior', 'Secondary', 'Higher Secondary'] as BdmoCat[]).map((cat) => (
-                  <button
-                    key={cat}
-                    type="button"
-                    data-bdmo-cat={cat}
-                    onClick={() => setBdmoCategory(cat)}
-                    className={`px-3.5 py-2 rounded-lg border text-xs whitespace-nowrap shrink-0 transition-colors ${
-                      bdmoCategory === cat
-                        ? 'border-amber-400 bg-amber-400/15 text-white font-semibold'
-                        : 'border-slate-800 bg-slate-950/70 text-slate-300 hover:text-white'
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
+              <div className="flex items-center gap-2 text-xs font-mono-tabular text-cyan-200 border border-cyan-400/30 bg-cyan-400/10 rounded-lg px-3.5 py-2">
+                <Clock3 className="w-4 h-4 text-cyan-300 shrink-0" />
+                <span>ELO Finalized at T+30m</span>
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-4 text-xs">
-              <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4 space-y-1">
-                <div className="text-slate-400 font-mono-tabular">Selected Olympiad Division</div>
-                <div data-bdmo-title="" className="font-display text-base font-bold text-white">{bdmoCategory} Division</div>
-                <div data-bdmo-span="" className="text-amber-300">{BDMO_CATS[bdmoCategory].gradeSpan}</div>
-              </div>
-              <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4 space-y-1">
-                <div className="text-slate-400 font-mono-tabular">Proof &amp; Curriculum Focus</div>
-                <div data-bdmo-focus="" className="text-slate-200 leading-relaxed">{BDMO_CATS[bdmoCategory].focus}</div>
-              </div>
-              <div className="rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-4 space-y-1">
-                <div className="text-emerald-300 font-mono-tabular">Rating &amp; Format Lock</div>
-                <div data-bdmo-mode="" className="text-white font-semibold">{BDMO_CATS[bdmoCategory].ratedMode}</div>
-                <div data-bdmo-dur="" className="text-slate-300">{BDMO_CATS[bdmoCategory].duration}</div>
-              </div>
-            </div>
-            <div className="rounded-xl border border-amber-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch bg-slate-950/60">
-              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
-                <ResilientImage
-                  src={MEDIA.contestsBdmo}
-                  alt="BdMO Warm-Up Championship academic Olympiad divisions"
-                  loading="lazy"
-                  accentColor="#F59E0B"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-transparent to-transparent" />
-              </div>
-              <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
-                <div className="text-xs font-mono-tabular text-amber-300">
-                  Human-Authored Special Warm-Up Championship
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {GENERAL_MODE_MECHANICS.map((mech) => (
+                <div
+                  key={mech.title}
+                  className="rounded-xl border border-slate-800 bg-slate-950/75 p-4 space-y-1.5"
+                >
+                  <div className="text-[11px] font-mono-tabular uppercase tracking-wider text-cyan-300">
+                    {mech.label}
+                  </div>
+                  <div className="font-display text-sm font-bold text-white">{mech.title}</div>
+                  <p className="text-xs text-slate-300 leading-relaxed">{mech.detail}</p>
                 </div>
-                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Tailored to authentic regional and international Olympiad age tiers—preserving strict Expert-Only Rated
-                  discipline across Primary through Higher Secondary cohorts without artificial ELO-band fragmentation.
-                </p>
-                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Every division receives bespoke problem calibration authored jointly under Chief Mathematical Architect
-                  guidelines, combining foundational parity and pigeonhole proofs in younger grades with full projective
-                  and Vieta-jumping challenges in Higher Secondary selection rounds.
-                </p>
-              </div>
+              ))}
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {GENERAL_SEGMENTS.map((seg) => (
+                <SpotlightCard
+                  key={seg.name}
+                  className="rounded-2xl p-5 space-y-4 border-slate-800 bg-[#070c18]/90 flex flex-col justify-between"
+                >
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span
+                        className="text-xs font-mono-tabular font-semibold"
+                        style={{color: seg.accentHex}}
+                      >
+                        {seg.segmentNum}
+                      </span>
+                      <span className="text-[11px] font-mono-tabular text-slate-300 border border-slate-800 bg-slate-950/90 rounded-md px-2 py-0.5">
+                        {seg.eloCap}
+                      </span>
+                    </div>
+                    <h4 className="font-display text-xl font-bold text-white">
+                      {seg.segmentNum} &mdash; {seg.name}
+                    </h4>
+                    <p className="text-xs text-slate-300 leading-relaxed">{seg.scopeNote}</p>
+                  </div>
+
+                  <div className="pt-3 border-t border-slate-800/80 space-y-2 text-xs font-mono-tabular">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-400">Volume</span>
+                      <span className="text-white font-semibold">{seg.count}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-400">Clock</span>
+                      <span className="text-cyan-300 font-semibold">{seg.duration}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-400">Eligibility</span>
+                      <span className="text-emerald-300 font-semibold">{seg.eloCap}</span>
+                    </div>
+                  </div>
+                </SpotlightCard>
+              ))}
             </div>
           </div>
         </ScrollReveal>
       </section>
 
-      {/* Section 3: Minimum 3-Competitor Quorum (< 3 = Suspended Round) */}
+      {/* Section 3 (Section B): Expert Mode — 3-Column Olympiad Proof Arena (4 Segments) */}
+      <section
+        id="expert-mode-arena"
+        className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-slate-800/60"
+      >
+        <ScrollReveal>
+          <SectionHeader
+            kicker="03 · Primary Daily Mode B · 17:00 UTC Deductive Proof Arena"
+            title="Expert Mode — 3-Column Olympiad Proof Arena (4 Segments)"
+            subtitle="Designed for full IMO-caliber deductive proofs inside a 3-column Toph-style dashboard. Features free A–Z navigation across problems, strict max 2 submissions per problem, embedded GeoGebra & Drag-and-Drop LaTeX editor, Peer Review, and T+7h Expert ELO updates."
+          />
+
+          <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-violet-400/30 space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-5">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-violet-400/35 bg-violet-400/10 text-violet-300 shrink-0">
+                  <Layers className="w-5 h-5" />
+                </span>
+                <div>
+                  <div className="text-xs font-mono-tabular text-violet-300">
+                    Core Daily Format · Isolated Expert ELO Track
+                  </div>
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-white">
+                    Toph-Style Proof Workbench &amp; 4 Canonical Proof Segments
+                  </h3>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-mono-tabular text-violet-200 border border-violet-400/30 bg-violet-400/10 rounded-lg px-3.5 py-2">
+                <Clock3 className="w-4 h-4 text-violet-300 shrink-0" />
+                <span>Peer Review + T+7h ELO Update</span>
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {EXPERT_MODE_MECHANICS.map((mech) => (
+                <div
+                  key={mech.title}
+                  className="rounded-xl border border-slate-800 bg-slate-950/75 p-4 space-y-1.5"
+                >
+                  <div className="text-[11px] font-mono-tabular uppercase tracking-wider text-violet-300">
+                    {mech.label}
+                  </div>
+                  <div className="font-display text-sm font-bold text-white">{mech.title}</div>
+                  <p className="text-xs text-slate-300 leading-relaxed">{mech.detail}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {EXPERT_SEGMENTS.map((seg) => (
+                <SpotlightCard
+                  key={seg.name}
+                  className="rounded-2xl p-5 space-y-4 border-slate-800 bg-[#070c18]/90 flex flex-col justify-between"
+                >
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span
+                        className="text-xs font-mono-tabular font-semibold"
+                        style={{color: seg.accentHex}}
+                      >
+                        {seg.segmentNum}
+                      </span>
+                      <span className="text-[11px] font-mono-tabular text-slate-300 border border-slate-800 bg-slate-950/90 rounded-md px-2 py-0.5">
+                        {seg.eloCap}
+                      </span>
+                    </div>
+                    <h4 className="font-display text-xl font-bold text-white">
+                      {seg.segmentNum} &mdash; {seg.name}
+                    </h4>
+                    <p className="text-xs text-slate-300 leading-relaxed">{seg.scopeNote}</p>
+                  </div>
+
+                  <div className="pt-3 border-t border-slate-800/80 space-y-2 text-xs font-mono-tabular">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-400">Volume</span>
+                      <span className="text-white font-semibold">{seg.count}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-400">Clock</span>
+                      <span className="text-violet-300 font-semibold">{seg.duration}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-400">Eligibility</span>
+                      <span className="text-amber-300 font-semibold">{seg.eloCap}</span>
+                    </div>
+                  </div>
+                </SpotlightCard>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* Section 4: Minimum 3-Competitor Quorum (< 3 = Suspended Round) */}
       <section className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-slate-800/60">
         <ScrollReveal>
           <SectionHeader
-            kicker="03 · Integrity Threshold & Uncontaminated Question Sealing"
+            kicker="04 · Integrity Threshold & Uncontaminated Question Sealing"
             title="Minimum 3-Competitor Quorum & Suspended Round Shield"
             subtitle="Test how Arithmo-Edge handles low-turnout special rounds without punishing registered solvers or leaking sealed Golden Vault problems."
           />
@@ -365,7 +607,9 @@ export const ContestsPage: React.FC = () => {
                 <label htmlFor="quorum-slider" className="text-slate-300 font-medium">
                   Registered Competitors at T-0 Launch
                 </label>
-                <span data-quorum-count="" className="font-mono-tabular text-lg font-bold text-cyan-300">{quorumCount} Users</span>
+                <span data-quorum-count="" className="font-mono-tabular text-lg font-bold text-cyan-300">
+                  {quorumCount} Users
+                </span>
               </div>
               <input
                 id="quorum-slider"
@@ -412,7 +656,8 @@ export const ContestsPage: React.FC = () => {
                 <div className="flex items-center gap-2 text-emerald-300 font-semibold text-sm">
                   <Lock className="w-4 h-4 shrink-0" />
                   <span>
-                    QUORUM MET (<span data-quorum-count-inline="">{quorumCount}</span> Competitors) — RATED LAUNCH AUTHORIZED
+                    QUORUM MET (<span data-quorum-count-inline="">{quorumCount}</span> Competitors) — RATED LAUNCH
+                    AUTHORIZED
                   </span>
                 </div>
                 <p className="ae-prose text-xs sm:text-sm text-slate-200 leading-relaxed">
@@ -448,11 +693,11 @@ export const ContestsPage: React.FC = () => {
         </ScrollReveal>
       </section>
 
-      {/* Section 4: Interactive 3-Mode Dynamic Contest Dashboard Footer Credits */}
+      {/* Section 5: Interactive 3-Mode Dynamic Contest Dashboard Footer Credits */}
       <section className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-slate-800/60">
         <ScrollReveal>
           <SectionHeader
-            kicker="04 · Authorship Transparency & Flexible Credit Engine"
+            kicker="05 · Authorship Transparency & Flexible Credit Engine"
             title="Interactive 3-Mode Dynamic Contest Footer Credits"
             subtitle="Depending on whether a round is human-authored, drawn from Core HQ Golden Vaults, or generated autonomously by AI engines, the Contest Dashboard dynamically renders exact attribution."
           />
@@ -473,11 +718,11 @@ export const ContestsPage: React.FC = () => {
         </ScrollReveal>
       </section>
 
-      {/* Section 5: Multi-Stage Registration & T-30s Pre-Match Contract */}
+      {/* Section 6: Multi-Stage Registration & T-30s Pre-Match Contract */}
       <section className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-slate-800/60">
         <ScrollReveal>
           <SectionHeader
-            kicker="05 · Deterministic Round Admission & T-30s Contract"
+            kicker="06 · Deterministic Round Admission & T-30s Contract"
             title="Three-Stage Launch Lifecycle & Authorship Verification"
           />
           <div className="ae-bento-grid ae-bento-grid-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -486,7 +731,7 @@ export const ContestsPage: React.FC = () => {
               <h3 className="font-display text-lg font-bold text-white">4-Segment Contract Binding</h3>
               <p className="ae-prose text-justify text-sm text-slate-300">
                 Competitors register with a <code className="font-mono-tabular text-cyan-300">@handle</code> (Rated) or
-                enter as Unrated Guests (0 ELO), selecting General Velocity Flow or Expert 4-Segment Proof tracks.
+                enter as Unrated Guests (0 ELO), selecting General (Initiate–Finalist) or Expert (Apprentice–Apex) tracks.
               </p>
             </SpotlightCard>
             <SpotlightCard className="rounded-2xl p-6 space-y-2">
@@ -523,13 +768,13 @@ export const ContestsPage: React.FC = () => {
         </ScrollReveal>
       </section>
 
-      {/* Section 6: General Mode Velocity Flow vs Expert 3-Column Dashboard Switcher */}
+      {/* Section 7: General Mode Velocity Flow vs Expert 3-Column Dashboard Switcher */}
       <section className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-slate-800/60">
         <ScrollReveal>
           <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-slate-800 space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <p className="text-xs text-cyan-300 font-medium">06 · Interactive Dual-Mode Interface Switcher</p>
+                <p className="text-xs text-cyan-300 font-medium">07 · Interactive Dual-Mode Interface Switcher</p>
                 <h2 className="section-title-fluid font-display font-bold text-white">
                   General Velocity Flow vs. Expert 3-Column Toph-Style Dashboard
                 </h2>
@@ -569,10 +814,12 @@ export const ContestsPage: React.FC = () => {
                   General Velocity Flow + Overtime Loop + Zen Focus Mode
                 </h3>
                 <p className="ae-prose text-sm text-slate-300 leading-relaxed">
-                  Single-problem sequential interface engineered for rapid arithmetic and Olympiad computation.
-                  Missed items enter the <span className="text-white font-medium">Second-Chance Overtime Loop</span>
-                  , paired with a native <span className="text-white font-medium">Mobile Touch Numpad</span> and
-                  distraction-free <span className="text-white font-medium">Zen Focus Mode</span>.
+                  Single-problem sequential interface engineered for rapid arithmetic and Olympiad computation across{' '}
+                  <span className="text-white font-medium">Initiate, Contender, Advanced, and Finalist</span> segments.
+                  Missed items enter the <span className="text-white font-medium">Second-Chance Overtime Loop</span>,
+                  paired with a native <span className="text-white font-medium">Mobile Touch Numpad</span>,{' '}
+                  <span className="text-white font-medium">Strict No Back-Review</span>, and{' '}
+                  <span className="text-white font-medium">T+30m ELO settlement</span>.
                 </p>
                 <div className="p-4 rounded-xl bg-slate-950/75 border border-slate-800 text-xs text-slate-300 space-y-2">
                   <div className="text-cyan-300 font-semibold">
@@ -639,23 +886,26 @@ export const ContestsPage: React.FC = () => {
                   </div>
                   <h4 className="font-display font-bold text-white">4-Segment Contract Navigation</h4>
                   <ul className="text-xs text-slate-300 space-y-2">
-                    <li className="flex justify-between">
-                      <span>Segment 1 · Foundational</span>
-                      <span className="font-mono-tabular text-emerald-400">Max 2 Subs</span>
+                    <li className="flex justify-between gap-2">
+                      <span>Segment 1 · Apprentice</span>
+                      <span className="font-mono-tabular text-emerald-400">15P · 75m · ≤1199</span>
                     </li>
-                    <li className="flex justify-between">
+                    <li className="flex justify-between gap-2">
                       <span>Segment 2 · Intermediate</span>
-                      <span className="font-mono-tabular text-emerald-400">Max 2 Subs</span>
+                      <span className="font-mono-tabular text-emerald-400">12P · 90m · ≤1799</span>
                     </li>
-                    <li className="flex justify-between">
-                      <span>Segment 3 · Advanced Proof</span>
-                      <span className="font-mono-tabular text-amber-300">Peer Review</span>
+                    <li className="flex justify-between gap-2">
+                      <span>Segment 3 · Vanguard</span>
+                      <span className="font-mono-tabular text-amber-300">10P · 120m · ≤2399</span>
                     </li>
-                    <li className="flex justify-between">
-                      <span>Segment 4 · Grandmaster</span>
-                      <span className="font-mono-tabular text-rose-300">Proof-Based</span>
+                    <li className="flex justify-between gap-2">
+                      <span>Segment 4 · Apex</span>
+                      <span className="font-mono-tabular text-rose-300">8P · 150m · Unlimited</span>
                     </li>
                   </ul>
+                  <div className="pt-2 border-t border-slate-800/80 text-[11px] font-mono-tabular text-slate-400">
+                    Free A–Z Navigation · Strict Max 2 Subs/Problem
+                  </div>
                 </div>
                 <div className="p-5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-3">
                   <div className="text-xs font-mono-tabular text-violet-400">
@@ -663,8 +913,8 @@ export const ContestsPage: React.FC = () => {
                   </div>
                   <h4 className="font-display font-bold text-white">Zero-Fragmentation Statement View</h4>
                   <p className="ae-prose text-xs text-slate-300 leading-relaxed">
-                    Topic tags remain hidden. Geometry problems embed an interactive GeoGebra-style Geometry
-                    canvas.
+                    Topic tags remain hidden during live competition. Geometry problems embed an interactive
+                    GeoGebra-style Geometry canvas directly beside the prompt.
                   </p>
                 </div>
                 <div className="p-5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-3">
@@ -673,7 +923,8 @@ export const ContestsPage: React.FC = () => {
                   </div>
                   <h4 className="font-display font-bold text-white">Proof-Based Grading + Peer Review</h4>
                   <p className="ae-prose text-xs text-slate-300 leading-relaxed">
-                    Compose structured proofs using Drag-and-Drop LaTeX blocks with max 2 submissions per problem.
+                    Compose structured proofs using Drag-and-Drop LaTeX blocks capped at strict max 2 submissions per
+                    problem, audited via Peer Review &amp; T+7h ELO update.
                   </p>
                 </div>
               </div>
@@ -688,8 +939,8 @@ export const ContestsPage: React.FC = () => {
                 <h3 className="font-display text-xl font-bold text-white">Verified Authorship Attribution</h3>
                 <p className="ae-prose text-sm text-slate-300 leading-relaxed">
                   Displays ONLY Names &amp; <code className="font-mono-tabular text-cyan-300">@handles</code> of
-                  Problemsetters, Auditors, and Testers alongside round segment rules and mandatory Full-Screen
-                  Lockdown terms.
+                  Problemsetters, Auditors, and Testers alongside General (Initiate–Finalist) / Expert
+                  (Apprentice–Apex) segment contracts and mandatory Full-Screen Lockdown terms.
                 </p>
               </div>
             </div>
@@ -702,7 +953,7 @@ export const ContestsPage: React.FC = () => {
             summary="General runners sweep sequential tasks on touch numpads while Expert contenders draft multi-lemma LaTeX proofs alongside embedded geometry tools."
             details={[
               'General Mode isolates distraction via Zen Focus Mode and routes missed computations cleanly into a Second-Chance Overtime Loop without requiring desktop hardware.',
-              'Expert Mode binds three synchronized columns—4-Segment navigation, zero-fragmentation statements with GeoGebra diagrams, and Drag-and-Drop LaTeX blocks capped at 2 submissions per problem.',
+              'Expert Mode binds three synchronized columns—Apprentice through Apex free A–Z navigation, zero-fragmentation statements with GeoGebra diagrams, and Drag-and-Drop LaTeX blocks capped at 2 submissions per problem.',
             ]}
             accentColor="#10B981"
             className="mt-6"
@@ -710,14 +961,14 @@ export const ContestsPage: React.FC = () => {
         </ScrollReveal>
       </section>
 
-      {/* Section 7: Interactive Find the Flaw Proof-Audit Demo */}
+      {/* Section 8: Interactive Find the Flaw Proof-Audit Demo */}
       <section className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-slate-800/60">
         <ScrollReveal>
           <SpotlightCard className="rounded-2xl p-6 sm:p-8 space-y-6">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="text-xs text-rose-300 font-medium mb-1">
-                  07 · Post-Contest Hacking (6h Daily / 2h Sunday Mega)
+                  08 · Post-Contest Hacking (6h Daily / 2h Sunday Mega)
                 </p>
                 <h2 className="section-title-fluid font-display font-bold text-white">
                   Interactive <span className="text-cyan-300">Find the Flaw</span> Proof-Audit Demo
@@ -730,7 +981,7 @@ export const ContestsPage: React.FC = () => {
 
             <div className="p-5 rounded-xl bg-slate-950/85 border border-slate-800 space-y-2">
               <div className="text-xs text-slate-400">
-                Target Proof Snippet Under Audit (Expert Segment 3 · Number Theory)
+                Target Proof Snippet Under Audit (Expert Segment 3 &mdash; Vanguard · Number Theory)
               </div>
               <p className="font-mono-tabular text-sm text-slate-200 leading-relaxed">
                 &ldquo;Let <em>p</em> be a prime dividing <em>a</em>² &minus; <em>b</em>². Assuming <em>a</em> &minus;{' '}
@@ -826,7 +1077,7 @@ export const ContestsPage: React.FC = () => {
                 <div className="text-xs font-mono-tabular text-rose-300">Adversarial Proof Peer-Hacking</div>
                 <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Unverified proof steps, missing boundary branches, or flawed problem statements face deterministic
-                  verification and transparent T+2h daily or T+3h Sunday Mega standing finalization.
+                  verification and transparent T+7h daily Expert or T+3h Sunday Mega standing finalization.
                 </p>
                 <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Valid counterexamples against opponent proofs award +5 to +50 audit points while confirmed problem
@@ -839,11 +1090,11 @@ export const ContestsPage: React.FC = () => {
         </ScrollReveal>
       </section>
 
-      {/* Section 8: Proof-Based Grading, 2000+ Peer Review & LaTeX + GeoGebra Studio */}
+      {/* Section 9: Proof-Based Grading, 2000+ Peer Review & LaTeX + GeoGebra Studio */}
       <section className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-slate-800/60">
         <ScrollReveal>
           <SectionHeader
-            kicker="08 · Proof-Based Grading + 2000+ ELO Peer Review & Native Authoring"
+            kicker="09 · Proof-Based Grading + 2000+ ELO Peer Review & Native Authoring"
             title="Hybrid ProofGrader AI, Drag-and-Drop LaTeX & GeoGebra Studio"
           />
           <div className="grid lg:grid-cols-12 gap-6 items-stretch">
@@ -858,9 +1109,7 @@ export const ContestsPage: React.FC = () => {
               </div>
               <div className="p-6 flex-1 space-y-2">
                 <div className="text-xs font-mono-tabular text-amber-300">Expert Column 2 &amp; 3 Workbench</div>
-                <h3 className="font-display text-lg font-bold text-white">
-                  Zero External Tools Required
-                </h3>
+                <h3 className="font-display text-lg font-bold text-white">Zero External Tools Required</h3>
                 <p className="ae-prose text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Construct circumcircles, radical axes, and inversions directly in Expert Column 2&apos;s GeoGebra-style
                   canvas while assembling modular congruence &amp; induction blocks in Column 3&apos;s Drag-and-Drop
@@ -882,8 +1131,8 @@ export const ContestsPage: React.FC = () => {
                 <div className="text-xs font-mono-tabular text-emerald-300">2000+ ELO Sentinels</div>
                 <h3 className="font-display text-base font-bold text-white">Blind Peer Calibration</h3>
                 <p className="ae-prose text-xs text-slate-300 leading-relaxed">
-                  Qualified 2000+ ELO reviewers audit anonymized Expert Segments 1–2 jointly with ProofGrader AI for
-                  Contribution ELO.
+                  Qualified 2000+ ELO reviewers audit anonymized Expert Apprentice &amp; Intermediate proofs jointly with
+                  ProofGrader AI for Contribution ELO.
                 </p>
               </SpotlightCard>
               <SpotlightCard className="rounded-2xl p-6 space-y-2 sm:col-span-2">
@@ -899,11 +1148,109 @@ export const ContestsPage: React.FC = () => {
         </ScrollReveal>
       </section>
 
-      {/* Section 9: Virtual Gym, Top 128 World Cup & Contest FAQ */}
+      {/* Section 10: Special & Seasonal Championships (Moved Lower Down — Periodic Events) */}
+      <section
+        id="special-championships"
+        className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-slate-800/60"
+      >
+        <ScrollReveal>
+          <SectionHeader
+            kicker="10 · Periodic Special Events Alongside Core Daily Contests"
+            title="Special & Seasonal Championships"
+            subtitle="Alongside the core daily 4-segment General and Expert arenas above, Arithmo-Edge hosts periodic human-authored seasonal events—including the BdMO Warm-Up Championship segmented by authentic Olympiad school age divisions (Primary, Junior, Secondary, Higher Secondary)."
+          />
+
+          <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-amber-400/30 space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 text-xs font-mono-tabular text-amber-300">
+                  <CalendarClock className="w-4 h-4" />
+                  <span>Periodic Special Event · Default Expert-Only Rated</span>
+                </div>
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-white mt-1">
+                  BdMO Warm-Up Championship Division Explorer
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {(['Primary', 'Junior', 'Secondary', 'Higher Secondary'] as BdmoCat[]).map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    data-bdmo-cat={cat}
+                    onClick={() => setBdmoCategory(cat)}
+                    className={`px-3.5 py-2 rounded-lg border text-xs whitespace-nowrap shrink-0 transition-colors ${
+                      bdmoCategory === cat
+                        ? 'border-amber-400 bg-amber-400/15 text-white font-semibold'
+                        : 'border-slate-800 bg-slate-950/70 text-slate-300 hover:text-white'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-4 text-xs">
+              <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4 space-y-1">
+                <div className="text-slate-400 font-mono-tabular">Selected Olympiad Division</div>
+                <div data-bdmo-title="" className="font-display text-base font-bold text-white">
+                  {bdmoCategory} Division
+                </div>
+                <div data-bdmo-span="" className="text-amber-300">
+                  {BDMO_CATS[bdmoCategory].gradeSpan}
+                </div>
+              </div>
+              <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4 space-y-1">
+                <div className="text-slate-400 font-mono-tabular">Proof &amp; Curriculum Focus</div>
+                <div data-bdmo-focus="" className="text-slate-200 leading-relaxed">
+                  {BDMO_CATS[bdmoCategory].focus}
+                </div>
+              </div>
+              <div className="rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-4 space-y-1">
+                <div className="text-emerald-300 font-mono-tabular">Rating &amp; Format Lock</div>
+                <div data-bdmo-mode="" className="text-white font-semibold">
+                  {BDMO_CATS[bdmoCategory].ratedMode}
+                </div>
+                <div data-bdmo-dur="" className="text-slate-300">
+                  {BDMO_CATS[bdmoCategory].duration}
+                </div>
+              </div>
+            </div>
+            <div className="rounded-xl border border-amber-400/25 overflow-hidden grid lg:grid-cols-12 items-stretch bg-slate-950/60">
+              <div className="lg:col-span-4 aspect-[16/10] lg:aspect-auto min-h-[190px] relative media-frame">
+                <ResilientImage
+                  src={MEDIA.contestsBdmo}
+                  alt="BdMO Warm-Up Championship academic Olympiad divisions"
+                  loading="lazy"
+                  accentColor="#F59E0B"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-transparent to-transparent" />
+              </div>
+              <div className="lg:col-span-8 p-6 sm:p-7 flex flex-col justify-center space-y-2.5">
+                <div className="text-xs font-mono-tabular text-amber-300">
+                  Periodic Human-Authored Special Event · Age-Cohort Bracket
+                </div>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Unlike everyday rated rounds partitioned by the 4 General (Initiate–Finalist) or Expert
+                  (Apprentice–Apex) ELO segments, seasonal Warm-Up Championships align with regional and national school
+                  Olympiad cohorts—preserving strict Expert-Only Rated proof standards.
+                </p>
+                <p className="ae-prose text-justify text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Every division receives bespoke problem calibration authored jointly under Chief Mathematical Architect
+                  guidelines, combining foundational parity and pigeonhole proofs in younger grades with full projective
+                  and Vieta-jumping challenges in Higher Secondary selection rounds.
+                </p>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* Section 11: Virtual Gym, Top 128 World Cup & Contest FAQ */}
       <section className="ae-container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <ScrollReveal>
           <SectionHeader
-            kicker="09 · Virtual Gym, Top 128 Annual World Cup (👑) & FAQ"
+            kicker="11 · Virtual Gym, Top 128 Annual World Cup (👑) & FAQ"
             title="Historical Replay & Global Half-Elimination Crown Bracket"
           />
           <div className="grid lg:grid-cols-12 gap-8 items-start">
