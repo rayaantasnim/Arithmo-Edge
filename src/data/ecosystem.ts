@@ -17,9 +17,10 @@ export const TARGET_MIDNIGHT_MS = new Date('2027-01-01T00:00:00+06:00').getTime(
 
 export const NAV_ROUTES: Array<{
   num: string;
-  href: PageId;
+  href: PageId | string;
   label: string;
   shortLabel: string;
+  external?: boolean;
 }> = [
   {num: '01', href: 'index.html', label: '01. Home', shortLabel: '01. Home'},
   {
@@ -93,6 +94,13 @@ export const NAV_ROUTES: Array<{
     href: 'pioneers.html',
     label: '13. Pioneer Contributors',
     shortLabel: '13. Pioneer Contributors',
+  },
+  {
+    num: '14',
+    href: 'https://rayaantasnim.github.io/Arithmo-Gallery/',
+    label: '14. Visual Gallery',
+    shortLabel: '14. Visual Gallery',
+    external: true,
   },
 ];
 

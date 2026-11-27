@@ -207,7 +207,7 @@ export const SiteShell: React.FC<{
           <div className="ae-scroll-progress" aria-hidden="true" />
         </header>
 
-        {/* Right-Side Slide-In Overlay Navigation Drawer (01-13) — rendered unconditionally for static SSR */}
+        {/* Right-Side Slide-In Overlay Navigation Drawer (01-14) — rendered unconditionally for static SSR */}
         <div
           id="nav-drawer-backdrop"
           onClick={closeDrawer}
@@ -239,7 +239,7 @@ export const SiteShell: React.FC<{
             <div className="flex items-center justify-between pb-4 border-b border-slate-800/80">
               <div>
                 <span className="font-display text-lg font-bold brand-gradient">Arithmo Edge</span>
-                <p className="text-xs text-slate-400">Powered by Olympiad Edge · 13-Page Showcase</p>
+                <p className="text-xs text-slate-400">Powered by Olympiad Edge · 14-Page Showcase</p>
               </div>
               <button
                 id="nav-drawer-close"
@@ -299,12 +299,14 @@ export const SiteShell: React.FC<{
 
             <nav className="mt-5 grid gap-1.5">
               {NAV_ROUTES.map((route) => {
-                const active = route.href === pageId;
+                const active = !route.external && route.href === pageId;
                 return (
                   <a
                     key={route.href}
                     href={route.href}
-                    data-page={route.href}
+                    data-page={route.external ? undefined : route.href}
+                    target={route.external ? '_blank' : undefined}
+                    rel={route.external ? 'noopener noreferrer' : undefined}
                     onClick={closeDrawer}
                     className={`drawer-link-item flex items-center gap-3 px-3.5 py-2.5 rounded-lg border text-sm transition-colors ${
                       active
@@ -342,9 +344,9 @@ export const SiteShell: React.FC<{
           <div className="ae-footer-aurora-glow" aria-hidden="true" />
 
           <div className="ae-container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
               {/* Column 1: Brand Identity & Live Status */}
-              <div className="lg:col-span-4 space-y-4">
+              <div className="lg:col-span-5 space-y-4">
                 <div className="flex items-center gap-3">
                   <img
                     src="favicon.jpg"
@@ -375,22 +377,24 @@ export const SiteShell: React.FC<{
                 </div>
               </div>
 
-              {/* Column 2: 13-Page Showcase Matrix */}
-              <div className="lg:col-span-5">
+              {/* Column 2: 14-Page Showcase Matrix */}
+              <div className="lg:col-span-7">
                 <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-300 mb-3">
-                  13-Page Showcase Matrix
+                  14-Page Showcase Matrix
                 </h3>
                 <nav
-                  aria-label="Footer 13-Page Showcase Matrix"
+                  aria-label="Footer 14-Page Showcase Matrix"
                   className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1 text-xs text-slate-400"
                 >
                   {NAV_ROUTES.map((route) => {
-                    const isActive = route.href === pageId;
+                    const isActive = !route.external && route.href === pageId;
                     const routeName = route.label.replace(/^\d+\.\s*/, '');
                     return (
                       <a
                         key={route.href}
                         href={route.href}
+                        target={route.external ? '_blank' : undefined}
+                        rel={route.external ? 'noopener noreferrer' : undefined}
                         aria-current={isActive ? 'page' : undefined}
                         className="ae-footer-matrix-link"
                       >
@@ -408,73 +412,66 @@ export const SiteShell: React.FC<{
                   })}
                 </nav>
               </div>
+            </div>
 
-              {/* Column 3: Connect & Community (Exact 4-Button 2x2 Grid + Direct Text Links) */}
-              <div className="lg:col-span-3 space-y-4">
-                <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-300 mb-3">
-                  Connect &amp; Community
-                </h3>
+            {/* Centered Social Links Row Above Copyright */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="https://github.com/Arithmo-Edge"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ae-footer-social-btn min-w-[112px]"
+                aria-label="GitHub Arithmo-Edge Organization"
+              >
+                <svg className="w-4 h-4 text-cyan-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  />
+                </svg>
+                <span>GitHub</span>
+              </a>
 
-                <div className="grid grid-cols-2 gap-2.5">
-                  <a
-                    href="https://github.com/Arithmo-Edge"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ae-footer-social-btn"
-                    aria-label="GitHub Arithmo-Edge Organization"
-                  >
-                    <svg className="w-4 h-4 text-cyan-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                      />
-                    </svg>
-                    <span>GitHub</span>
-                  </a>
+              <a
+                href="mailto:rayaantasnim@gmail.com"
+                data-tone="violet"
+                className="ae-footer-social-btn min-w-[112px]"
+                aria-label="Email Arithmo Edge Founder"
+              >
+                <svg className="w-4 h-4 text-violet-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                <span>Email</span>
+              </a>
 
-                  <a
-                    href="mailto:rayaantasnim@gmail.com"
-                    data-tone="violet"
-                    className="ae-footer-social-btn"
-                    aria-label="Email Arithmo Edge Founder"
-                  >
-                    <svg className="w-4 h-4 text-violet-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <rect x="2" y="4" width="20" height="16" rx="2" />
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                    </svg>
-                    <span>Email</span>
-                  </a>
+              <a
+                href="https://www.linkedin.com/in/rayaan-tasnim/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ae-footer-social-btn min-w-[112px]"
+                aria-label="LinkedIn Profile Rayaan Tasnim"
+              >
+                <svg className="w-4 h-4 text-sky-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                </svg>
+                <span>LinkedIn</span>
+              </a>
 
-                  <a
-                    href="https://www.linkedin.com/in/rayaan-tasnim/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ae-footer-social-btn"
-                    aria-label="LinkedIn Profile Rayaan Tasnim"
-                  >
-                    <svg className="w-4 h-4 text-sky-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                    </svg>
-                    <span>LinkedIn</span>
-                  </a>
-
-                  <a
-                    href="https://www.youtube.com/@jaleeshabib"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-tone="rose"
-                    className="ae-footer-social-btn"
-                    aria-label="YouTube Channel Jalees Habib"
-                  >
-                    <svg className="w-4 h-4 text-rose-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                    </svg>
-                    <span>YouTube</span>
-                  </a>
-                </div>
-
-              </div>
+              <a
+                href="https://www.youtube.com/@jaleeshabib"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-tone="rose"
+                className="ae-footer-social-btn min-w-[112px]"
+                aria-label="YouTube Channel Jalees Habib"
+              >
+                <svg className="w-4 h-4 text-rose-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+                <span>YouTube</span>
+              </a>
             </div>
 
             <div className="text-xs text-slate-400 leading-relaxed">
